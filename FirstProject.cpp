@@ -11,7 +11,6 @@ struct studentas
     string vardas;
     string pavarde;
     vector<int> ND; 
-    double vid;
     int EGZ;
     double GalutinisV;
     double GalutinisM;
@@ -34,7 +33,8 @@ int main()
 
     for (int i = 0; i < m; i++)
     {
-        cout << "Iveskite studento varda ir pavarde: "; //vardas ir pavarde
+         
+        cout <<  "Iveskite studento varda ir pavarde: "; //vardas ir pavarde
         cin >> C[i].vardas >> C[i].pavarde;
 
         cout << endl << "Iveskite namu darbu rezultatus:"; //namu darbu rezultatu ivedimas
@@ -49,45 +49,59 @@ int main()
         cin >> C[i].EGZ;//ivedamas egzamino balas
 
 
-        if (budas == 'v') //galutinis balasa apskaiciuojamas su vidurkiu
+        if (budas == 'v') //galutinis balas apskaiciuojamas su vidurkiu
         {
             int suma = 0;
+            double vid = 0.0;
             for (int j = 0; j < n; j++)
             {
-                suma += C[i].ND[j];
+                suma = suma + C[i].ND[j];
             }
-            C[i].vid = suma * 1.0 / n;
-            C[i].GalutinisV = 0.4 * C[i].vid + 0.6 * C[i].EGZ;
+            vid = suma * 1.0/ n ;
+            C[i].GalutinisV = 0.4 * vid + 0.6 * C[i].EGZ;
             
         }
-        if (budas == 'm') //galutinis balasa apskaiciuojamas su mediana
+        if (budas == 'm') //galutinis balas apskaiciuojamas su mediana
         {
+            int mediana;
             sort(C[i].ND.begin(), C[i].ND.end()); 
-            int mediana = round(n / 2.0);
-            C[i].GalutinisM = 0.4 * C[i].ND[mediana] + 0.6 * C[i].EGZ;
+            if (n % 2 == 0)
+            {
+                int m1 = round(n / 2.0);
+                int m2 = m1 - 1;
+               C[i].GalutinisM = 0.4 *( (C[i].ND[m1] + C[i].ND[m2])/2.0 ) + 0.6 * C[i].EGZ;
+
+            }
+            else
+            {
+                mediana = round(n / 2.0) - 1;
+                C[i].GalutinisM = 0.4 * C[i].ND[mediana] + 0.6 * C[i].EGZ;
+
+            }   
             
         }
-
+        cout << endl;
     }
     // rezultatu spausdinimas
-    if (budas == 'v')
-    {
-        cout << endl << "Pavarde \t Vardas \t Galutinis (Vid. )" << endl;
-        cout << "-----------------------------------------------" << endl;
-    }
-    if (budas == 'm')
-    {
-        cout << endl << "Pavarde \t Vardas \t  Galutinis (Med. )" << endl;
-        cout << "------------------------------------------------------" << endl;
-    }
     for (int i = 0; i < m; i++)
     {
+      
         if (budas == 'v')
         {
+            if (i == 0)
+            {
+                cout << endl << "Pavarde \t Vardas \t Galutinis (Vid. )" << endl;
+                cout << "-----------------------------------------------" << endl;
+            }
             cout << C[i].pavarde << " \t " << C[i].vardas << " \t " << setprecision(2) << C[i].GalutinisV << endl;
         }
         if (budas == 'm')
         {
+            if (i == 0)
+            {
+                cout << endl << "Pavarde \t Vardas \t  Galutinis (Med. )" << endl;
+                cout << "-------------------------------------------------" << endl;
+            }
             cout << C[i].pavarde << " \t " << C[i].vardas << " \t " << setprecision(2) << C[i].GalutinisM << endl;
         }
     }
