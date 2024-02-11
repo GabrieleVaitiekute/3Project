@@ -41,24 +41,24 @@ int main()
            }
     }
     
-    vector<studentas> C(m); 
+    vector<studentas> S(m); 
     //duomenu ivedimas ir apdorojimas
     for (int i = 0; i < m; i++)
     {
          
         cout <<  "Iveskite studento varda ir pavarde: "; //vardas ir pavarde
-        cin >> C[i].vardas >> C[i].pavarde;
+        cin >> S[i].vardas >> S[i].pavarde;
 
         cout << endl << "Iveskite namu darbu rezultatus:"; //namu darbu rezultatu ivedimas
         for (int j = 0; j < n; j++)
         {
             int temp;
             cin >> temp;
-            C[i].ND.push_back(temp); 
+            S[i].ND.push_back(temp); 
         }
 
         cout << endl << "Iveskite egzamino rezultata:"; 
-        cin >> C[i].EGZ;//ivedamas egzamino balas
+        cin >> S[i].EGZ;//ivedamas egzamino balas
 
 
         if (budas == 'v') //galutinis balas apskaiciuojamas su vidurkiu
@@ -67,28 +67,28 @@ int main()
             double vid = 0.0;
             for (int j = 0; j < n; j++)
             {
-                suma = suma + C[i].ND[j];
+                suma = suma + S[i].ND[j];
             }
             vid = suma * 1.0/ n ;
-            C[i].GalutinisV = 0.4 * vid + 0.6 * C[i].EGZ;
+            S[i].GalutinisV = 0.4 * vid + 0.6 * S[i].EGZ;
             
         }
 
         if (budas == 'm') //galutinis balas apskaiciuojamas su mediana
         {
             int mediana;
-            sort(C[i].ND.begin(), C[i].ND.end()); 
+            sort(S[i].ND.begin(), S[i].ND.end()); 
             if (n % 2 == 0)
             {
                 int m1 = round(n / 2.0);
                 int m2 = m1 - 1;
-               C[i].GalutinisM = 0.4 *( (C[i].ND[m1] + C[i].ND[m2])/2.0 ) + 0.6 * C[i].EGZ;
+               S[i].GalutinisM = 0.4 *((S[i].ND[m1] + S[i].ND[m2])/2.0 ) + 0.6 * S[i].EGZ;
 
             }
             else
             {
                 mediana = round(n / 2.0) - 1;
-                C[i].GalutinisM = 0.4 * C[i].ND[mediana] + 0.6 * C[i].EGZ;
+                S[i].GalutinisM = 0.4 * S[i].ND[mediana] + 0.6 * S[i].EGZ;
             }   
             
         }
@@ -105,7 +105,7 @@ int main()
                 cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << endl;
                 cout << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
             }
-            cout << setw(20) << C[i].pavarde << setw(20) << C[i].vardas << setw(20) << setprecision(2) << C[i].GalutinisV << endl;
+            cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(2) << S[i].GalutinisV << endl;
         }
         if (budas == 'm')
         {
@@ -114,7 +114,7 @@ int main()
                 cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Med.)" << endl;
                 cout << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
             }
-            cout << setw(20) << C[i].pavarde << setw(20) << C[i].vardas << setw(20) << setprecision(2) << C[i].GalutinisM << endl;
+            cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(2) << S[i].GalutinisM << endl;
         }
     }
             return 0;
