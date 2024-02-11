@@ -26,9 +26,20 @@ int main()
     cin >> n; 
     
     cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite m - jei su mediana, v su vidukriu) "; //balo apskaiciavimo budas
-        char budas;
-        cin >> budas;
-
+    char budas;
+    cin >> budas;
+    if (budas != 'm' && budas != 'v')
+    {
+        bool ivedimas = false;
+         while (ivedimas == false)
+          {
+             cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
+             cin >> budas;
+             if (budas == 'm' || budas == 'v')
+               ivedimas = true;
+           }
+    }
+    
     vector<studentas> C(m); 
 
     for (int i = 0; i < m; i++)
@@ -61,6 +72,7 @@ int main()
             C[i].GalutinisV = 0.4 * vid + 0.6 * C[i].EGZ;
             
         }
+
         if (budas == 'm') //galutinis balas apskaiciuojamas su mediana
         {
             int mediana;
@@ -76,7 +88,6 @@ int main()
             {
                 mediana = round(n / 2.0) - 1;
                 C[i].GalutinisM = 0.4 * C[i].ND[mediana] + 0.6 * C[i].EGZ;
-
             }   
             
         }
@@ -99,7 +110,7 @@ int main()
         {
             if (i == 0)
             {
-                cout << endl << "Pavarde \t Vardas \t  Galutinis (Med. )" << endl;
+                cout << endl << "Pavarde \t Vardas \t Galutinis (Med. )" << endl;
                 cout << "-------------------------------------------------" << endl;
             }
             cout << C[i].pavarde << " \t " << C[i].vardas << " \t " << setprecision(2) << C[i].GalutinisM << endl;
