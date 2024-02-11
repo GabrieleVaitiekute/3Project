@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
-
+//studentu duomenu struktura
 struct studentas
 {
     string vardas;
@@ -18,6 +18,7 @@ struct studentas
 
 int main()
 {
+    //ivedami studentu ir namu darbu skaiciai
     int m, n;
     cout << "Iveskite studentu skaicius: ";
     cin >> m;
@@ -28,7 +29,7 @@ int main()
     cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite m - jei su mediana, v su vidukriu) "; //balo apskaiciavimo budas
     char budas;
     cin >> budas;
-    if (budas != 'm' && budas != 'v')
+    if (budas != 'm' && budas != 'v') //tikrinama ar ivestas tinkamas simbolis
     {
         bool ivedimas = false;
          while (ivedimas == false)
@@ -41,7 +42,7 @@ int main()
     }
     
     vector<studentas> C(m); 
-
+    //duomenu ivedimas ir apdorojimas
     for (int i = 0; i < m; i++)
     {
          
