@@ -101,19 +101,19 @@ int main()
         {
             if (i == 0)
             {
-                cout << endl << "Pavarde \t Vardas \t Galutinis (Vid. )" << endl;
-                cout << "-----------------------------------------------" << endl;
+                cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << endl;
+                cout << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
             }
-            cout << C[i].pavarde << " \t " << C[i].vardas << " \t " << setprecision(2) << C[i].GalutinisV << endl;
+            cout << setw(20) << C[i].pavarde << setw(20) << C[i].vardas << setw(20) << setprecision(2) << C[i].GalutinisV << endl;
         }
         if (budas == 'm')
         {
             if (i == 0)
             {
-                cout << endl << "Pavarde \t Vardas \t Galutinis (Med. )" << endl;
-                cout << "-------------------------------------------------" << endl;
+                cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Med.)" << endl;
+                cout << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
             }
-            cout << C[i].pavarde << " \t " << C[i].vardas << " \t " << setprecision(2) << C[i].GalutinisM << endl;
+            cout << setw(20) << C[i].pavarde << setw(20) << C[i].vardas << setw(20) << setprecision(2) << C[i].GalutinisM << endl;
         }
     }
             return 0;
