@@ -60,6 +60,22 @@ int main()
         }
     }
 
+    //suteikiama galimybe sugeneruoti egzamino bala
+    cout << endl << "Jei norite patys ivesti egzamino bala, iveskite raide p, jei norite, kad balas butu sugeneruotas, iveskite g. ";
+    char IvestisEgzBalo;
+    cin >> IvestisEgzBalo;
+    if (IvestisEgzBalo != 'g' && IvestisEgzBalo != 'p') //tikrinama ar ivestas tinkamas simbolis
+    {
+        bool ivedimas = false;
+        while (ivedimas == false)
+        {
+            cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
+            cin >> IvestisEgzBalo;
+            if (IvestisEgzBalo == 'g' || IvestisEgzBalo == 'p')
+                ivedimas = true;
+        }
+    }
+
     studentas* S = new studentas[m];
     //duomenu ivedimas ir apdorojimas
     for (int i = 0; i < m; i++)
@@ -87,8 +103,18 @@ int main()
 
         }
        
-        cout << endl << "Iveskite egzamino rezultata:";
-        cin >> S[i].EGZ;
+        if (IvestisEgzBalo == 'g')
+        {
+            uniform_int_distribution<int> dis(1, 10);
+
+            S[i].EGZ = dis(gen);
+        }
+        if (IvestisEgzBalo == 'p')
+        {
+            cout << endl << "Iveskite egzamino rezultata:";
+            cin >> S[i].EGZ;//ivedamas egzamino balas
+
+        }
 
         if (budas == 'v')
         {
