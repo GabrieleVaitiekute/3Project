@@ -41,7 +41,7 @@ int main()
                ivedimas = true;
            }
     }
-    
+    //suteikiama galimybe generuoti namu darbu balus
     cout << endl << "Jei norite patys suvesti balus, iveskite raide p, jei norite, kad balai butu sugeneruoti, iveskite g. ";
     char IvestisBalu;
     cin >> IvestisBalu;
@@ -53,6 +53,22 @@ int main()
             cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
             cin >> IvestisBalu;
             if (IvestisBalu == 'g' || IvestisBalu == 'p')
+                ivedimas = true;
+        }
+    }
+
+    //suteikiama galimybe generuoti egzamino bala
+    cout << endl << "Jei norite patys ivesti egzamino bala, iveskite raide p, jei norite, kad balas butu sugeneruotas, iveskite g. ";
+    char IvestisEgzBalo;
+    cin >> IvestisEgzBalo;
+    if (IvestisEgzBalo != 'g' && IvestisEgzBalo != 'p') //tikrinama ar ivestas tinkamas simbolis
+    {
+        bool ivedimas = false;
+        while (ivedimas == false)
+        {
+            cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
+            cin >> IvestisEgzBalo;
+            if (IvestisEgzBalo == 'g' || IvestisEgzBalo == 'p')
                 ivedimas = true;
         }
     }
@@ -69,11 +85,11 @@ int main()
                 S[i].ND.resize(n);
                 random_device rd;
                 mt19937 gen(rd());
-                uniform_real_distribution<double> dis(1, 10);
+                uniform_int_distribution<int> dis(1, 10);
 
                 generate(S[i].ND.begin(), S[i].ND.end(), [&]() { return dis(gen); });
-                
-            }
+               
+            } 
              if (IvestisBalu == 'p')
             {
                 cout << endl << "Iveskite namu darbu rezultatus:"; //namu darbu rezultatu ivedimas
@@ -85,10 +101,20 @@ int main()
                     }
             }
 
-       
-        cout << endl << "Iveskite egzamino rezultata:"; 
-        cin >> S[i].EGZ;//ivedamas egzamino balas
+             if (IvestisEgzBalo == 'g')
+             {
+                 uniform_int_distribution<int> dis(1, 10);
+                 random_device rd;
+                 mt19937 gen(rd());
+                 S[i].EGZ = dis(gen);
+             }
+             if (IvestisEgzBalo == 'p')
+             {
+                 cout << endl << "Iveskite egzamino rezultata:"; 
+                        cin >> S[i].EGZ;//ivedamas egzamino balas
 
+             }
+       
 
         if (budas == 'v') //galutinis balas apskaiciuojamas su vidurkiu
         {
