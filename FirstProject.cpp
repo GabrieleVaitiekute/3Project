@@ -105,7 +105,7 @@ int main()
                 cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << endl;
                 cout << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
             }
-            cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(2) << S[i].GalutinisV << endl;
+            cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(3) << S[i].GalutinisV << endl;
         }
         if (budas == 'm')
         {
@@ -114,7 +114,7 @@ int main()
                 cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Med.)" << endl;
                 cout << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
             }
-            cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(2) << S[i].GalutinisM << endl;
+            cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(3) << S[i].GalutinisM << endl;
         }
     }
             return 0;
