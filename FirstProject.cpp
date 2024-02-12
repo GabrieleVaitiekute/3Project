@@ -19,6 +19,8 @@ struct studentas
 
 int main()
 {
+     random_device rd;
+     mt19937 gen(rd());
     //ivedami studentu ir namu darbu skaiciai
     int m, n;
     cout << "Iveskite studentu skaicius: ";
@@ -26,7 +28,8 @@ int main()
 
     cout << endl << "Iveskite namu darbu skaiciu: ";
     cin >> n; 
-    
+
+    //galutinio balo apskaiciavimo budo pasirinkimas
     cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite m - jei su mediana, v su vidukriu) "; //balo apskaiciavimo budas
     char budas;
     cin >> budas;
@@ -83,8 +86,6 @@ int main()
             if (IvestisBalu == 'g')
             {
                 S[i].ND.resize(n);
-                random_device rd;
-                mt19937 gen(rd());
                 uniform_int_distribution<int> dis(1, 10);
 
                 generate(S[i].ND.begin(), S[i].ND.end(), [&]() { return dis(gen); });
@@ -104,15 +105,12 @@ int main()
              if (IvestisEgzBalo == 'g')
              {
                  uniform_int_distribution<int> dis(1, 10);
-                 random_device rd;
-                 mt19937 gen(rd());
                  S[i].EGZ = dis(gen);
              }
              if (IvestisEgzBalo == 'p')
              {
                  cout << endl << "Iveskite egzamino rezultata:"; 
                         cin >> S[i].EGZ;//ivedamas egzamino balas
-
              }
        
 
