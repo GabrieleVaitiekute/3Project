@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <vector>
+#include <random>
 using namespace std;
 //studentu duomenu struktura
 struct studentas
@@ -41,22 +42,50 @@ int main()
            }
     }
     
+    cout << endl << "Jei norite patys suvesti balus, iveskite raide p, jei norite, kad balai butu sugeneruoti, iveskite g. ";
+    char IvestisBalu;
+    cin >> IvestisBalu;
+    if (IvestisBalu != 'g' && IvestisBalu != 'p') //tikrinama ar ivestas tinkamas simbolis
+    {
+        bool ivedimas = false;
+        while (ivedimas == false)
+        {
+            cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
+            cin >> IvestisBalu;
+            if (IvestisBalu == 'g' || IvestisBalu == 'p')
+                ivedimas = true;
+        }
+    }
     vector<studentas> S(m); 
     //duomenu ivedimas ir apdorojimas
     for (int i = 0; i < m; i++)
     {
          
         cout <<  "Iveskite studento varda ir pavarde: "; //vardas ir pavarde
-        cin >> S[i].vardas >> S[i].pavarde;
+            cin >> S[i].vardas >> S[i].pavarde;
+           
+            if (IvestisBalu == 'g')
+            {
+                S[i].ND.resize(n);
+                random_device rd;
+                mt19937 gen(rd());
+                uniform_real_distribution<double> dis(1, 10);
 
-        cout << endl << "Iveskite namu darbu rezultatus:"; //namu darbu rezultatu ivedimas
-        for (int j = 0; j < n; j++)
-        {
-            int temp;
-            cin >> temp;
-            S[i].ND.push_back(temp); 
-        }
+                generate(S[i].ND.begin(), S[i].ND.end(), [&]() { return dis(gen); });
+                
+            }
+             if (IvestisBalu == 'p')
+            {
+                cout << endl << "Iveskite namu darbu rezultatus:"; //namu darbu rezultatu ivedimas
+                    for (int j = 0; j < n; j++)
+                    {
+                        int balas;
+                        cin >> balas;
+                        S[i].ND.push_back(balas); 
+                    }
+            }
 
+       
         cout << endl << "Iveskite egzamino rezultata:"; 
         cin >> S[i].EGZ;//ivedamas egzamino balas
 
@@ -80,14 +109,14 @@ int main()
             sort(S[i].ND.begin(), S[i].ND.end()); 
             if (n % 2 == 0)
             {
-                int m1 = round(n / 2.0);
+                int m1 = round(n / 2);
                 int m2 = m1 - 1;
-               S[i].GalutinisM = 0.4 *((S[i].ND[m1] + S[i].ND[m2])/2.0 ) + 0.6 * S[i].EGZ;
+               S[i].GalutinisM = 0.4 *((S[i].ND[m1] + S[i].ND[m2])/2 ) + 0.6 * S[i].EGZ;
 
             }
-            else
+            else 
             {
-                mediana = round(n / 2.0) - 1;
+                mediana = round(n / 2) - 1;
                 S[i].GalutinisM = 0.4 * S[i].ND[mediana] + 0.6 * S[i].EGZ;
             }   
             
