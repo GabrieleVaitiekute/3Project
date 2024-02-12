@@ -1,8 +1,9 @@
-﻿#include <iostream>
+#include <iostream>
 #include <climits>
 #include <cmath>
 #include <iomanip>
 #include <algorithm>
+#include <random>
 using namespace std;
 
 struct studentas
@@ -17,6 +18,9 @@ struct studentas
 
 int main()
 {
+    random_device rd;
+    mt19937 gen(rd());
+
     //studentu skaiciaus ir namu darbu kiekio ivedimas
     int m, n;
     cout << "Iveskite studentu skaiciu: ";
@@ -24,11 +28,12 @@ int main()
 
     cout << endl << "Iveskite namu darbu skaiciu: ";
     cin >> n;
+
     //galutinio balo apskaiciavimo budo pasirinkimas
     cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite m - jei su mediana, v su vidukriu) ";
     char budas;
     cin >> budas;
-    if (budas != 'm' && budas != 'v')
+    if (budas != 'm' && budas != 'v')//tikrinama ar ivestas tinkamas simbolis
     {
         bool ivedimas = false;
         while (ivedimas == false)
@@ -39,21 +44,49 @@ int main()
                 ivedimas = true;
         }
     }
+    //suteikiama galimybe generuoti namu darbu balus
+    cout << endl << "Jei norite patys suvesti balus, iveskite raide p, jei norite, kad balai butu sugeneruoti, iveskite g. ";
+    char IvestisBalu;
+    cin >> IvestisBalu;
+    if (IvestisBalu != 'g' && IvestisBalu != 'p') //tikrinama ar ivestas tinkamas simbolis
+    {
+        bool ivedimas = false;
+        while (ivedimas == false)
+        {
+            cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
+            cin >> IvestisBalu;
+            if (IvestisBalu == 'g' || IvestisBalu == 'p')
+                ivedimas = true;
+        }
+    }
 
     studentas* S = new studentas[m];
-    //studentu informacijos ivedimas
+    //duomenu ivedimas ir apdorojimas
     for (int i = 0; i < m; i++)
     {
         cout << "Iveskite studento varda ir pavarde: ";
         cin >> S[i].vardas >> S[i].pavarde;
 
-        cout << endl << "Iveskite namu darbu rezultatus:";
-        S[i].ND = new int[n];
-        for (int j = 0; j < n; j++)
+        if (IvestisBalu == 'g')
         {
-            cin >> S[i].ND[j];
+            S[i].ND = new int[n];
+            uniform_int_distribution<int> dis(1, 10);
+            for (int j = 0; j < n; j++)
+            {
+                S[i].ND[j] = dis(gen);
+            }
         }
+        if (IvestisBalu == 'p')
+        {
+             cout << endl << "Iveskite namu darbu rezultatus:";
+                    S[i].ND = new int[n];
+                    for (int j = 0; j < n; j++)
+                    {
+                        cin >> S[i].ND[j];
+                    }
 
+        }
+       
         cout << endl << "Iveskite egzamino rezultata:";
         cin >> S[i].EGZ;
 
@@ -74,9 +107,9 @@ int main()
             sort(S[i].ND, S[i].ND + n);
             if (n % 2 == 0)
             {
-                int m1 = round(n / 2.0);
+                int m1 = round(n / 2);
                 int m2 = m1 - 1;
-                S[i].GalutinisM = 0.4 * ((S[i].ND[m1] + S[i].ND[m2]) / 2.0) + 0.6 * S[i].EGZ;
+                S[i].GalutinisM = 0.4 * ((S[i].ND[m1] + S[i].ND[m2]) / 2 )+ 0.6 * S[i].EGZ;
             }
             else
             {
