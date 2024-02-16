@@ -14,9 +14,9 @@ uniform_int_distribution<int> dis(1, 10);
 
 uniform_int_distribution<int> dis_lytis(0, 1);
 string vardaiV[] = { "Jonas", "Petras", "Antanas", "Juozas", "Kazys", "Darius", "Linas", "Tomas", "Giedrius", "Marius" };
-string vardaiM[] = { "Ona", "Marytė", "Aldona", "Gabija", "Dalia", "Danute", "Asta", "Rasa", "Nijole", "Aiste", "Gabriele" };
+string vardaiM[] = { "Ona", "Maryte", "Aldona", "Gabija", "Dalia", "Danute", "Asta", "Rasa", "Nijole", "Aiste", "Gabriele" };
 string pavardesV[] = { "Jonaitis", "Petraitis", "Antanaitis", "Juozaitis", "Kaziukaitis", "Dariukaitis", "Linaitis", "Tomaitis", "Giedraitis", "Mariukaitis" };
-string pavardesM[] = { "Jonaite", "Petraityte", "Antanaite", "Juozaite", "Kaziukaite", "Dariukaite", "Linaite", "Tomaite", "Giedraite", "Mariukaite" };
+string pavardesM[] = { "Jonaite", "Petraityte", "Antanaite", "Juozaite", "Kaziukaite", "Dariukaite", "Linaite", "Tomaite", "Giedraite", "Mariukaite", "Antaniene", "Jonaitiene", "Antaniene"};
 
 char TaipNePaz;
 char TaipNe;
@@ -29,39 +29,36 @@ struct studentas
 	int EGZ = 0;
 	double GalutinisV = 0;
 	double GalutinisM = 0;
-	int n;//namu darbu kiekis
+	int n = 0;//namu darbu kiekis
 	int talpa;
 };
 
-void DydzioKeitimasS(int &MAX, int m, studentas* &S)
+void DydzioKeitimasS(int &MAX, int m, studentas*& S)
 {
 	int NaujaTalpa = MAX * 2;
-	studentas* naujas_S = new studentas[NaujaTalpa];
-	// Copy existing data
-	for (int i = 0; i < m; ++i) {
-		naujas_S[i] = S[i];
-	}
-	// Free memory of old array
-	delete[] S;
-	// Update pointer to new array
-	S = naujas_S;
-}
-
-void DydzioKeitimasND(int& MAXND, int m, studentas* &S)
-{
-	int NaujaTalpaND = MAXND * 2;
-	
+	studentas *naujas_S = new studentas[NaujaTalpa];
 	for (int i = 0; i < m; ++i)
 	{
-		int* naujas_ND = new int[NaujaTalpaND];
-		for (int j = 0; j < S[i].n; ++j) 
-		{
-			naujas_ND[j] = S[i].ND[j];
-		}
-		delete[] S[i].ND; 
-		S[i].ND = naujas_ND; 
+		naujas_S[i] = S[i];
 	}
-	MAXND = NaujaTalpaND; 
+	delete[] S;
+	S = naujas_S;
+	MAX = NaujaTalpa;
+}
+
+void DydzioKeitimasND( int m, studentas*& S)
+{
+	int NaujaTalpaND = S[m].talpa * 2;
+	
+		int* naujas_ND = new int[NaujaTalpaND];
+		for (int j = 0; j < S[m].n; ++j) 
+		{
+			naujas_ND[j] = S[m].ND[j];
+		}
+		delete[] S[m].ND; 
+		S[m].ND = naujas_ND; 
+		S[m].talpa = NaujaTalpaND;
+
 }
 
 void NetinkamasSimbolis(char& ivestis)
@@ -76,7 +73,7 @@ void NetinkamasString(string& ivestis)
 {
 	cin.clear(); 
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-	cout << "Ivesti netinkami duomenys.Bandykite dar karta: ";
+	cout << "Ivesti netinkami duomenys (Negali buti skaiciu ar specialiuju zenklu).Bandykite dar karta: ";
 	cin >> ivestis;
 }
 
@@ -84,8 +81,60 @@ void NetinkamasInt (int& ivestis)
 {
 	cin.clear(); 
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-	cout << "Ivestas netinkamas simbolis. Bandykite dar karta: ";
+	cout << "Ivestas netinkamas skaitmuo. Bandykite dar karta: ";
 	cin >> ivestis;
+}
+
+void GeneruotiNDPazymius(int m, studentas*& S)
+{
+	S[m].talpa = 1;
+	S[m].ND = new int[S[m].talpa];
+
+	do//generuojami ND pazymiai
+	{
+		if (S[m].n == S[m].talpa)//tikrinama ar reikia keisti dydi
+		{
+			DydzioKeitimasND(m, S);
+
+		}
+		S[m].ND[S[m].n] = dis(generuoti);
+		cout << endl << "Sugeneruotas pazymys: " << S[m].ND[S[m].n] << endl;
+		S[m].n++;
+		cout << "Ar norite sugeneruoti dar viena pazymi? (iveskite T, jei taip , N, jei ne): ";
+		cin >> TaipNePaz;
+		while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
+		{
+			NetinkamasSimbolis(TaipNePaz);
+		}
+
+	} while (TaipNePaz == 'T');
+
+}
+
+void VarduIvedimas(int m, studentas*& S)
+{
+	cout << endl << "Iveskite studento varda: ";
+	cin >> S[m].vardas;
+	while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
+	{
+
+		if (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
+		{
+			NetinkamasString(S[m].vardas);
+		}
+	}
+
+	cout << endl << "Iveskite studento pavarde: ";
+	cin >> S[m].pavarde;
+	while (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
+	{
+
+		if (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
+		{
+			NetinkamasString(S[m].pavarde);
+		}
+	}
+
 }
 
 void GeneruotiVardusV(int m, studentas* S)
@@ -151,6 +200,7 @@ void Rezultatai(int m, studentas* S)
 
 		}
 	}
+	\
 	//rezultatu spausdinimas
 	for (int i = 0; i < m; i++)
 	{
@@ -170,7 +220,10 @@ void Rezultatai(int m, studentas* S)
 		}
 	}
 	for (int i = 0; i < m; i++)
+	{
 		delete[] S[i].ND;
+	}
+		
 	delete[] S;
 }
 
@@ -185,60 +238,38 @@ int main()
 		NetinkamasInt(Pasirinkimas);
 	}
 	int m = 0;
+	int MAX = 1;
+	studentas* S = new studentas[MAX];
 
 	if (Pasirinkimas == 1)
 	{
-		
-		int MAX = 1;
-		studentas* S = new studentas[MAX];
 		do
 		{
 
-			if (m == MAX) 
+			if (m == MAX) //tikrinama ar reikia keisti dydi
 			{ 
 				DydzioKeitimasS(MAX, m, S);
 				
 			}
-			cout << endl << "Iveskite studento varda: ";
-			cin >> S[m].vardas;
-			while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
-			{
-				
-				if (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha)) 
-				{
-					NetinkamasString(S[m].vardas);
-				}
-			} 
-
-			cout << endl << "Iveskite studento pavarde: ";
-			cin >> S[m].pavarde;
-			while (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha)) 
-			{
-				
-				if (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha)) 
-				{
-					NetinkamasString(S[m].pavarde);
-				}
-			} 
-			
+			VarduIvedimas(m, S);
 			cout << endl << "Iveskite namu darbu pazymi: ";
-			int MAXND = 1;
-			S[m].ND = new int[MAXND];
-			S[m].n = 0;
+			S[m].talpa = 1;
+			S[m].ND = new int[S[m].talpa];
+			
 			do
 			{
-				if (S[m].n == MAXND)
+				if (S[m].n == S[m].talpa)//tikrinama ar reikia keisti dydi
 				{
-					DydzioKeitimasND(MAXND, m, S);
+					DydzioKeitimasND( m, S);
 
 				}
-				int pazimys;
-				cin >> pazimys;
-				while (cin.fail() || pazimys < 1 || pazimys > 10)
+				int pazymys;
+				cin >> pazymys;//ivedami pazymiai
+				while (cin.fail() || pazymys < 1 || pazymys > 10)
 				{
-					NetinkamasInt(pazimys);
+					NetinkamasInt(pazymys);
 				}
-				S[m].ND[S[m].n] = pazimys;
+				S[m].ND[S[m].n] = pazymys;
 
 				S[m].n++;
 				cout << "Ar norite ivesti dar viena pazymi? (T jei taip , N - ne): ";
@@ -247,10 +278,12 @@ int main()
 				{
 					NetinkamasSimbolis(TaipNePaz);
 				}
+
 				if (TaipNePaz == 'T') cout << endl << "Iveskite namu darbu pazymi: ";
+
 			} while (TaipNePaz == 'T');
 
-			cout << endl << "Iveskite egzamino rezultata: ";
+			cout << endl << "Iveskite egzamino pazymi: ";
 			cin >> S[m].EGZ;
 			while (cin.fail() || S[m].EGZ < 1 || S[m].EGZ > 10)
 			{
@@ -266,63 +299,24 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Rezultatai(m, S);
+		Rezultatai(m, S);//apskaiciuojami ir spausdinami rezultatai
 	}
-	if (Pasirinkimas == 2)
+	if (Pasirinkimas == 2 )
 	{
-		int MAX = 1;
-		studentas* S = new studentas[MAX];
 		do
 		{
-			if (m == MAX)
+			if (m == MAX)//tikrinama ar reikia keisti dydi
 			{
 				DydzioKeitimasS(MAX, m, S);
 
 			}
-			cout << endl << "Iveskite studento varda: ";
-			cin >> S[m].vardas;
-			while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
-			{
 
-				if (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
-				{
-					NetinkamasString(S[m].vardas);
-				}
-			}
+			VarduIvedimas(m, S);
 
-			cout << endl << "Iveskite studento pavarde: ";
-			cin >> S[m].pavarde;
-			while (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
-			{
+			GeneruotiNDPazymius(m,S);//generuojami pazymiai
 
-				if (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
-				{
-					NetinkamasString(S[m].pavarde);
-				}
-			}
-			int MAXND = 1;
-			S[m].ND = new int[MAXND];
-			S[m].n = 0;
-			do
-			{
-				if (S[m].n == MAXND)
-				{
-					DydzioKeitimasND(MAXND, m, S);
-
-				}
-				S[m].ND[S[m].n] = dis(generuoti);
-				cout << endl << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl;
-				S[m].n++;
-				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
-				cin >> TaipNePaz;
-				while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
-				{
-					NetinkamasSimbolis(TaipNePaz);
-				}
-
-			} while (TaipNePaz == 'T');
-			S[m].EGZ = dis(generuoti);
-			cout << endl << "Sugeneruotas egzamino pazimys: " << S[m].EGZ;
+			S[m].EGZ = dis(generuoti);//sugeneruojamas egzamino balas
+			cout << endl << "Sugeneruotas egzamino pazymys: " << S[m].EGZ;
 			m++;
 			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
@@ -333,50 +327,36 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Rezultatai(m, S);
+		Rezultatai(m, S);//apskaiciuojami ir spausdinami rezultatai
 
 	}
 	if (Pasirinkimas == 3)
 	{
-		int MAX = 1;
-		studentas* S = new studentas[MAX];
 
 		do
 		{
-			if (m == MAX)
+			if (m == MAX)//tikrinama ar reikia keisti dydi
 			{
 				DydzioKeitimasS(MAX, m, S);
 
 			}
 			int lytis = dis_lytis(generuoti);
-			if (lytis == 0)  GeneruotiVardusV(m, S);
-			else GeneruotiVardusM(m, S);
-
-			S[m].n = 0;
-			int MAXND = 1;
-			S[m].ND = new int[MAXND];
-			cout << endl << "Sugeneruotas vardas ir pavarde: " << S[m].vardas << " " << S[m].pavarde << endl;
-			do
+			
+			if (lytis == 0)
 			{
-				if (S[m].n == MAXND)
-				{
-					DydzioKeitimasND(MAXND, m, S);
-
-				}
-				S[m].ND[S[m].n] = dis(generuoti);
-				cout << endl << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl;
-				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
-				S[m].n++;
-				cin >> TaipNePaz;
-				while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
-				{
-					NetinkamasSimbolis(TaipNePaz);
-				}
-
-
-			} while (TaipNePaz == 'T');
-			S[m].EGZ = dis(generuoti);
-			cout << endl << "Sugeneruotas egzamino pazimys: " << S[m].EGZ;
+				GeneruotiVardusV(m, S);
+			}	
+			else
+			{ 
+				GeneruotiVardusM(m, S);
+			}
+			cout << endl << "Sugeneruotas vardas ir pavarde: " << S[m].vardas << " " << S[m].pavarde << endl;
+			
+			GeneruotiNDPazymius(m, S);//generuojami pazymiai
+			
+			S[m].EGZ = dis(generuoti);//sugeneruojamas egzamino balas
+			cout << endl << "Sugeneruotas egzamino pazymys: " << S[m].EGZ;
+			
 			m++;
 			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
@@ -387,7 +367,7 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Rezultatai(m, S);
+		Rezultatai(m, S);//apskaiciuojami ir spausdinami rezultatai
 	}
 	if (Pasirinkimas == 4)
 		cout << endl << "Darbas baigtas";
