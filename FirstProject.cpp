@@ -163,7 +163,7 @@ void Apskaiciuoti_Rezultatus(char& budas, vector<studentas>& S)
 				{
 					int mediana1 = S[i].ND[pazymiu_kiekis / 2 - 1];
 					int mediana2 = S[i].ND[pazymiu_kiekis / 2];
-					double mediana = (mediana1 + mediana2) / 2.0;
+					double mediana = (mediana1 + mediana2) * 1.0 / 2.0;
 					S[i].GalutinisM = 0.4 * mediana + 0.6 * S[i].EGZ;
 				}
 				 if (pazymiu_kiekis % 2 != 0)
