@@ -7,17 +7,19 @@
 #include <string>
 
 using namespace std;
-
-
 random_device rd;
 mt19937 generuoti(random_device{}());
 const int MAX_LENGTH = 11;
-const char raides[] = "abcdefghijklmnopqrstuvwxyz";
-uniform_int_distribution<int> index_dist(0, sizeof(raides) - 2);
 uniform_int_distribution<int> dis(1, 10);
+
+uniform_int_distribution<int> dis_lytis(0, 1);
+string vardaiV[] = { "Jonas", "Petras", "Antanas", "Juozas", "Kazys", "Darius", "Linas", "Tomas", "Giedrius", "Marius" };
+string vardaiM[] = { "Ona", "Marytė", "Aldona", "Gabija", "Dalia", "Danute", "Asta", "Rasa", "Nijole", "Aiste", "Gabriele" };
+string pavardesV[] = { "Jonaitis", "Petraitis", "Antanaitis", "Juozaitis", "Kaziukaitis", "Dariukaitis", "Linaitis", "Tomaitis", "Giedraitis", "Mariukaitis" };
+string pavardesM[] = { "Jonaite", "Petraityte", "Antanaite", "Juozaite", "Kaziukaite", "Dariukaite", "Linaite", "Tomaite", "Giedraite", "Mariukaite" };
+
 char TaipNePaz;
 char TaipNe;
-
 
 struct studentas
 {
@@ -30,6 +32,16 @@ struct studentas
 	int n;//namu darbu kiekis
 };
 
+void GeneruotiVardusV(int m, studentas* S)
+{
+	S[m].vardas = vardaiV[dis(generuoti) % 10];
+	S[m].pavarde = pavardesV[dis(generuoti) % 10];
+}
+void GeneruotiVardusM(int m, studentas* S)
+{
+	S[m].vardas = vardaiM[dis(generuoti) % 10];
+	S[m].pavarde = pavardesM[dis(generuoti) % 10];
+}
 void rezultatai(int m, studentas* S)
 {
 	char budas;
@@ -57,7 +69,7 @@ void rezultatai(int m, studentas* S)
 			{
 				suma += S[i].ND[j];
 			}
-			S[i].GalutinisV = 0.4 * suma / S[i].n  + 0.6 * S[i].EGZ;
+			S[i].GalutinisV = 0.4 * suma / S[i].n + 0.6 * S[i].EGZ;
 		}
 	}
 
@@ -65,9 +77,6 @@ void rezultatai(int m, studentas* S)
 	{
 		for (int i = 0; i < m; i++)
 		{
-
-
-
 			if (S[i].n - 1 == 0)
 				S[i].GalutinisM = 0.4 * S[i].ND[0] + 0.6 * S[i].EGZ;
 
@@ -97,16 +106,16 @@ void rezultatai(int m, studentas* S)
 		if (budas == 'V')
 		{
 			if (i == 0)
-				cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << endl << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
+				cout << endl << setw(5) << "Nr." << setw(25) << "Pavarde" << setw(25) << "Vardas" << setw(25) << "Galutinis (Vid.)" << endl << setfill('-') << setw(90) << "-" << setfill(' ') << endl;
 
-			cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(3) << S[i].GalutinisV << endl;
+			cout << setw(5) << i + 1 << setw(25) << S[i].pavarde << setw(25) << S[i].vardas << setw(25) << setprecision(3) << S[i].GalutinisV << endl;
 		}
 		if (budas == 'M')
 		{
 			if (i == 0)
-				cout << endl << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Med.)" << endl << setfill('-') << setw(80) << "-" << setfill(' ') << endl;
+				cout << endl << setw(5) << "Nr." << setw(25) << "Pavarde" << setw(25) << "Vardas" << setw(25) << "Galutinis (Med.)" << endl << setfill('-') << setw(90) << "-" << setfill(' ') << endl;
 
-			cout << setw(20) << S[i].pavarde << setw(20) << S[i].vardas << setw(20) << setprecision(3) << S[i].GalutinisM << endl;
+			cout << setw(5) << i + 1 << setw(25) << S[i].pavarde << setw(25) << S[i].vardas << setw(25) << setprecision(3) << S[i].GalutinisM << endl;
 		}
 	}
 	for (int i = 0; i < m; i++)
@@ -136,7 +145,7 @@ int main()
 		studentas* S = new studentas[MAX_LENGTH];
 		do
 		{
-			cout << "Iveskite studento varda ir pavarde: ";
+			cout << endl << "Iveskite studento varda ir pavarde: ";
 			cin >> S[m].vardas >> S[m].pavarde;
 			cout << endl << "Iveskite namu darbu pazymi: ";
 			S[m].ND = new int[MAX_LENGTH];
@@ -160,13 +169,13 @@ int main()
 							ivedimas = true;
 					}
 				}
-				if(TaipNePaz == 'T') cout << "Iveskite namu darbu pazymi: ";
+				if (TaipNePaz == 'T') cout << endl << "Iveskite namu darbu pazymi: ";
 			} while (TaipNePaz == 'T');
 
 			cout << endl << "Iveskite egzamino rezultata: ";
 			cin >> S[m].EGZ;
 
-			cout << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
+			cout << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			m++;
 			cin >> TaipNe;
 			if (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
@@ -191,16 +200,16 @@ int main()
 		studentas* S = new studentas[MAX_LENGTH];
 		do
 		{
-			cout << "Iveskite studento varda ir pavarde:";
+			cout << endl << "Iveskite studento varda ir pavarde:";
 			cin >> S[m].vardas >> S[m].pavarde;
-			S[m].EGZ = dis(generuoti);
 			S[m].ND = new int[MAX_LENGTH];
 			S[m].n = 0;
 			do
 			{
 				S[m].ND[S[m].n] = dis(generuoti);
+				cout << endl << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl;
 				S[m].n++;
-				cout << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
+				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
 				cin >> TaipNePaz;
 				if (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
 				{
@@ -215,8 +224,10 @@ int main()
 				}
 
 			} while (TaipNePaz == 'T');
+			S[m].EGZ = dis(generuoti);
+			cout << endl << "Sugeneruotas egzamino pazimys: " << S[m].EGZ;
 			m++;
-			cout << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
+			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
 			if (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
@@ -242,23 +253,19 @@ int main()
 
 		do
 		{
-			int ilgis = 5 + generuoti() % 6; // Random length for names
-			for (int i = 0; i < ilgis; ++i)
-			{
-				S[m].vardas[i] = raides[index_dist(generuoti)];
-				S[m].pavarde[i] = raides[index_dist(generuoti)];
-			}
-			S[m].vardas[ilgis] = '\0'; // Null-terminate the strings
-			S[m].pavarde[ilgis] = '\0';
 
-			S[m].EGZ = dis(generuoti);
+			int lytis = dis_lytis(generuoti);
+			if (lytis == 0)  GeneruotiVardusV(m, S);
+			else GeneruotiVardusM(m, S);
+
 			S[m].n = 0;
 			S[m].ND = new int[MAX_LENGTH];
-
+			cout << endl << "Sugeneruotas vardas ir pavarde: " << S[m].vardas << " " << S[m].pavarde << endl;
 			do
 			{
 				S[m].ND[S[m].n] = dis(generuoti);
-				cout << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
+				cout << endl << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl;
+				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
 				S[m].n++;
 				cin >> TaipNePaz;
 				if (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
@@ -275,8 +282,10 @@ int main()
 
 
 			} while (TaipNePaz == 'T');
+			S[m].EGZ = dis(generuoti);
+			cout << endl << "Sugeneruotas egzamino pazimys: " << S[m].EGZ;
 			m++;
-			cout << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
+			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
 			if (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
