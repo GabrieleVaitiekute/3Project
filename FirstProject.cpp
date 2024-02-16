@@ -128,7 +128,8 @@ void Apskaiciuoti_Rezultatus(char& budas, vector<studentas>& S)
 {
 	cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite M - jei su mediana, V su vidukriu) ";
 	cin >> budas;
-	while (budas != 'M' && budas != 'V') {
+	while (budas != 'M' && budas != 'V')
+	{
 		Netinkamas_Char(budas);
 	}
 
@@ -145,25 +146,30 @@ void Apskaiciuoti_Rezultatus(char& budas, vector<studentas>& S)
 		}
 	}
 
-	if (budas == 'M') {
-		for (int i = 0; i < S.size(); i++) {
+	if (budas == 'M') 
+	{
+		for (int i = 0; i < S.size(); i++)
+		{
 			if (S[i].ND.size() == 1)
 			{
 				S[i].GalutinisM = 0.4 * S[i].ND[0] + 0.6 * S[i].EGZ;
 			}
-			else if (S[i].ND.size() > 1) 
+			if (S[i].ND.size() > 1) 
 			{
 				sort(S[i].ND.begin(), S[i].ND.end());
-				int mediana = S[i].ND.size() / 2 ;
-
-				if (S[i].ND.size() % 2 == 0)
+				int pazymiu_kiekis = S[i].ND.size();
+				
+				if (pazymiu_kiekis % 2 == 0)
 				{
-					double medianaD = (S[i].ND[mediana] + S[i].ND[mediana + 1]) / 2.0;
-					S[i].GalutinisM = 0.4 * medianaD + 0.6 * S[i].EGZ;
+					int mediana1 = S[i].ND[pazymiu_kiekis / 2 - 1];
+					int mediana2 = S[i].ND[pazymiu_kiekis / 2];
+					double mediana = (mediana1 + mediana2) / 2.0;
+					S[i].GalutinisM = 0.4 * mediana + 0.6 * S[i].EGZ;
 				}
-				else
+				 if (pazymiu_kiekis % 2 != 0)
 				{
-					S[i].GalutinisM = 0.4 * S[i].ND[mediana] + 0.6 * S[i].EGZ;
+					 int mediana = S[i].ND[pazymiu_kiekis / 2];
+					 S[i].GalutinisM = 0.4 * mediana + 0.6 * S[i].EGZ;
 				}
 			}
 		}
