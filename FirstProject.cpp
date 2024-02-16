@@ -27,10 +27,10 @@ struct studentas
 {
 	string vardas;
 	string pavarde;
-	vector<int> ND;
-	int EGZ = 0;
-	double GalutinisV = 0;
-	double GalutinisM = 0;
+	vector<int> ND; // Namų darbų rezultatų vektorius
+	int EGZ = 0;// Egzamino rezultatas
+	double GalutinisV = 0;// Galutinis balas pagal vidurkį
+	double GalutinisM = 0; // Galutinis balas pagal medianą
 };
 
 void Netinkamas_Char(char& ivestis)
@@ -134,9 +134,11 @@ void Apskaiciuoti_Rezultatus(char& budas, vector<studentas>& S)
 
 	if (budas == 'V')
 	{
-		for (int i = 0; i < S.size(); i++) {
+		for (int i = 0; i < S.size(); i++) 
+		{
 			double suma = 0.0;
-			for (int j = 0; j < S[i].ND.size(); j++) {
+			for (int j = 0; j < S[i].ND.size(); j++) 
+			{
 				suma += S[i].ND[j];
 			}
 			S[i].GalutinisV = 0.4 * suma / S[i].ND.size() + 0.6 * S[i].EGZ;
@@ -145,17 +147,22 @@ void Apskaiciuoti_Rezultatus(char& budas, vector<studentas>& S)
 
 	if (budas == 'M') {
 		for (int i = 0; i < S.size(); i++) {
-			if (S[i].ND.size() == 1) {
+			if (S[i].ND.size() == 1)
+			{
 				S[i].GalutinisM = 0.4 * S[i].ND[0] + 0.6 * S[i].EGZ;
 			}
-			else if (S[i].ND.size() > 1) {
+			else if (S[i].ND.size() > 1) 
+			{
 				sort(S[i].ND.begin(), S[i].ND.end());
-				int mediana = S[i].ND.size() / 2;
-				if (S[i].ND.size() % 2 == 0) {
-					double medianaD = (S[i].ND[mediana] + S[i].ND[mediana - 1]) / 2.0;
+				int mediana = S[i].ND.size() / 2 ;
+
+				if (S[i].ND.size() % 2 == 0)
+				{
+					double medianaD = (S[i].ND[mediana] + S[i].ND[mediana + 1]) / 2.0;
 					S[i].GalutinisM = 0.4 * medianaD + 0.6 * S[i].EGZ;
 				}
-				else {
+				else
+				{
 					S[i].GalutinisM = 0.4 * S[i].ND[mediana] + 0.6 * S[i].EGZ;
 				}
 			}
@@ -235,8 +242,7 @@ int main()
 			GeneruotiNDPazymius(naujas);
 
 			naujas.EGZ = dis(generuoti);
-
-			S.push_back(naujas); // pridedamas studentas i vektoriu
+			cout << "Sugeneruotas egzamino balas: " << naujas.EGZ << endl;
 
 			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
@@ -244,8 +250,9 @@ int main()
 			{
 				Netinkamas_Char(TaipNe);
 			}
-
+		S.push_back(naujas); // pridedamas studentas i vektoriu
 		} while (TaipNe == 'T');
+		
 		char budas;
 		Apskaiciuoti_Rezultatus(budas, S);
 		Spausdinti_Rezultatus(budas, S);
@@ -266,17 +273,17 @@ int main()
 			cout << endl << "Sugeneruotas vardas ir pavarde: " << naujas.vardas << " " << naujas.pavarde << endl;
 
 			GeneruotiNDPazymius(naujas);
+
 			naujas.EGZ = dis(generuoti);
+			cout << "Sugeneruotas egzamino balas: " << naujas.EGZ << endl;
 
-			S.push_back(naujas); // pridedamas studentas i vektoriu
-
-			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
+			cout << endl << endl << "Ar norite sugeneruoti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
 			while (TaipNe != 'T' && TaipNe != 'N')
 			{
 				Netinkamas_Char(TaipNe);
 			}
-
+		S.push_back(naujas); // pridedamas studentas i vektoriu
 		} while (TaipNe == 'T');
 		char budas;
 		Apskaiciuoti_Rezultatus(budas, S);
