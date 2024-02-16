@@ -32,31 +32,50 @@ struct studentas
 	int n;//namu darbu kiekis
 };
 
+void NetinkamasSimbolis(char& ivestis)
+{
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+	cout << "Ivestas netinkamas simbolis. Bandykite dar karta: ";
+	cin >> ivestis; 
+} 
+
+void NetinkamasString(string& ivestis)
+{
+	cin.clear(); 
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+	cout << "Ivesti netinkami duomenys.Bandykite dar karta: ";
+	cin >> ivestis;
+}
+
+void NetinkamasInt (int& ivestis)
+{
+	cin.clear(); 
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+	cout << "Ivestas netinkamas simbolis. Bandykite dar karta: ";
+	cin >> ivestis;
+}
+
 void GeneruotiVardusV(int m, studentas* S)
 {
 	S[m].vardas = vardaiV[dis(generuoti) % 10];
 	S[m].pavarde = pavardesV[dis(generuoti) % 10];
 }
+
 void GeneruotiVardusM(int m, studentas* S)
 {
 	S[m].vardas = vardaiM[dis(generuoti) % 10];
 	S[m].pavarde = pavardesM[dis(generuoti) % 10];
 }
+
 void rezultatai(int m, studentas* S)
 {
 	char budas;
 	cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite M - jei su mediana, V su vidukriu) ";
 	cin >> budas;
-	if (budas != 'M' && budas != 'V')//tikrinama ar ivestas tinkamas simbolis
+	while (budas != 'M' && budas != 'V')
 	{
-		bool ivedimas = false;
-		while (ivedimas == false)
-		{
-			cout << "Ivestas netinkamas simbolis, bandykite dar karta (M/V):";
-			cin >> budas;
-			if (budas == 'M' || budas == 'V')
-				ivedimas = true;
-		}
+		NetinkamasSimbolis(budas);
 	}
 
 	if (budas == 'V')
@@ -126,18 +145,12 @@ void rezultatai(int m, studentas* S)
 int main()
 {
 
-	cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n Iveskite pasirinkimo numeri: ";
+	cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Baigti darba\n Iveskite pasirinkimo numeri: ";
 	int Pasirinkimas;
 	cin >> Pasirinkimas;
-	if (Pasirinkimas != 1 && Pasirinkimas != 2 && Pasirinkimas != 3)
+	while (Pasirinkimas != 1 && Pasirinkimas != 2 && Pasirinkimas != 3 && Pasirinkimas != 4)
 	{
-		bool ivedimas = false;
-		while (ivedimas == false)
-		{
-			cout << "Ivestas netinkamas simbolis, bandykite dar karta:";
-			if (Pasirinkimas == 1 || Pasirinkimas == 2 || Pasirinkimas == 3)
-				ivedimas = true;
-		}
+		NetinkamasInt(Pasirinkimas);
 	}
 	int m = 0;
 	if (Pasirinkimas == 1)
@@ -145,8 +158,28 @@ int main()
 		studentas* S = new studentas[MAX_LENGTH];
 		do
 		{
-			cout << endl << "Iveskite studento varda ir pavarde: ";
-			cin >> S[m].vardas >> S[m].pavarde;
+			cout << endl << "Iveskite studento varda: ";
+			cin >> S[m].vardas;
+			while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
+			{
+				
+				if (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha)) 
+				{
+					NetinkamasString(S[m].vardas);
+				}
+			} 
+
+			cout << endl << "Iveskite studento pavarde: ";
+			cin >> S[m].pavarde;
+			while (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha)) 
+			{
+				
+				if (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha)) 
+				{
+					NetinkamasString(S[m].pavarde);
+				}
+			} 
+			
 			cout << endl << "Iveskite namu darbu pazymi: ";
 			S[m].ND = new int[MAX_LENGTH];
 			S[m].n = 0;
@@ -154,40 +187,35 @@ int main()
 			{
 				int pazimys;
 				cin >> pazimys;
+				while (cin.fail() || pazimys < 1 || pazimys > 10)
+				{
+					NetinkamasInt(pazimys);
+				}
 				S[m].ND[S[m].n] = pazimys;
+
+
 				S[m].n++;
 				cout << "Ar norite ivesti dar viena pazymi? (T jei taip , N - ne): ";
 				cin >> TaipNePaz;
-				if (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
+				while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
 				{
-					bool ivedimas = false;
-					while (ivedimas == false)
-					{
-						cout << "Ivestas netinkamas simbolis, bandykite dar karta (T/N):";
-						cin >> TaipNePaz;
-						if (TaipNePaz == 'T' || TaipNePaz == 'N')
-							ivedimas = true;
-					}
+					NetinkamasSimbolis(TaipNePaz);
 				}
 				if (TaipNePaz == 'T') cout << endl << "Iveskite namu darbu pazymi: ";
 			} while (TaipNePaz == 'T');
 
 			cout << endl << "Iveskite egzamino rezultata: ";
 			cin >> S[m].EGZ;
-
+			while (cin.fail() || S[m].EGZ < 1 || S[m].EGZ > 10)
+			{
+				NetinkamasInt(S[m].EGZ);
+			}
 			cout << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			m++;
 			cin >> TaipNe;
-			if (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
+			while (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
-				bool ivedimas = false;
-				while (ivedimas == false)
-				{
-					cout << "Ivestas netinkamas simbolis, bandykite dar karta (T/N):";
-					cin >> TaipNe;
-					if (TaipNe == 'T' || TaipNe == 'N')
-						ivedimas = true;
-				}
+				NetinkamasSimbolis(TaipNe);
 			}
 
 		} while (TaipNe == 'T');
@@ -200,8 +228,28 @@ int main()
 		studentas* S = new studentas[MAX_LENGTH];
 		do
 		{
-			cout << endl << "Iveskite studento varda ir pavarde:";
-			cin >> S[m].vardas >> S[m].pavarde;
+			cout << endl << "Iveskite studento varda: ";
+			cin >> S[m].vardas;
+			while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
+			{
+
+				if (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
+				{
+					NetinkamasString(S[m].vardas);
+				}
+			}
+
+			cout << endl << "Iveskite studento pavarde: ";
+			cin >> S[m].pavarde;
+			while (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
+			{
+
+				if (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
+				{
+					NetinkamasString(S[m].pavarde);
+				}
+			}
+
 			S[m].ND = new int[MAX_LENGTH];
 			S[m].n = 0;
 			do
@@ -211,16 +259,9 @@ int main()
 				S[m].n++;
 				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
 				cin >> TaipNePaz;
-				if (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
+				while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
 				{
-					bool ivedimas = false;
-					while (ivedimas == false)
-					{
-						cout << "Ivestas netinkamas simbolis, bandykite dar karta (T/N):";
-						cin >> TaipNePaz;
-						if (TaipNePaz == 'T' || TaipNePaz == 'N')
-							ivedimas = true;
-					}
+					NetinkamasSimbolis(TaipNePaz);
 				}
 
 			} while (TaipNePaz == 'T');
@@ -229,18 +270,10 @@ int main()
 			m++;
 			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
-			if (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
+			while (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
-				bool ivedimas = false;
-				while (ivedimas == false)
-				{
-					cout << "Ivestas netinkamas simbolis, bandykite dar karta (T/N):";
-					cin >> TaipNe;
-					if (TaipNe == 'T' || TaipNe == 'N')
-						ivedimas = true;
-				}
+				NetinkamasSimbolis(TaipNe);
 			}
-
 
 		} while (TaipNe == 'T');
 
@@ -268,16 +301,9 @@ int main()
 				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
 				S[m].n++;
 				cin >> TaipNePaz;
-				if (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
+				while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
 				{
-					bool ivedimas = false;
-					while (ivedimas == false)
-					{
-						cout << "Ivestas netinkamas simbolis, bandykite dar karta (T/N):";
-						cin >> TaipNePaz;
-						if (TaipNePaz == 'T' || TaipNePaz == 'N')
-							ivedimas = true;
-					}
+					NetinkamasSimbolis(TaipNePaz);
 				}
 
 
@@ -287,22 +313,16 @@ int main()
 			m++;
 			cout << endl << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			cin >> TaipNe;
-			if (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
+			while (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
-				bool ivedimas = false;
-				while (ivedimas == false)
-				{
-					cout << "Ivestas netinkamas simbolis, bandykite dar karta (T/N):";
-					cin >> TaipNe;
-					if (TaipNe == 'T' || TaipNe == 'N')
-						ivedimas = true;
-				}
+				NetinkamasSimbolis(TaipNe);
 			}
 
 		} while (TaipNe == 'T');
 
 		rezultatai(m, S);
 	}
-
+	if (Pasirinkimas == 4)
+		cout << endl << "Darbas baigtas";
 	return 0;
 }
