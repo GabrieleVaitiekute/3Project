@@ -9,7 +9,7 @@
 using namespace std;
 random_device rd;
 mt19937 generuoti(random_device{}());
-const int MAX_LENGTH = 11;
+
 uniform_int_distribution<int> dis(1, 10);
 
 uniform_int_distribution<int> dis_lytis(0, 1);
@@ -30,7 +30,39 @@ struct studentas
 	double GalutinisV = 0;
 	double GalutinisM = 0;
 	int n;//namu darbu kiekis
+	int talpa;
 };
+
+void DydzioKeitimasS(int &MAX, int m, studentas* &S)
+{
+	int NaujaTalpa = MAX * 2;
+	studentas* naujas_S = new studentas[NaujaTalpa];
+	// Copy existing data
+	for (int i = 0; i < m; ++i) {
+		naujas_S[i] = S[i];
+	}
+	// Free memory of old array
+	delete[] S;
+	// Update pointer to new array
+	S = naujas_S;
+}
+
+void DydzioKeitimasND(int& MAXND, int m, studentas* &S)
+{
+	int NaujaTalpaND = MAXND * 2;
+	
+	for (int i = 0; i < m; ++i)
+	{
+		int* naujas_ND = new int[NaujaTalpaND];
+		for (int j = 0; j < S[i].n; ++j) 
+		{
+			naujas_ND[j] = S[i].ND[j];
+		}
+		delete[] S[i].ND; 
+		S[i].ND = naujas_ND; 
+	}
+	MAXND = NaujaTalpaND; 
+}
 
 void NetinkamasSimbolis(char& ivestis)
 {
@@ -68,7 +100,7 @@ void GeneruotiVardusM(int m, studentas* S)
 	S[m].pavarde = pavardesM[dis(generuoti) % 10];
 }
 
-void rezultatai(int m, studentas* S)
+void Rezultatai(int m, studentas* S)
 {
 	char budas;
 	cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite M - jei su mediana, V su vidukriu) ";
@@ -153,11 +185,20 @@ int main()
 		NetinkamasInt(Pasirinkimas);
 	}
 	int m = 0;
+
 	if (Pasirinkimas == 1)
 	{
-		studentas* S = new studentas[MAX_LENGTH];
+		
+		int MAX = 1;
+		studentas* S = new studentas[MAX];
 		do
 		{
+
+			if (m == MAX) 
+			{ 
+				DydzioKeitimasS(MAX, m, S);
+				
+			}
 			cout << endl << "Iveskite studento varda: ";
 			cin >> S[m].vardas;
 			while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
@@ -181,10 +222,16 @@ int main()
 			} 
 			
 			cout << endl << "Iveskite namu darbu pazymi: ";
-			S[m].ND = new int[MAX_LENGTH];
+			int MAXND = 1;
+			S[m].ND = new int[MAXND];
 			S[m].n = 0;
 			do
 			{
+				if (S[m].n == MAXND)
+				{
+					DydzioKeitimasND(MAXND, m, S);
+
+				}
 				int pazimys;
 				cin >> pazimys;
 				while (cin.fail() || pazimys < 1 || pazimys > 10)
@@ -192,7 +239,6 @@ int main()
 					NetinkamasInt(pazimys);
 				}
 				S[m].ND[S[m].n] = pazimys;
-
 
 				S[m].n++;
 				cout << "Ar norite ivesti dar viena pazymi? (T jei taip , N - ne): ";
@@ -220,14 +266,19 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		rezultatai(m, S);
+		Rezultatai(m, S);
 	}
 	if (Pasirinkimas == 2)
 	{
-
-		studentas* S = new studentas[MAX_LENGTH];
+		int MAX = 1;
+		studentas* S = new studentas[MAX];
 		do
 		{
+			if (m == MAX)
+			{
+				DydzioKeitimasS(MAX, m, S);
+
+			}
 			cout << endl << "Iveskite studento varda: ";
 			cin >> S[m].vardas;
 			while (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
@@ -249,11 +300,16 @@ int main()
 					NetinkamasString(S[m].pavarde);
 				}
 			}
-
-			S[m].ND = new int[MAX_LENGTH];
+			int MAXND = 1;
+			S[m].ND = new int[MAXND];
 			S[m].n = 0;
 			do
 			{
+				if (S[m].n == MAXND)
+				{
+					DydzioKeitimasND(MAXND, m, S);
+
+				}
 				S[m].ND[S[m].n] = dis(generuoti);
 				cout << endl << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl;
 				S[m].n++;
@@ -277,25 +333,36 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		rezultatai(m, S);
+		Rezultatai(m, S);
 
 	}
 	if (Pasirinkimas == 3)
 	{
-		studentas* S = new studentas[MAX_LENGTH];
+		int MAX = 1;
+		studentas* S = new studentas[MAX];
 
 		do
 		{
+			if (m == MAX)
+			{
+				DydzioKeitimasS(MAX, m, S);
 
+			}
 			int lytis = dis_lytis(generuoti);
 			if (lytis == 0)  GeneruotiVardusV(m, S);
 			else GeneruotiVardusM(m, S);
 
 			S[m].n = 0;
-			S[m].ND = new int[MAX_LENGTH];
+			int MAXND = 1;
+			S[m].ND = new int[MAXND];
 			cout << endl << "Sugeneruotas vardas ir pavarde: " << S[m].vardas << " " << S[m].pavarde << endl;
 			do
 			{
+				if (S[m].n == MAXND)
+				{
+					DydzioKeitimasND(MAXND, m, S);
+
+				}
 				S[m].ND[S[m].n] = dis(generuoti);
 				cout << endl << "Sugeneruotas pazimys: " << S[m].ND[S[m].n] << endl;
 				cout << "Ar norite sugeneruoti dar viena pazimi? (iveskite T, jei taip , N, jei ne): ";
@@ -320,7 +387,7 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		rezultatai(m, S);
+		Rezultatai(m, S);
 	}
 	if (Pasirinkimas == 4)
 		cout << endl << "Darbas baigtas";
