@@ -20,20 +20,21 @@ string pavardesM[] = { "Jonaite", "Petraityte", "Antanaite", "Juozaite", "Kaziuk
 
 char TaipNePaz;
 char TaipNe;
+char budas; 
 
 struct studentas
 {
 	string vardas;
 	string pavarde;
-	int* ND;
-	int EGZ = 0;
-	double GalutinisV = 0;
-	double GalutinisM = 0;
+	int* ND;// Namų darbų rezultatų masyvas
+	int EGZ = 0;// Egzamino rezultatas
+	double GalutinisV = 0;// Galutinis balas pagal vidurkį
+	double GalutinisM = 0;// Galutinis balas pagal medianą
 	int n = 0;//namu darbu kiekis
 	int talpa;
 };
 
-void DydzioKeitimasS(int &MAX, int m, studentas*& S)
+void Dydzio_Keitimas_S(int &MAX, int m, studentas*& S)
 {
 	int NaujaTalpa = MAX * 2;
 	studentas *naujas_S = new studentas[NaujaTalpa];
@@ -46,7 +47,7 @@ void DydzioKeitimasS(int &MAX, int m, studentas*& S)
 	MAX = NaujaTalpa;
 }
 
-void DydzioKeitimasND( int m, studentas*& S)
+void Dydzio_Keitimas_ND( int m, studentas*& S)
 {
 	int NaujaTalpaND = S[m].talpa * 2;
 	
@@ -61,7 +62,7 @@ void DydzioKeitimasND( int m, studentas*& S)
 
 }
 
-void NetinkamasSimbolis(char& ivestis)
+void Netinkamas_Char(char& ivestis)
 {
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
@@ -69,23 +70,65 @@ void NetinkamasSimbolis(char& ivestis)
 	cin >> ivestis; 
 } 
 
-void NetinkamasString(string& ivestis)
+void Netinkamas_String(string& ivestis)
 {
-	cin.clear(); 
-	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Ivesti netinkami duomenys (Negali buti skaiciu ar specialiuju zenklu).Bandykite dar karta: ";
-	cin >> ivestis;
+	while (!(cin >> ivestis)) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Ivesti netinkami duomenys (Negali buti skaiciu ar specialiuju zenklu).Bandykite dar karta: ";
+	}
 }
 
-void NetinkamasInt (int& ivestis)
+void Netinkamas_Int (int& ivestis)
 {
-	cin.clear(); 
-	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Ivestas netinkamas skaitmuo. Bandykite dar karta: ";
-	cin >> ivestis;
+	while (!(cin >> ivestis)) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Ivestas netinkamas skaitmuo. Bandykite dar karta: ";
+	}
 }
 
-void GeneruotiNDPazymius(int m, studentas*& S)
+void Ivesti_ND_Pazymius(int m, studentas*& S)
+{
+	cout << endl << "Iveskite namu darbu pazymi: ";
+	S[m].talpa = 1;
+	S[m].ND = new int[S[m].talpa];
+
+	do
+	{
+		if (S[m].n == S[m].talpa)//tikrinama ar reikia keisti dydi
+		{
+			Dydzio_Keitimas_ND(m, S);
+		}
+		int pazymys;
+		cin >> pazymys;//ivedami pazymiai
+		while (cin.fail() || pazymys < 1 || pazymys > 10)
+		{
+			Netinkamas_Int(pazymys);
+		}
+		S[m].ND[S[m].n] = pazymys;
+
+		S[m].n++;
+		cout << "Ar norite ivesti dar viena pazymi? (T jei taip , N - ne): ";
+		cin >> TaipNePaz;
+		while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
+		{
+			Netinkamas_Char(TaipNePaz);
+		}
+
+		if (TaipNePaz == 'T') cout << endl << "Iveskite namu darbu pazymi: ";
+
+	} while (TaipNePaz == 'T');
+
+}
+
+void Generuoti_ND_Pazymius(int m, studentas*& S)
 {
 	S[m].talpa = 1;
 	S[m].ND = new int[S[m].talpa];
@@ -94,8 +137,7 @@ void GeneruotiNDPazymius(int m, studentas*& S)
 	{
 		if (S[m].n == S[m].talpa)//tikrinama ar reikia keisti dydi
 		{
-			DydzioKeitimasND(m, S);
-
+			Dydzio_Keitimas_ND(m, S);
 		}
 		S[m].ND[S[m].n] = dis(generuoti);
 		cout << endl << "Sugeneruotas pazymys: " << S[m].ND[S[m].n] << endl;
@@ -104,14 +146,14 @@ void GeneruotiNDPazymius(int m, studentas*& S)
 		cin >> TaipNePaz;
 		while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
 		{
-			NetinkamasSimbolis(TaipNePaz);
+			Netinkamas_Char(TaipNePaz);
 		}
 
 	} while (TaipNePaz == 'T');
 
 }
 
-void VarduIvedimas(int m, studentas*& S)
+void Ivesti_Varda(int m, studentas*& S)
 {
 	cout << endl << "Iveskite studento varda: ";
 	cin >> S[m].vardas;
@@ -120,7 +162,7 @@ void VarduIvedimas(int m, studentas*& S)
 
 		if (!all_of(S[m].vardas.begin(), S[m].vardas.end(), ::isalpha))
 		{
-			NetinkamasString(S[m].vardas);
+			Netinkamas_String(S[m].vardas);
 		}
 	}
 
@@ -131,32 +173,31 @@ void VarduIvedimas(int m, studentas*& S)
 
 		if (!all_of(S[m].pavarde.begin(), S[m].pavarde.end(), ::isalpha))
 		{
-			NetinkamasString(S[m].pavarde);
+			Netinkamas_String(S[m].pavarde);
 		}
 	}
 
 }
 
-void GeneruotiVardusV(int m, studentas* S)
+void Generuoti_Vardus_V(int m, studentas* S)
 {
 	S[m].vardas = vardaiV[dis(generuoti) % 10];
 	S[m].pavarde = pavardesV[dis(generuoti) % 10];
 }
 
-void GeneruotiVardusM(int m, studentas* S)
+void Generuoti_Vardus_M(int m, studentas* S)
 {
 	S[m].vardas = vardaiM[dis(generuoti) % 10];
 	S[m].pavarde = pavardesM[dis(generuoti) % 10];
 }
 
-void Rezultatai(int m, studentas* S)
+void Apskaiciuoti_Rezultatus(char& budas,int  m, studentas*& S)
 {
-	char budas;
 	cout << endl << "Kaip norite apskaiciuoti galutini bala? (iveskite M - jei su mediana, V su vidukriu) ";
 	cin >> budas;
 	while (budas != 'M' && budas != 'V')
 	{
-		NetinkamasSimbolis(budas);
+		Netinkamas_Char(budas);
 	}
 
 	if (budas == 'V')
@@ -200,8 +241,10 @@ void Rezultatai(int m, studentas* S)
 
 		}
 	}
-	\
-	//rezultatu spausdinimas
+}
+
+void Spausdiniti_Rezultatus(char budas, int m, studentas* S)
+{
 	for (int i = 0; i < m; i++)
 	{
 		if (budas == 'V')
@@ -235,7 +278,7 @@ int main()
 	cin >> Pasirinkimas;
 	while (Pasirinkimas != 1 && Pasirinkimas != 2 && Pasirinkimas != 3 && Pasirinkimas != 4)
 	{
-		NetinkamasInt(Pasirinkimas);
+		Netinkamas_Int(Pasirinkimas);
 	}
 	int m = 0;
 	int MAX = 1;
@@ -245,61 +288,32 @@ int main()
 	{
 		do
 		{
-
 			if (m == MAX) //tikrinama ar reikia keisti dydi
-			{ 
-				DydzioKeitimasS(MAX, m, S);
-				
-			}
-			VarduIvedimas(m, S);
-			cout << endl << "Iveskite namu darbu pazymi: ";
-			S[m].talpa = 1;
-			S[m].ND = new int[S[m].talpa];
-			
-			do
 			{
-				if (S[m].n == S[m].talpa)//tikrinama ar reikia keisti dydi
-				{
-					DydzioKeitimasND( m, S);
+				Dydzio_Keitimas_S(MAX, m, S);
+			}
 
-				}
-				int pazymys;
-				cin >> pazymys;//ivedami pazymiai
-				while (cin.fail() || pazymys < 1 || pazymys > 10)
-				{
-					NetinkamasInt(pazymys);
-				}
-				S[m].ND[S[m].n] = pazymys;
+			Ivesti_Varda(m, S);//ivedamas vardas ir pavarde
 
-				S[m].n++;
-				cout << "Ar norite ivesti dar viena pazymi? (T jei taip , N - ne): ";
-				cin >> TaipNePaz;
-				while (TaipNePaz != 'T' && TaipNePaz != 'N')//tikrinama ar ivestas tinkamas simbolis
-				{
-					NetinkamasSimbolis(TaipNePaz);
-				}
-
-				if (TaipNePaz == 'T') cout << endl << "Iveskite namu darbu pazymi: ";
-
-			} while (TaipNePaz == 'T');
+			Ivesti_ND_Pazymius(m, S);//generuojami pazymiai
 
 			cout << endl << "Iveskite egzamino pazymi: ";
 			cin >> S[m].EGZ;
 			while (cin.fail() || S[m].EGZ < 1 || S[m].EGZ > 10)
 			{
-				NetinkamasInt(S[m].EGZ);
+				Netinkamas_Int(S[m].EGZ);
 			}
 			cout << endl << "Ar norite ivesti dar viena studenta? (T jei taip , N - ne): ";
 			m++;
 			cin >> TaipNe;
 			while (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
-				NetinkamasSimbolis(TaipNe);
+				Netinkamas_Char(TaipNe);
 			}
 
 		} while (TaipNe == 'T');
-
-		Rezultatai(m, S);//apskaiciuojami ir spausdinami rezultatai
+		Apskaiciuoti_Rezultatus(budas, m, S);
+		Spausdiniti_Rezultatus(budas, m, S);
 	}
 	if (Pasirinkimas == 2 )
 	{
@@ -307,13 +321,12 @@ int main()
 		{
 			if (m == MAX)//tikrinama ar reikia keisti dydi
 			{
-				DydzioKeitimasS(MAX, m, S);
-
+				Dydzio_Keitimas_S(MAX, m, S);
 			}
 
-			VarduIvedimas(m, S);
+			Ivesti_Varda(m, S);//ivedamas vardas ir pavarde
 
-			GeneruotiNDPazymius(m,S);//generuojami pazymiai
+			Ivesti_ND_Pazymius(m,S);//generuojami pazymiai
 
 			S[m].EGZ = dis(generuoti);//sugeneruojamas egzamino balas
 			cout << endl << "Sugeneruotas egzamino pazymys: " << S[m].EGZ;
@@ -322,13 +335,12 @@ int main()
 			cin >> TaipNe;
 			while (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
-				NetinkamasSimbolis(TaipNe);
+				Netinkamas_Char(TaipNe);
 			}
 
 		} while (TaipNe == 'T');
-
-		Rezultatai(m, S);//apskaiciuojami ir spausdinami rezultatai
-
+		Apskaiciuoti_Rezultatus(budas, m, S);
+		Spausdiniti_Rezultatus(budas, m, S);
 	}
 	if (Pasirinkimas == 3)
 	{
@@ -337,22 +349,21 @@ int main()
 		{
 			if (m == MAX)//tikrinama ar reikia keisti dydi
 			{
-				DydzioKeitimasS(MAX, m, S);
-
+				Dydzio_Keitimas_S(MAX, m, S);
 			}
 			int lytis = dis_lytis(generuoti);
 			
 			if (lytis == 0)
 			{
-				GeneruotiVardusV(m, S);
+				Generuoti_Vardus_V(m, S);
 			}	
 			else
 			{ 
-				GeneruotiVardusM(m, S);
+				Generuoti_Vardus_M(m, S);
 			}
 			cout << endl << "Sugeneruotas vardas ir pavarde: " << S[m].vardas << " " << S[m].pavarde << endl;
 			
-			GeneruotiNDPazymius(m, S);//generuojami pazymiai
+			Generuoti_ND_Pazymius(m, S);//generuojami pazymiai
 			
 			S[m].EGZ = dis(generuoti);//sugeneruojamas egzamino balas
 			cout << endl << "Sugeneruotas egzamino pazymys: " << S[m].EGZ;
@@ -362,12 +373,13 @@ int main()
 			cin >> TaipNe;
 			while (TaipNe != 'T' && TaipNe != 'N')//tikrinama ar ivestas tinkamas simbolis
 			{
-				NetinkamasSimbolis(TaipNe);
+				Netinkamas_Char(TaipNe);
 			}
 
 		} while (TaipNe == 'T');
-
-		Rezultatai(m, S);//apskaiciuojami ir spausdinami rezultatai
+		
+		Apskaiciuoti_Rezultatus(budas, m, S);
+		Spausdiniti_Rezultatus(budas, m, S);
 	}
 	if (Pasirinkimas == 4)
 		cout << endl << "Darbas baigtas";
