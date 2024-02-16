@@ -1,1 +1,2 @@
 # FirstProject
+Kodas leidžia apskaičiuoti studentų galutinį bala naudojant namų darbų pažymių vidurkį arba medianą. Taip pat yra galymbė generuoti atsitiktinius namų darbų ir egzamino balus taip pat galima generuoti vardus ir pavardes. Pasirinkimams yra sukurtas meniu su keturiomis parinktimis. (1 - vesti viska ranka, 2 - generuoti tik pažymius, 3 - generuoti ir pažymius ir studentų vardus, pavardės, 4 - baigti darbą).
