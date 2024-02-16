@@ -64,10 +64,9 @@ void Ivesti_Pazymius(studentas& S)
 	do
 	{
 		cin >> pazymys;
-		if (pazymys < 1 || pazymys > 10)
+		while ( cin.fail() || pazymys < 1 || pazymys > 10)
 		{
-			cout << "Netinkamas pazymys. Pazymys turi buti intervale [1, 10]. Bandykite dar karta: ";
-			continue;
+			Netinkamas_Int(pazymys);
 		}
 		cout << "Ar norite ivesti dar viena pazymi? (iveskite T, jei taip , N, jei ne): ";
 		cin >> TaipNePaz;
