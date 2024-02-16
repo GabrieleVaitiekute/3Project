@@ -326,7 +326,7 @@ int main()
 
 			Ivesti_Varda(m, S);//ivedamas vardas ir pavarde
 
-			Ivesti_ND_Pazymius(m,S);//generuojami pazymiai
+			Generuoti_ND_Pazymius(m,S);//generuojami pazymiai
 
 			S[m].EGZ = dis(generuoti);//sugeneruojamas egzamino balas
 			cout << endl << "Sugeneruotas egzamino pazymys: " << S[m].EGZ;
