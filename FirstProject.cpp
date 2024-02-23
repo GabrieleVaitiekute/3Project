@@ -12,7 +12,6 @@
 
 std::random_device rd;
 std::mt19937 generuoti(rd());
-
 std::uniform_int_distribution<int> dis(1, 10);
 std::uniform_int_distribution<int> dis_lytis(0, 1);
 
@@ -261,7 +260,7 @@ void Rusiuoti_Duomenis(std::vector<studentas>& S)
 void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 {
 
-	std::cout << "\nKur norite spausdinti resultatus:\n 1. Ekrane \n 2. Faile \"Rezultatai.txt\"\n Iveskite pasirinkimo numeri: ";
+	std::cout << "\nKur norite spausdinti resultatus:\n 1. Ekrane \n 2. Faile \"rezultatai.txt\"\n Iveskite pasirinkimo numeri: ";
 	int Spausdinimo_Pasirinkimas;
 	std::cin >> Spausdinimo_Pasirinkimas;
 	while (Spausdinimo_Pasirinkimas != 1 && Spausdinimo_Pasirinkimas != 2)
@@ -274,9 +273,9 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 		for (int i = 0; i < S.size(); i++)
 		{
 			if (i == 0)
-				std::cout << std::setw(5) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << "\n";
+				std::cout << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << "\n";
 
-			std::cout << std::setw(5) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << "\n";
+			std::cout << std::setw(7) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << "\n";
 
 
 		}
@@ -294,9 +293,9 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 		for (int i = 0; i < S.size(); i++)
 		{
 			if (i == 0)
-				rezultatu_failas << std::setw(5) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
+				rezultatu_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-			rezultatu_failas << std::setw(5) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << std::endl;
+			rezultatu_failas << std::setw(7) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << std::endl;
 
 
 		}
