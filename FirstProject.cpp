@@ -145,7 +145,7 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
 	{
 		std::istringstream iss(line);
 		studentas student;
-		if (!(iss  >> student.pavarde >> student.vardas))
+		if (!(iss >> student.pavarde >> student.vardas))
 		{
 			std::cerr << "Error reading data from file" << std::endl;
 			break;
@@ -232,17 +232,49 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
 
 void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 {
-
-	std::cout << std::endl;
-	for (int i = 0; i < S.size(); i++)
+	std::cout << std::endl << "Kur norite spausdinti resultatus:\n 1. Ekrane \n 2. Faile \"Rezultatai.txt\"\n Iveskite pasirinkimo numeri: ";
+	int Spausdinimo_Pasirinkimas;
+	std::cin >> Spausdinimo_Pasirinkimas;
+	while (Spausdinimo_Pasirinkimas != 1 && Spausdinimo_Pasirinkimas != 2)
 	{
-		if (i == 0)
-			std::cout << std::setw(5) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
-
-		std::cout << std::setw(5) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << std::endl;
-
-
+		Netinkamas_Int(Spausdinimo_Pasirinkimas);
 	}
+	if (Spausdinimo_Pasirinkimas == 1)
+	{
+		std::cout << std::endl;
+		for (int i = 0; i < S.size(); i++)
+		{
+			if (i == 0)
+				std::cout << std::setw(5) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
+
+			std::cout << std::setw(5) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << std::endl;
+
+
+		}
+	}
+
+	if (Spausdinimo_Pasirinkimas == 2)
+	{
+		std::ofstream rezultatu_failas("rezultatai.txt");
+		if (!rezultatu_failas.is_open())
+		{
+			std::cerr << "Klaida atidarant isvesties faila" << std::endl;
+			return;
+		}
+
+		for (int i = 0; i < S.size(); i++)
+		{
+			if (i == 0)
+				rezultatu_failas << std::setw(5) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
+
+			rezultatu_failas << std::setw(5) << i + 1 << std::setw(20) << S[i].pavarde << std::setw(20) << S[i].vardas << std::setw(20) << std::setprecision(3) << S[i].GalutinisV << std::setw(20) << std::setprecision(3) << S[i].GalutinisM << std::endl;
+
+
+		}
+		rezultatu_failas.close();
+		std::cout << std::endl << "Rezultatai atspausdinti" << std::endl;
+	}
+
 }
 
 int main()
@@ -350,17 +382,17 @@ int main()
 	if (Pasirinkimas == 4)
 	{
 		std::vector<studentas> S;
-		std::cout << std::endl << "Pasirinkite is kurio failo norite nuskaityti duominiis:\n 1. \"kursiokai.txt \" \n 2. \"studentai10000.txt \"\n 3. \"studentai100000.txt \"\n 4. \"studentai1000000.txt \"\n Iveskite pasirinkimo numeri: ";
-		int failas;
-		std::cin >> failas;
-		while (failas != 1 && failas != 2 && failas != 3 && failas != 4 )
+		std::cout << std::endl << "Pasirinkite is kurio failo norite nuskaityti duominiis:\n 1. \"kursiokai.txt\" \n 2. \"studentai10000.txt\"\n 3. \"studentai100000.txt\"\n 4. \"studentai1000000.txt\"\n Iveskite pasirinkimo numeri: ";
+		int Failo_Pasirinkimas;
+		std::cin >> Failo_Pasirinkimas;
+		while (Failo_Pasirinkimas != 1 && Failo_Pasirinkimas != 2 && Failo_Pasirinkimas != 3 && Failo_Pasirinkimas != 4)
 		{
-			Netinkamas_Int(failas);
+			Netinkamas_Int(Failo_Pasirinkimas);
 		}
-		if( failas == 1) S = Nuskaityti_Is_Failo("kursiokai.txt");
-		if (failas == 2) S = Nuskaityti_Is_Failo("studentai10000.txt");
-		if (failas == 3) S = Nuskaityti_Is_Failo("studentai100000.txt ");
-		if (failas == 4) S = Nuskaityti_Is_Failo("studentai1000000.txt ");
+		if (Failo_Pasirinkimas == 1) S = Nuskaityti_Is_Failo("kursiokai.txt");
+		if (Failo_Pasirinkimas == 2) S = Nuskaityti_Is_Failo("studentai10000.txt");
+		if (Failo_Pasirinkimas == 3) S = Nuskaityti_Is_Failo("studentai100000.txt ");
+		if (Failo_Pasirinkimas == 4) S = Nuskaityti_Is_Failo("studentai1000000.txt ");
 		Apskaiciuoti_Rezultatus(S);
 		Spausdinti_Rezultatus(S);
 	}
