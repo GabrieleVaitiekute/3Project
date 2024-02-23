@@ -127,17 +127,17 @@ void Generuoti_Varda_M(studentas& S)
 	S.pavarde = pavardesM[dis(generuoti) % 10];
 }
 
-std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
+std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas)
 {
 	// Pradedamas skaiciuti laikas
 	auto start = std::chrono::high_resolution_clock::now();
  
-	std::ifstream file(filename);
+	std::ifstream file(Failo_Pavadinimas);
 	std::vector<studentas> S;
 
 	if (!file.is_open())
 	{
-		std::cerr << "Klaida atidarant faila " << filename << std::endl;
+		std::cerr << "Klaida atidarant faila " << Failo_Pavadinimas << std::endl;
 		return S;
 	}
 	// Praleidziama pirma header eilute
@@ -201,8 +201,6 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
 
 void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
 {
-
-
 	for (int i = 0; i < S.size(); i++)
 	{
 		//apskaiciuojama su vidurkiu
@@ -236,6 +234,60 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
 	}
 }
 
+bool compareFirstName(const studentas& a, const studentas& b) 
+{
+	return a.vardas < b.vardas;
+}
+
+bool compareLastName(const studentas& a, const studentas& b) 
+{
+	return a.pavarde < b.pavarde;
+}
+
+bool compareExamGrade(const studentas& a, const studentas& b) 
+{
+	return a.EGZ < b.EGZ;
+}
+
+bool compareFinalGradeMedian(const studentas& a, const studentas& b) 
+{
+	return a.GalutinisM < b.GalutinisM;
+}
+
+bool compareFinalGradeAverage(const studentas& a, const studentas& b) 
+{
+	return a.GalutinisV < b.GalutinisV;
+}
+
+void Rusiuoti_Duomenis(std::vector<studentas>& S)
+{
+	// Rusiavimo pasirinkimai
+	std::cout << std::endl << "Rusiuoti pagal:\n 1. Varda\n 2. Pavarde\n 3. Egzamino bala\n 4. Galutini bala, apskaiciuota su mediana\n 5. Galutini bala, apskaiciuota su vidurkiu\n Iveskite pasirinkimo numeri: ";
+	int Rusiavimo_Pasirinkimas;
+	std::cin >> Rusiavimo_Pasirinkimas;
+	// Sorting based on user's choice
+	switch (Rusiavimo_Pasirinkimas) {
+	case 1:
+		std::sort(S.begin(), S.end(), compareFirstName);
+		break;
+	case 2:
+		std::sort(S.begin(), S.end(), compareLastName);
+		break;
+	case 3:
+		std::sort(S.begin(), S.end(), compareExamGrade);
+		break;
+	case 4:
+		std::sort(S.begin(), S.end(), compareFinalGradeMedian);
+		break;
+	case 5:
+		std::sort(S.begin(), S.end(), compareFinalGradeAverage);
+		break;
+	default:
+		std::cout << "Netinkamas pasirinkimas\n";
+	}
+
+}
+
 void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 {
 
@@ -265,7 +317,7 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 		std::ofstream rezultatu_failas("rezultatai.txt");
 		if (!rezultatu_failas.is_open())
 		{
-			std::cerr << "Klaida atidarant isvesties faila" << std::endl;
+			std::cerr << "Klaida atidarant rezultatu faila" << std::endl;
 			return;
 		}
 
@@ -323,6 +375,7 @@ int main()
 		} while (TaipNe == 'T');
 
 		Apskaiciuoti_Rezultatus(S);
+		Rusiuoti_Duomenis(S);
 		Spausdinti_Rezultatus(S);
 	}
 
@@ -349,6 +402,7 @@ int main()
 		} while (TaipNe == 'T');
 
 		Apskaiciuoti_Rezultatus(S);
+		Rusiuoti_Duomenis(S);
 		Spausdinti_Rezultatus(S);
 	}
 
@@ -358,7 +412,6 @@ int main()
 		studentas naujas;
 		do
 		{
-
 			int lytis = dis_lytis(generuoti);
 
 			if (lytis == 0)
@@ -383,13 +436,14 @@ int main()
 		} while (TaipNe == 'T');
 
 		Apskaiciuoti_Rezultatus(S);
+		Rusiuoti_Duomenis(S);
 		Spausdinti_Rezultatus(S);
 	}
 
 	if (Pasirinkimas == 4)
 	{
 		std::vector<studentas> S;
-		std::cout << std::endl << "Pasirinkite is kurio failo norite nuskaityti duominiis:\n 1. \"kursiokai.txt\" \n 2. \"studentai10000.txt\"\n 3. \"studentai100000.txt\"\n 4. \"studentai1000000.txt\"\n Iveskite pasirinkimo numeri: ";
+		std::cout << std::endl << "Pasirinkite, is kurio failo norite nuskaityti duomeniis:\n 1. \"kursiokai.txt\" \n 2. \"studentai10000.txt\"\n 3. \"studentai100000.txt\"\n 4. \"studentai1000000.txt\"\n Iveskite pasirinkimo numeri: ";
 		int Failo_Pasirinkimas;
 		std::cin >> Failo_Pasirinkimas;
 		while (Failo_Pasirinkimas != 1 && Failo_Pasirinkimas != 2 && Failo_Pasirinkimas != 3 && Failo_Pasirinkimas != 4)
@@ -401,6 +455,7 @@ int main()
 		if (Failo_Pasirinkimas == 3) S = Nuskaityti_Is_Failo("studentai100000.txt ");
 		if (Failo_Pasirinkimas == 4) S = Nuskaityti_Is_Failo("studentai1000000.txt ");
 		Apskaiciuoti_Rezultatus(S);
+		Rusiuoti_Duomenis(S);
 		Spausdinti_Rezultatus(S);
 	}
 	if (Pasirinkimas == 5)
