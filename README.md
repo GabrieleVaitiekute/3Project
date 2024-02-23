@@ -6,6 +6,6 @@ Programa su meniu skirtingos programos eigos pasirinkimui:
   4 - nuskaityti duomenis is failo (galima pasirinki iš 4 skirtingų failų)
   5 - baigti darbą
 
-Programos eigoje sutetikiama galimybė pasirinkti rikiavimą pagal vardą, pavardę, galutini balą, apskaiciuotą su mediana arba vidurkiu.
+Programos eigoje suteikiama galimybė pasirinkti rikiavimą pagal vardą, pavardę, galutini balą, apskaičiuotą su mediana arba vidurkiu.
 
 Taip pat vartotojas gali pasirinkti, kur nori spausdinti duomenis: ekrane ar į failą.
