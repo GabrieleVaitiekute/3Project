@@ -3,6 +3,7 @@
 #include <sstream>
 #include <limits>
 #include <climits>
+#include <chrono> 
 #include <cmath>
 #include <iomanip>
 #include <algorithm>
@@ -229,7 +230,6 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
 	}
 }
 
-
 void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 {
 
@@ -350,7 +350,17 @@ int main()
 	if (Pasirinkimas == 4)
 	{
 		std::vector<studentas> S;
-		S = Nuskaityti_Is_Failo("kursiokai.txt");
+		std::cout << std::endl << "Pasirinkite is kurio failo norite nuskaityti duominiis:\n 1. \"kursiokai.txt \" \n 2. \"studentai10000.txt \"\n 3. \"studentai100000.txt \"\n 4. \"studentai1000000.txt \"\n Iveskite pasirinkimo numeri: ";
+		int failas;
+		std::cin >> failas;
+		while (failas != 1 && failas != 2 && failas != 3 && failas != 4 )
+		{
+			Netinkamas_Int(failas);
+		}
+		if( failas == 1) S = Nuskaityti_Is_Failo("kursiokai.txt");
+		if (failas == 2) S = Nuskaityti_Is_Failo("studentai10000.txt");
+		if (failas == 3) S = Nuskaityti_Is_Failo("studentai100000.txt ");
+		if (failas == 4) S = Nuskaityti_Is_Failo("studentai1000000.txt ");
 		Apskaiciuoti_Rezultatus(S);
 		Spausdinti_Rezultatus(S);
 	}
