@@ -5,6 +5,7 @@
 #include <climits>
 #include <chrono> 
 #include <cmath>
+#include <numeric>
 #include <iomanip>
 #include <algorithm>
 #include <random>
@@ -128,15 +129,18 @@ void Generuoti_Varda_M(studentas& S)
 
 std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
 {
+	// Pradedamas skaiciuti laikas
+	auto start = std::chrono::high_resolution_clock::now();
+ 
 	std::ifstream file(filename);
 	std::vector<studentas> S;
 
 	if (!file.is_open())
 	{
-		std::cerr << "Error opening file " << filename << std::endl;
+		std::cerr << "Klaida atidarant faila " << filename << std::endl;
 		return S;
 	}
-	// Skip the first line (header)
+	// Praleidziama pirma header eilute
 	std::string header;
 	std::getline(file, header);
 
@@ -147,7 +151,7 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
 		studentas student;
 		if (!(iss >> student.pavarde >> student.vardas))
 		{
-			std::cerr << "Error reading data from file" << std::endl;
+			std::cerr << "Klaida nuskaitant nuo failo" << std::endl;
 			break;
 		}
 
@@ -157,7 +161,7 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
 			student.ND.push_back(grade);
 		}
 
-		// Check if the last grade is exam grade
+		// Patikrina, ar paskutinis pazymys yra egzamino
 		if (!student.ND.empty() && student.ND.back() <= 10)
 		{
 			student.EGZ = student.ND.back();
@@ -165,27 +169,32 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& filename)
 		}
 		else
 		{
-			// Read exam grade from the next line
 			std::string nextLine;
 			if (std::getline(file, nextLine))
 			{
 				std::istringstream nextIss(nextLine);
 				if (!(nextIss >> student.EGZ))
 				{
-					std::cerr << "Error reading exam grade from file" << std::endl;
+					std::cerr << "Klaida nuskaitant egzamino bala nuo failo" << std::endl;
 					break;
 				}
 			}
 			else
 			{
-				std::cerr << "Unexpected end of file" << std::endl;
+				std::cerr << "Netiketa failo pabaiga" << std::endl;
 				break;
 			}
 		}
 
-		S.push_back(student); // Add the student to the vector
+		S.push_back(student); // Pridedamas studentas 
 	}
+	// Baigia skaiciuoti laika
+	auto end = std::chrono::high_resolution_clock::now();
 
+	//Apskaicciuoja laika
+	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
+	std::cout << "Failo nuskaitymas uztruko " << duration.count() << " sekundes(ziu)" << std::endl;
 	file.close();
 	return S;
 }
@@ -197,11 +206,8 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
 	for (int i = 0; i < S.size(); i++)
 	{
 		//apskaiciuojama su vidurkiu
-		double suma = 0.0;
-		for (int j = 0; j < S[i].ND.size(); j++)
-		{
-			suma += S[i].ND[j];
-		}
+		double suma = std::accumulate(S[i].ND.begin(), S[i].ND.end(), 0);
+
 		S[i].GalutinisV = 0.4 * suma / S[i].ND.size() + 0.6 * S[i].EGZ;
 
 		//apskaiciuojama su mediana
@@ -232,6 +238,7 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
 
 void Spausdinti_Rezultatus(const std::vector<studentas>& S)
 {
+
 	std::cout << std::endl << "Kur norite spausdinti resultatus:\n 1. Ekrane \n 2. Faile \"Rezultatai.txt\"\n Iveskite pasirinkimo numeri: ";
 	int Spausdinimo_Pasirinkimas;
 	std::cin >> Spausdinimo_Pasirinkimas;
