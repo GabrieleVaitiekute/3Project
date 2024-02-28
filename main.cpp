@@ -3,6 +3,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <limits>
+#include <filesystem>
 #include "Studentai.h"
 #include "Ivedimas.h"
 #include "Generavimas.h"
@@ -13,6 +14,7 @@
 #include "Rezultatu_Spausdinimas.h"
 
 char TaipNe;
+namespace fs = std::filesystem;
 
 int main()
 {
@@ -224,49 +226,50 @@ int main()
 			std::vector<studentas> S;
 			std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomeniis:\n 1. kursiokai.txt \n 2. studentai10000.txt\n 3. studentai100000.txt\n 4. studentai1000000.txt\n Iveskite pasirinkimo numeri: ";
 			int Failo_Pasirinkimas;
+			std::string Failo_Vieta;
 			while (true)
 			{
-				try
-				{
+				
 					std::cin >> Failo_Pasirinkimas;
 
 					if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 4)
 					{
 						throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
 					}
+				
+				
+				switch (Failo_Pasirinkimas)
+				{
+
+				case 1:
+					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\kursiokai.txt)";
+					break;
+				case 2:
+					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai10000.txt)";
+					break;
+				case 3:
+					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai100000.txt)";
+					break;
+				case 4:
+					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai1000000.txt)";
 					break;
 				}
-				catch (const std::invalid_argument& fp)
+				if (!fs::exists(Failo_Vieta))
 				{
-					Netinkamas_Ivestis(fp.what());
+					Netinkamas_Ivestis("Pasirinktas failas neegzistuoja. Pasirinkite kita faila. ");
+					continue;
 
 				}
 
+
+
+				S = Nuskaityti_Is_Failo(Failo_Vieta);
+
+				Apskaiciuoti_Rezultatus(S);
+				Rusiuoti_Duomenis(S);
+				Spausdinti_Rezultatus(S);
 			}
-
-			switch (Failo_Pasirinkimas)
-			{
-			case 1:
-				S = Nuskaityti_Is_Failo("kursiokai.txt");
-				break;
-
-			case 2:
-				S = Nuskaityti_Is_Failo("studentai10000.txt");
-				break;
-
-			case 3:
-				S = Nuskaityti_Is_Failo("studentai100000.txt ");
-				break;
-			case 4:
-				S = Nuskaityti_Is_Failo("studentai1000000.txt ");
-				break;
-			}
-
-			Apskaiciuoti_Rezultatus(S);
-			Rusiuoti_Duomenis(S);
-			Spausdinti_Rezultatus(S);
 		}
-
 		if (Pasirinkimas == 5)
 			std::cout << "\n" << "Darbas baigtas";
 
