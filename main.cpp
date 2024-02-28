@@ -229,15 +229,12 @@ int main()
 			std::string Failo_Vieta;
 			while (true)
 			{
-				
-					std::cin >> Failo_Pasirinkimas;
+				std::cin >> Failo_Pasirinkimas;
+				if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 4)
+				{
+					throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
+				}
 
-					if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 4)
-					{
-						throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
-					}
-				
-				
 				switch (Failo_Pasirinkimas)
 				{
 
