@@ -12,4 +12,4 @@ Taip pat vartotojas gali pasirinkti, kur nori spausdinti duomenis: ekrane ar į 
 
 Duomenų tipas "studentas" bei dauguma funkcijų perkelkos į antraštinius failus.
 
-Kur buvo reikalinga (vartotojui įvedadent informaciją arba norint informaciją nuskaityti nuo failo) panaudotas išimčių valdymas.
+Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedadent informaciją tikrinama, ar įvestas reikiamas ir taisyklingas skaičius, simbolis, žodis taip pat norint informaciją nuskaityti nuo failo, patikrinama, ar failas egzistuoja nurodytoje vietoje).
