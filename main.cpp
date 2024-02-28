@@ -14,7 +14,6 @@
 #include "Rezultatu_Spausdinimas.h"
 
 char TaipNe;
-namespace fs = std::filesystem;
 
 int main()
 {
@@ -223,21 +222,25 @@ int main()
 
 		if (Pasirinkimas == 4)
 		{
+			namespace fs = std::filesystem;
 			std::vector<studentas> S;
-			std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomeniis:\n 1. kursiokai.txt \n 2. studentai10000.txt\n 3. studentai100000.txt\n 4. studentai1000000.txt\n Iveskite pasirinkimo numeri: ";
 			int Failo_Pasirinkimas;
 			std::string Failo_Vieta;
+
 			while (true)
 			{
+				// Parinkimo meniu ir failo pasirinkimas
+				std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomeniis:\n 1. kursiokai.txt \n 2. studentai10000.txt\n 3. studentai100000.txt\n 4. studentai1000000.txt\n Iveskite pasirinkimo numeri: ";
+
 				std::cin >> Failo_Pasirinkimas;
+				// Tikrinimas ar įvestis yra tinkama
 				if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 4)
 				{
 					throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
 				}
-
+				// Nuskaitomas pasirinkto failo kelias
 				switch (Failo_Pasirinkimas)
 				{
-
 				case 1:
 					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\kursiokai.txt)";
 					break;
@@ -251,17 +254,16 @@ int main()
 					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai1000000.txt)";
 					break;
 				}
+				// Tikrinimas ar pasirinktas failas egzistuoja
 				if (!fs::exists(Failo_Vieta))
 				{
 					Netinkamas_Ivestis("Pasirinktas failas neegzistuoja. Pasirinkite kita faila. ");
+					std::cout << "\n";
 					continue;
 
 				}
-
-
-
+				// Nuskaitymas duomenų iš pasirinkto failo
 				S = Nuskaityti_Is_Failo(Failo_Vieta);
-
 				Apskaiciuoti_Rezultatus(S);
 				Rusiuoti_Duomenis(S);
 				Spausdinti_Rezultatus(S);
