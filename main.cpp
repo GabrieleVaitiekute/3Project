@@ -267,6 +267,7 @@ int main()
 				Apskaiciuoti_Rezultatus(S);
 				Rusiuoti_Duomenis(S);
 				Spausdinti_Rezultatus(S);
+				break; // Išeiti iš ciklo, kai buna pasirinktas tinkamas failas 
 			}
 		}
 		if (Pasirinkimas == 5)
