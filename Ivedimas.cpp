@@ -10,6 +10,7 @@ char TaipNePaz;
 
 void Ivesti_Pazymius(studentas& S)
 {
+	S.ND.clear();
 	std::cout << "\nIveskite namu darbu pazymi: ";
 	int pazymys;
 	do
