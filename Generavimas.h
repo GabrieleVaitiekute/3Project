@@ -8,5 +8,5 @@ void GeneruotiNDPazymius(studentas& S, int ND_kiekis);
 
 void GeneruotiVardus(studentas& S);
 
-void GeneruotiFailus(int reserveDydis, std::string failoPav);
+void GeneruotiFailus(int reserveDydis, std::string& failoPav);
 #endif 
