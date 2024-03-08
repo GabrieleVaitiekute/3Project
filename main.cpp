@@ -1,9 +1,3 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <stdexcept>
-#include <limits>
-#include <filesystem>
 #include "Studentai.h"
 #include "Ivedimas.h"
 #include "Generavimas.h"
@@ -14,22 +8,27 @@
 #include "Rezultatu_Spausdinimas.h"
 
 char TaipNe;
-
+namespace fs = std::filesystem;
 int main()
 {
+
 	int Pasirinkimas;
-	do
-	{
-		std::cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Nuskaityti studentu duomenis nuo failo\n 5. Baigti darba\n Iveskite pasirinkimo numeri: ";
+
+	// Pradedamas skaiciuti laikas
+	auto ProgramosPradzia = std::chrono::high_resolution_clock::now();
+		std::vector<studentas> S;
+		std::vector<studentas> N;//nuskriaustieji
+		std::vector<studentas> G;//galvociai
+		std::cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Nuskaityti studentu duomenis nuo failo\n 5. Generuoti failus\n 6. Baigti darba\n Iveskite pasirinkimo numeri: ";
 
 		while (true)
 		{
 			try
 			{
 				std::cin >> Pasirinkimas;
-				if (std::cin.fail() || std::cin.peek() != '\n' || Pasirinkimas < 1 || Pasirinkimas > 5)
+				if (std::cin.fail() || std::cin.peek() != '\n' || Pasirinkimas < 1 || Pasirinkimas > 6)
 				{
-					throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 5. ");
+					throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 6. ");
 				}
 				break;
 			}
@@ -41,7 +40,6 @@ int main()
 
 		if (Pasirinkimas == 1)
 		{
-			std::vector<studentas> S;
 			studentas naujas;
 			do
 			{
@@ -67,9 +65,8 @@ int main()
 					}
 				}
 
-
-
 				S.push_back(naujas);// pridedamas studentas i vektoriu
+
 				std::cout << std::endl << "Ar norite ivesti " << S.size() + 1 << " studenta ? (T jei taip, N - ne) : ";
 				while (true)
 				{
@@ -88,17 +85,16 @@ int main()
 					}
 				}
 
-
 			} while (TaipNe == 'T');
 
-			Apskaiciuoti_Rezultatus(S);
-			Rusiuoti_Duomenis(S);
-			Spausdinti_Rezultatus(S);
+			Apskaiciuoti_Rezultatus(S, N, G);
+			Rusiuoti_Duomenis(N, G);
+			Spausdinti_Rezultatus(N, G);
 		}
 
 		if (Pasirinkimas == 2)
 		{
-			std::vector<studentas> S;
+			
 			studentas naujas;
 			do
 			{
@@ -148,14 +144,14 @@ int main()
 
 			} while (TaipNe == 'T');
 
-			Apskaiciuoti_Rezultatus(S);
-			Rusiuoti_Duomenis(S);
-			Spausdinti_Rezultatus(S);
+			Apskaiciuoti_Rezultatus(S, N, G);
+			Rusiuoti_Duomenis(N, G);
+			Spausdinti_Rezultatus(N, G);
 		}
 
 		if (Pasirinkimas == 3)
 		{
-			std::vector<studentas> S;
+			
 			studentas naujas;
 
 			std::cout << std::endl << "Kiek studentu norite sugeneruoti: ";
@@ -215,15 +211,15 @@ int main()
 				S.push_back(naujas); // pridedamas studentas i vektoriu
 			}
 
-			Apskaiciuoti_Rezultatus(S);
-			Rusiuoti_Duomenis(S);
-			Spausdinti_Rezultatus(S);
+			Apskaiciuoti_Rezultatus(S, N, G);
+			Rusiuoti_Duomenis(N, G);
+			Spausdinti_Rezultatus(N, G);
 		}
 
 		if (Pasirinkimas == 4)
 		{
-			namespace fs = std::filesystem;
-			std::vector<studentas> S;
+			
+			
 			int Failo_Pasirinkimas;
 			std::string Failo_Vieta;
 
@@ -238,20 +234,25 @@ int main()
 				{
 					throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
 				}
+				int reserveDydis;
 				// Nuskaitomas pasirinkto failo kelias
 				switch (Failo_Pasirinkimas)
 				{
 				case 1:
 					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\kursiokai.txt)";
+					reserveDydis = 1000;
 					break;
 				case 2:
 					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai10000.txt)";
+					reserveDydis = 10000;
 					break;
 				case 3:
 					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai100000.txt)";
+					reserveDydis = 100000;
 					break;
 				case 4:
 					Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v03\studentai1000000.txt)";
+					reserveDydis = 1000000;
 					break;
 				}
 				// Tikrinimas ar pasirinktas failas egzistuoja
@@ -263,18 +264,105 @@ int main()
 
 				}
 				// Nuskaitymas duomenų iš pasirinkto failo
-				S = Nuskaityti_Is_Failo(Failo_Vieta);
-				Apskaiciuoti_Rezultatus(S);
-				Rusiuoti_Duomenis(S);
-				Spausdinti_Rezultatus(S);
+				S = Nuskaityti_Is_Failo(Failo_Vieta, reserveDydis);
+				Apskaiciuoti_Rezultatus(S, N, G);
+				Rusiuoti_Duomenis(N, G);
+				Spausdinti_Rezultatus(N, G);
 				break; // Išeiti iš ciklo, kai buna pasirinktas tinkamas failas 
 			}
 		}
+
 		if (Pasirinkimas == 5)
+		{
+			std::cout << "Pasirinkite kiek studentu norite sugeneruoti:\n 1. 1 000\n 2. 10 000\n 3. 100 000\n 4. 1 000 000\n 5. 10 000 000 \n Iveskite pasirinkimo numeri: ";
+
+			std::string G_Failo_Vieta;
+			int G_Failo_Pasirinkimas;
+			int reserveDydis;
+			std::string failoPav;
+			while (true)
+			{
+				try
+				{
+					std::cin >> G_Failo_Pasirinkimas;
+					if (std::cin.fail() || std::cin.peek() != '\n' || G_Failo_Pasirinkimas < 1 || G_Failo_Pasirinkimas > 5)
+					{
+						throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 5. ");
+					}
+					break;
+				}
+				catch (const std::invalid_argument& pfg)
+				{
+					Netinkamas_Ivestis(pfg.what());
+				}
+			}
+	
+
+			switch (G_Failo_Pasirinkimas)
+			{
+			case 1:
+				G_Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v0.4\v0.4\Studentai1000.txt)";
+				reserveDydis = 1000;
+				failoPav = "Studentai1000.txt";
+				break;
+			case 2:
+				G_Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v0.4\v0.4\Studentai10000.txt)";
+				reserveDydis = 10000;
+				failoPav = "Studentai10000.txt";
+				break;
+			case 3:
+				G_Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v0.4\v0.4\Studentai100000.txt)";
+				reserveDydis = 100000;
+				failoPav = "Studentai100000.txt";
+				break;
+			case 4:
+				G_Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v0.4\v0.4\Studentai1000000.txt)";
+				reserveDydis = 1000000;
+				failoPav = "Studentai1000000.txt";
+				break;
+
+			case 5:
+				G_Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v0.4\v0.4\Studentai10000000.txt)";
+				reserveDydis = 10000000;
+				failoPav = "Studentai10000000.txt";
+				break;
+			case 6:
+				G_Failo_Vieta = R"(C:\Users\Gabrielė\Desktop\O.P\v0.4\v0.4\Studentai100000000.txt)";
+				reserveDydis = 100000000;
+				failoPav = "Studentai100000000.txt";
+				break;
+			}
+
+			//jei failas jau egzistuoja, tiesiog nuskaitoma nuo jo
+			if (fs::exists(G_Failo_Vieta))
+			{
+				std::cout << "Pasirinktas failas jau egzistuoja, dabar nuo jo bus nuskaitoma";
+				S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis );
+			}
+			else //jei failas neegzistuoja, tai ji sugeneruoja ir tada nuskaito
+			{
+				std::cout << "Pasirinktas failas neegzistuoja, jis generuojamas";
+				GeneruotiFailus(reserveDydis, failoPav);
+				S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis);
+			}
+
+			Apskaiciuoti_Rezultatus(S, N, G);
+			Rusiuoti_Duomenis(N, G);
+			Spausdinti_Rezultatus(N, G);
+			
+		}
+
+		if (Pasirinkimas == 6)
 			std::cout << "\n" << "Darbas baigtas";
 
 		std::cout << "\n";
-	} while (Pasirinkimas != 5);
+		// Baigia skaiciuoti laika
+	auto ProgramosPabaiga = std::chrono::high_resolution_clock::now();
 
+	//Apskaiciuoja laika
+	auto Programosilgis = std::chrono::duration_cast<std::chrono::seconds>(ProgramosPabaiga - ProgramosPradzia);
+
+	std::cout << "Programa uztruko " << Programosilgis.count() << " sek." << std::endl;
+	
 	return 0;
 }
