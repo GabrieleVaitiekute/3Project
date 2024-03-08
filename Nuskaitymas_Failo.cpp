@@ -1,12 +1,5 @@
-#include "Nuskaitymas_Failo.h"
 #include "Studentai.h"
-#include <chrono> 
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <windows.h>
-
+#include "Nuskaitymas_Failo.h"
 
 std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas, int reserveDydis)
 {
@@ -16,9 +9,8 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 	// Open the file in binary mode
 	std::ifstream file(Failo_Pavadinimas);
 
-	
 	std::vector<studentas> S;
-	S.reserve( reserveDydis);
+	S.reserve(reserveDydis);
 
 	if (!file.is_open())
 	{
@@ -64,7 +56,7 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 	//Apskaiciuoja laika
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-	std::cout << "\nFailo nuskaitymas uztruko " << duration.count() << " sekundes(e)" << std::endl;
 	file.close();
+	std::cout << "\nFailo nuskaitymas uztruko " << duration.count() << " sek." << std::endl;
 	return S;
 }
