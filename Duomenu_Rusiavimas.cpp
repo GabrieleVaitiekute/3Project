@@ -1,12 +1,6 @@
 #include "Studentai.h"
 #include "Netinkama_Ivestis.h"
 #include "Duomenu_Rusiavimas.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <numeric> 
-#include <vector>
 
 
 bool VarduRusiavimas(const studentas& a, const studentas& b)
@@ -49,8 +43,6 @@ void Rusiuoti_Duomenis(std::vector<studentas>& N, std::vector<studentas>& G)
 		catch (const std::invalid_argument& rp)
 		{
 			Netinkamas_Ivestis(rp.what());
-
-
 		}
 
 	}
