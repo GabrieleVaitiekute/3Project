@@ -8,6 +8,6 @@ bool VarduRusiavimas(const studentas& a, const studentas& b);
 bool PavardziuRusiavimas(const studentas& a, const studentas& b);
 bool MedianuRusiavimas(const studentas& a, const studentas& b);
 bool VidurkiuRusiavimas(const studentas& a, const studentas& b);
-void Rusiuoti_Duomenis(std::vector<studentas>& S);
+void Rusiuoti_Duomenis(std::vector<studentas>& N, std::vector<studentas>& G);
 
 #endif
