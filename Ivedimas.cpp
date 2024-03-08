@@ -1,10 +1,6 @@
 #include "Ivedimas.h"
 #include "Netinkama_Ivestis.h"
 #include "Studentai.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
 
 char TaipNePaz;
 
@@ -15,6 +11,7 @@ void Ivesti_Pazymius(studentas& S)
 	int pazymys;
 	do
 	{
+
 		while (true)
 		{
 			try
@@ -27,7 +24,6 @@ void Ivesti_Pazymius(studentas& S)
 				}
 				break;
 			}
-
 
 			catch (const std::invalid_argument& paz)
 			{
