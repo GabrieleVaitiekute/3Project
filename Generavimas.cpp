@@ -25,7 +25,6 @@ void GeneruotiNDPazymius(studentas& S, int ND_kiekis)
 	S.EGZ = dis(generuoti);
 }
 
-
 void GeneruotiVardus(studentas& S)
 {
 	int lytis = dis_lytis(generuoti);
@@ -44,7 +43,7 @@ void GeneruotiVardus(studentas& S)
 
 }
 
-void GeneruotiFailus(int reserveDydis, std::string failoPav)
+void GeneruotiFailus(int reserveDydis, std::string& failoPav)
 {
 	// Pradedamas skaiciuti laikas
 	auto start = std::chrono::high_resolution_clock::now();
@@ -57,11 +56,11 @@ void GeneruotiFailus(int reserveDydis, std::string failoPav)
             return;
         }
 		
-        GFailas << std::setw(20) << "Pavarde" << std::setw(20) << std::setw(5) << "Vardas" << std::setw(5) << "ND1" << std::setw(5) << "ND2" << std::setw(5) << "ND3" << std::setw(5) << "ND4" << std::setw(5) << "ND5" << std::setw(5) << "ND6" << std::setw(5) << "ND7" << std::setw(5) << "ND8" << std::setw(5) << "ND9" << std::setw(5) << "ND10" << std::setw(5) << "Egz."  << std::endl;
+        GFailas << std::setw(20) << "Pavarde" << std::setw(20)  << "Vardas" << std::setw(5) << "ND1" << std::setw(5) << "ND2" << std::setw(5) << "ND3" << std::setw(5) << "ND4" << std::setw(5) << "ND5" << std::setw(5) << "ND6" << std::setw(5) << "ND7" << std::setw(5) << "ND8" << std::setw(5) << "ND9" << std::setw(5) << "ND10" << std::setw(5) << "Egz."  << std::endl;
 
         for (int i = 0; i < reserveDydis; ++i)
         {
-			GFailas << std::setw(20)<< "Vardas" << i + 1 << std::setw(20) << " Pavarde" << i + 1 ;
+			GFailas  << std::setw(20) << "Pavarde" << i + 1 << std::setw(20)<< "Vardas" << i + 1;
 			for (int j = 0; j < 10; j++)
 			{
 				GFailas  << std::setw(5)<< dis(generuoti) ;
@@ -77,6 +76,6 @@ void GeneruotiFailus(int reserveDydis, std::string failoPav)
 		//Apskaiciuoja laika
 		auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-		std::cout << "\nFailo generavimas uztruko " << duration.count() << " sekundes(e)" << std::endl;
+		std::cout << "\nFailo kurimas uztruko " << duration.count() << " sek." << std::endl;
 
 }
