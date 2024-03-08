@@ -1,6 +1,7 @@
 #ifndef STUDENTAI_H
 #define STUDENTAI_H
 #include "Netinkama_Ivestis.h"
+#include <chrono> 
 #include <string>
 #include <vector>
 #include <iostream>
@@ -10,6 +11,8 @@
 #include <stdexcept>
 #include <limits>
 #include <filesystem>
+#include <algorithm>
+#include <numeric> 
 
 
 struct studentas
