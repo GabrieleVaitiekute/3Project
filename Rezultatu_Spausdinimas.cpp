@@ -1,14 +1,11 @@
 #include "Rezultatu_Spausdinimas.h"
 #include "Studentai.h"
 #include "Netinkama_Ivestis.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <vector>
 
 void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<studentas>& G)
 {
+	// Pradedamas skaiciuti laikas
+	auto SpausdinimoPradzia = std::chrono::high_resolution_clock::now();
 
 		std::ofstream Galvociu_failas("Galvociai.txt");
 		if (!Galvociu_failas.is_open())
@@ -47,5 +44,13 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		Nepazangiuju_failas.close();
 
 		std::cout << std::endl << "Rezultatai atspausdinti" << std::endl;
-	
+
+		// Baigia skaiciuoti laika
+		auto SpausdinimoPabaiga = std::chrono::high_resolution_clock::now();
+
+		//Apskaiciuoja laika
+		auto  Spausdinimotrukme = std::chrono::duration_cast<std::chrono::seconds>( SpausdinimoPabaiga - SpausdinimoPradzia );
+
+		std::cout << "\nSpausdinimas uztruko " << Spausdinimotrukme.count() << " sek." << std::endl;
 }
+
