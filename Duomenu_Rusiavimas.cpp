@@ -29,7 +29,7 @@ bool VidurkiuRusiavimas(const studentas& a, const studentas& b)
 	return a.GalutinisV < b.GalutinisV;
 }
 
-void Rusiuoti_Duomenis(std::vector<studentas>& S)
+void Rusiuoti_Duomenis(std::vector<studentas>& N, std::vector<studentas>& G)
 {
 	// Rusiavimo pasirinkimai
 	std::cout << std::endl << "Rusiuoti pagal:\n 1. Varda\n 2. Pavarde\n 3. Galutini bala, apskaiciuota su mediana\n 4. Galutini bala, apskaiciuota su vidurkiu\n Iveskite pasirinkimo numeri: ";
@@ -58,16 +58,20 @@ void Rusiuoti_Duomenis(std::vector<studentas>& S)
 	switch (Rusiavimo_Pasirinkimas)
 	{
 	case 1:
-		std::sort(S.begin(), S.end(), VarduRusiavimas);
+		std::sort(N.begin(), N.end(), VarduRusiavimas);
+		std::sort(G.begin(), G.end(), VarduRusiavimas);
 		break;
 	case 2:
-		std::sort(S.begin(), S.end(), PavardziuRusiavimas);
+		std::sort(N.begin(), N.end(), PavardziuRusiavimas);
+		std::sort(G.begin(), G.end(), PavardziuRusiavimas);
 		break;
 	case 3:
-		std::sort(S.begin(), S.end(), MedianuRusiavimas);
+		std::sort(N.begin(), N.end(), MedianuRusiavimas);
+		std::sort(G.begin(), G.end(), MedianuRusiavimas);
 		break;
 	case 4:
-		std::sort(S.begin(), S.end(), VidurkiuRusiavimas);
+		std::sort(N.begin(), N.end(), VidurkiuRusiavimas);
+		std::sort(G.begin(), G.end(), VidurkiuRusiavimas);
 		break;
 	}
 
