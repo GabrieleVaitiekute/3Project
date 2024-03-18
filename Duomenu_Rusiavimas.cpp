@@ -34,7 +34,7 @@ void Rusiuoti_Duomenis(std::vector<studentas>& N, std::vector<studentas>& G)
 		{
 			std::cin >> Rusiavimo_Pasirinkimas;
 
-			if (std::cin.fail() || std::cin.peek() != '\n')
+			if (std::cin.fail() || std::cin.peek() != '\n' || Rusiavimo_Pasirinkimas < 1 || Rusiavimo_Pasirinkimas > 4)
 			{
 				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
 			}
@@ -44,7 +44,6 @@ void Rusiuoti_Duomenis(std::vector<studentas>& N, std::vector<studentas>& G)
 		{
 			Netinkamas_Ivestis(rp.what());
 		}
-
 	}
 
 	switch (Rusiavimo_Pasirinkimas)
