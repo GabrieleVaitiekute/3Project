@@ -5,8 +5,9 @@ Programa su meniu skirtingos programos eigos pasirinkimui:
   3 - generuoti ir pažymius ir studentų vardus, pavardes,
   4 - nuskaityti duomenis is failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą)
   5 - sugeneruoti failus (5 dydžių pasirinkimai),
-  5 - baigti darbą
-Studentai suskirstomi į galvočius ir nepažangius.
+  6 - baigti darbą
+  
+Studentai suskirstomi į galvočius ir nepažangius pagal medianą arba vidurkį (leidžiama pasirinkti).
 
 Programos eigoje suteikiama galimybė pasirinkti rikiavimą pagal vardą, pavardę, galutini balą, apskaičiuotą su mediana arba vidurkiu.
 
@@ -14,12 +15,12 @@ Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedant informac
 
 Programa apskaičiuoja generavimo, nuskaitymo, rusiavimo, spausdinimo ir visos programos trukmes.
 
-![Screenshot 2024-03-08 230137](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5e8e7229-4f85-4de5-b203-f5f36d90100e)
-![Screenshot 2024-03-08 230213](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/082a4ae0-b661-4a54-af31-81536d340e6f)
-![Screenshot 2024-03-08 230306](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/73663d0f-ea83-4e62-8ca2-a894be625778)
-![Screenshot 2024-03-08 230530](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ee6de1ad-0985-425f-9bf8-67125466b820)
-![Screenshot 2024-03-08 233908](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/0de1ace0-d1bb-4208-be1f-e71883236ac3)
+Geriausi laikai:
+![Screenshot 2024-03-18 150808](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/a8adc8a8-e2ad-492d-ae71-f3905856bafc)
+![Screenshot 2024-03-18 150853](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c313ae39-f922-4abb-aa07-605cbf35f0e7)
+![Screenshot 2024-03-18 161403](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ce94f64a-46f5-4f2a-9892-a68f59a5ce15)
+![Screenshot 2024-03-18 162106](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/51402496-ffba-407f-b9a0-8c4d0740ad6a)
+![Screenshot 2024-03-18 163717](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/2e08f226-9fac-4ea1-b8d0-53ca170be53c)
 
-Lentelė su visais laikais:
-
-![Screenshot 2024-03-08 235515](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/56e22153-05ad-4512-b5bd-56d72b23b99c)
+Lentelė su kelių laikų vidurkiais:
+![Screenshot 2024-03-18 165646](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/1e7cfcdb-53b6-475d-8e69-9f620ef8ea1d)
