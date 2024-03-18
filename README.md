@@ -9,3 +9,8 @@ Programa su meniu skirtingos programos eigos pasirinkimui:
 Programos eigoje suteikiama galimybė pasirinkti rikiavimą pagal vardą, pavardę, galutini balą, apskaičiuotą su mediana arba vidurkiu.
 
 Taip pat vartotojas gali pasirinkti, kur nori spausdinti duomenis: ekrane ar į failą.
+
+Nuskaitymo laikų vidurkiai: 
+1. studentai10000.txt 0 s.
+2. studentai100000.txt 0 s.
+3. studentai1000000.txt 2 s.
