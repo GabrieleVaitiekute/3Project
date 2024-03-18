@@ -4,6 +4,7 @@
 
 std::random_device rd;
 std::mt19937 generuoti(rd());
+std::uniform_int_distribution<int> nd_kiekis(5, 20);
 std::uniform_int_distribution<int> dis(1, 10);
 std::uniform_int_distribution<int> dis_lytis(0, 1);
 
@@ -43,39 +44,50 @@ void GeneruotiVardus(studentas& S)
 
 }
 
-void GeneruotiFailus(int reserveDydis, std::string& failoPav)
+void GeneruotiFailus(int reserveDydis, std::string& G_Failo_Vieta)
 {
+
 	// Pradedamas skaiciuti laikas
+	int nd_kiekis_gen = nd_kiekis(generuoti);
+
 	auto start = std::chrono::high_resolution_clock::now();
 
-        std::ofstream GFailas (failoPav);
+	std::ofstream GFailas(G_Failo_Vieta);
 
-        if (!GFailas.is_open())
-        {
-            std::cout << "Nepavyko atidaryti failo " << failoPav << std::endl;
-            return;
-        }
-		
-        GFailas << std::setw(20) << "Pavarde" << std::setw(20)  << "Vardas" << std::setw(5) << "ND1" << std::setw(5) << "ND2" << std::setw(5) << "ND3" << std::setw(5) << "ND4" << std::setw(5) << "ND5" << std::setw(5) << "ND6" << std::setw(5) << "ND7" << std::setw(5) << "ND8" << std::setw(5) << "ND9" << std::setw(5) << "ND10" << std::setw(5) << "Egz."  << std::endl;
+	if (!GFailas.is_open())
+	{
+		std::cout << "Nepavyko atidaryti failo " << G_Failo_Vieta << std::endl;
+		return;
+	}
+	//headline spasudinimas
+	GFailas << std::left << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas";
 
-        for (int i = 0; i < reserveDydis; ++i)
-        {
-			GFailas  << std::setw(20) << "Pavarde" << i + 1 << std::setw(20)<< "Vardas" << i + 1;
-			for (int j = 0; j < 10; j++)
-			{
-				GFailas  << std::setw(5)<< dis(generuoti) ;
-			}
-			GFailas << std::setw(5) << dis(generuoti)  ;
-			GFailas << "\n";
-        }
+	for (int i = 0; i < nd_kiekis_gen; i++)
+	{
+		GFailas << std::left << std::setw(7) << "ND" + std::to_string(i + 1);
+	}
 
-        GFailas.close();
-		// Baigia skaiciuoti laika
-		auto end = std::chrono::high_resolution_clock::now();
+	GFailas << std::setw(5) << "Egz." << std::endl;
 
-		//Apskaiciuoja laika
-		auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+	//studentu duomenu spasudiniams
+	for (int i = 0; i < reserveDydis; ++i)
+	{
+		GFailas << std::left << std::setw(20) << "Pavarde" + std::to_string(i + 1) << std::left << std::setw(20) << "Vardas" + std::to_string(i + 1);
+		for (int j = 0; j < nd_kiekis_gen; j++)
+		{
+			GFailas << std::setw(7) << dis(generuoti);
+		}
+		GFailas << std::setw(7) << dis(generuoti);
+		GFailas << "\n";
+	}
 
-		std::cout << "\nFailo kurimas uztruko " << duration.count() << " sek." << std::endl;
+	GFailas.close();
+	// Baigia skaiciuoti laika
+	auto end = std::chrono::high_resolution_clock::now();
+
+	//Apskaiciuoja laika
+	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
+	std::cout << "\nFailo kurimas uztruko " << duration.count() << " sek." << std::endl;
 
 }
