@@ -48,9 +48,9 @@ void GeneruotiFailus(int reserveDydis, std::string& G_Failo_Vieta)
 {
 
 	// Pradedamas skaiciuti laikas
-	int nd_kiekis_gen = nd_kiekis(generuoti);
-
 	auto start = std::chrono::high_resolution_clock::now();
+	
+	int nd_kiekis_gen = nd_kiekis(generuoti);
 
 	std::ofstream GFailas(G_Failo_Vieta);
 
