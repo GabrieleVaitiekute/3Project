@@ -371,7 +371,7 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S, std::vector<studentas>& 
 		if (S[i].ND.size() > 1)
 		{
 			std::sort(S[i].ND.begin(), S[i].ND.end());
-			int pazymiu_kiekis = S[i].ND.size();
+			size_t pazymiu_kiekis = S[i].ND.size();
 
 			if (pazymiu_kiekis % 2 == 0)
 			{
