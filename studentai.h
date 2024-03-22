@@ -1,6 +1,5 @@
 #ifndef STUDENTAI_H
 #define STUDENTAI_H
-#include "Netinkama_Ivestis.h"
 #include <chrono> 
 #include <string>
 #include <vector>
@@ -13,17 +12,16 @@
 #include <filesystem>
 #include <algorithm>
 #include <numeric> 
-
+#include <random> 
 
 struct studentas
 {
     std::string vardas;
     std::string pavarde;
     std::vector<int> ND;
-    int EGZ;
-    double GalutinisV;
-    double GalutinisM;
+    int EGZ = 0;
+    double GalutinisV = 0;
+    double GalutinisM = 0;
 };
-
 
 #endif
