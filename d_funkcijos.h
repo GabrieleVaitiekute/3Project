@@ -21,7 +21,6 @@ void GeneruotiFailus(int reserveDydis, std::string& failoPav);
 void Ivesti_Pazymius(studentas& S);
 void Ivesti_Varda(studentas& S);
 
-
 //// NUSKAITYMAS NUO FAILO
 std::deque<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas, int reserveDydis);
 
