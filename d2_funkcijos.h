@@ -1,7 +1,6 @@
 #ifndef D2_FUNKCIJOS_H
 #define D2_FUNKCIJOS_H
 
-
 /// NETINKAMA IVESTIS
 void Netinkamas_Ivestis(std::string Problema);
 
@@ -21,7 +20,6 @@ void GeneruotiFailus(int reserveDydis, std::string& failoPav);
 void Ivesti_Pazymius(studentas& S);
 void Ivesti_Varda(studentas& S);
 
-
 //// NUSKAITYMAS NUO FAILO
 std::deque<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas, int reserveDydis);
 
@@ -32,4 +30,3 @@ void Apskaiciuoti_Rezultatus(std::deque<studentas>& S, std::deque<studentas>& N)
 void Spausdinti_Rezultatus(const std::deque<studentas>& S, const std::deque<studentas>& N);
 
 #endif 
-
