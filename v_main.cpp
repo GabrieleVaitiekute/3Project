@@ -1,4 +1,4 @@
-﻿#include "Studentai.h"
+#include "v_studentai.h"
 #include "v_funkcijos.h"
 
 char TaipNe;
