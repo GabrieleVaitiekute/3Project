@@ -263,6 +263,19 @@ LENTELĖ SU VISOMIS STRATEGIJOMIS:
 
 Palyginus 1 ir 2 strategijos laikus, buvo nuspręsta 3 strategijai naudoti 2 strategijos kodą. Iš lentelės galime pastebėti, jog nors ir 3 strategija, turėjo gautis geriausiai, taip neįvyko. 2 strategija jau turėjo geriausią įmanoma kodo versiją, kadangi joje jau buvo panaudoti kiti algoritmai. Deja, gavosi taip, jog 3 strategijos kodas pasirodė prasčiausiai.
 
+DIEGIMO INSTRUKCIJA
+1. SUdėkite atitinkimus programų failus į atskirtus aplankalus (v2 failai vienam aplankale, l2 failai kitam, d2 dar kitam)
+2. Atsiverkite terminalą ir norimo projekto aplankalą
+3. Tuomet vykdikite komandas
+   - `mkdir build`
+   - `cd build`
+   - `cmake ..`
+   - `make`
+4. Paleiskite sukurtą vykdomąjį failą su pagrindiniu programos vardu:
+   - `./Vector2` (jei norite paleisti vector failą)
+   - `./List2` (jei norite paleisti list failą)
+   - `./Deque2` (jei norite paleisti deque failą)
+     
 NAUDOJIMOSI INSTRUKCIJA
 
 Pradiniame meniu suteikiami 6 pasirinkimai
