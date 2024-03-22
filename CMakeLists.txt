@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(List2)
+project(Deque2)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -8,15 +8,15 @@ include_directories(include)
 
 # Add your source files
 set(SOURCES 
-    l2_main.cpp
-    l2_funkcijos.cpp
+    d2_main.cpp
+    d2_funkcijos.cpp
 )
 
 # Add header files
 set(HEADERS
-    l2_funkcijos.h
-    l2studentai.h
+    d2_funkcijos.h
+    d2studentai.h
 )
 
 # Create executable
-add_executable(List2 ${SOURCES} ${HEADERS})
+add_executable(Deque2 ${SOURCES} ${HEADERS})
