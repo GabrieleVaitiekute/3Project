@@ -261,7 +261,7 @@ LENTELĖ SU VISOMIS STRATEGIJOMIS:
 
 ![Screenshot 2024-03-22 221511](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6152e8cb-d95f-4cf8-8749-1b037d7fd681)
 
-Iš lentelės galime pastebėti, jog nors ir 3 strategija, turėjo gautis geriausiai, taip neįvyko. 2 strategija jau turėjo geriausią įmanoma kodo versiją, kadangi joje jau buvo panaudoti kiti algoritmai. Deja, gavosi taip, jog 3 strategijos kodas pasirodė prasčiausiai.
+Palyginus 1 ir 2 strategijos laikus, buvo nuspręsta 3 strategijai naudoti 2 strategijos kodą. Iš lentelės galime pastebėti, jog nors ir 3 strategija, turėjo gautis geriausiai, taip neįvyko. 2 strategija jau turėjo geriausią įmanoma kodo versiją, kadangi joje jau buvo panaudoti kiti algoritmai. Deja, gavosi taip, jog 3 strategijos kodas pasirodė prasčiausiai.
 
 NAUDOJIMOSI INSTRUKCIJA
 
