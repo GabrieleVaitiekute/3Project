@@ -29,8 +29,6 @@ Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo �
 
 100000
 
-![Screenshot 2024-04-05 114216](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6e3a1322-fdad-44b4-abcd-fcfb7c4ffb26)
-
 ![Screenshot 2024-04-05 114116](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/e0760376-594b-42aa-a00d-93f0997fdaec)
 
 
