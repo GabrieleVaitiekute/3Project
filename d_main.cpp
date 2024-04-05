@@ -1,4 +1,4 @@
-﻿#include "d_studentai.h"
+#include "d_studentai.h"
 #include "d_funkcijos.h"
 
 char TaipNe;
@@ -78,8 +78,9 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 	}
 
@@ -134,9 +135,9 @@ int main()
 
 
 		} while (TaipNe == 'T');
-
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 	}
 
@@ -199,9 +200,9 @@ int main()
 
 			S.push_back(naujas); // pridedamas studentas i vektoriu
 		}
-
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 	}
 
@@ -222,7 +223,7 @@ int main()
 			if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 4)
 			{
 				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
-			} 
+			}
 			int reserveDydis = 0;
 			// Nuskaitomas pasirinkto failo kelias
 			switch (Failo_Pasirinkimas)
@@ -254,8 +255,9 @@ int main()
 			}
 			// Nuskaitymas duomenų iš pasirinkto failo
 			S = Nuskaityti_Is_Failo(Failo_Vieta, reserveDydis);
-			Apskaiciuoti_Rezultatus(S, N, G);
-			Rusiuoti_Duomenis(N, G);
+			Apskaiciuoti_Rezultatus(S);
+			Rikiuoti_Duomenis(S);
+			Skirstyti_Studentus(S, N, G);
 			Spausdinti_Rezultatus(N, G);
 			break; // Išeiti iš ciklo, kai buna pasirinktas tinkamas failas 
 		}
@@ -329,8 +331,9 @@ int main()
 			S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis);
 		}
 
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 
 	}
