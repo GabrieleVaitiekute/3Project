@@ -92,81 +92,6 @@ void GeneruotiFailus(int reserveDydis, std::string& G_Failo_Vieta)
 
 }
 
-///// DUOMENU RUSIAVIMAS////////
-bool VarduRusiavimas(const studentas& a, const studentas& b)
-{
-	return a.vardas < b.vardas;
-}
-
-bool PavardziuRusiavimas(const studentas& a, const studentas& b)
-{
-	return a.pavarde < b.pavarde;
-}
-
-bool MedianuRusiavimas(const studentas& a, const studentas& b)
-{
-	return a.GalutinisM < b.GalutinisM;
-}
-
-bool VidurkiuRusiavimas(const studentas& a, const studentas& b)
-{
-	return a.GalutinisV < b.GalutinisV;
-}
-
-void Rusiuoti_Duomenis(std::vector<studentas>& N, std::vector<studentas>& G)
-{
-	// Rusiavimo pasirinkimai
-	std::cout << std::endl << "Rusiuoti pagal:\n 1. Varda\n 2. Pavarde\n 3. Galutini bala, apskaiciuota su mediana\n 4. Galutini bala, apskaiciuota su vidurkiu\n Iveskite pasirinkimo numeri: ";
-	int Rusiavimo_Pasirinkimas;
-	while (true)
-	{
-		try
-		{
-			std::cin >> Rusiavimo_Pasirinkimas;
-
-			if (std::cin.fail() || std::cin.peek() != '\n' || Rusiavimo_Pasirinkimas < 1 || Rusiavimo_Pasirinkimas > 4)
-			{
-				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
-			}
-			break;
-		}
-		catch (const std::invalid_argument& rp)
-		{
-			Netinkamas_Ivestis(rp.what());
-
-
-		}
-
-	}
-	// Pradedamas skaiciuoti laikas
-	auto RikiavimoPradzia = std::chrono::high_resolution_clock::now();
-	switch (Rusiavimo_Pasirinkimas)
-	{
-	case 1:
-		std::sort(N.begin(), N.end(), VarduRusiavimas);
-		std::sort(G.begin(), G.end(), VarduRusiavimas);
-		break;
-	case 2:
-		std::sort(N.begin(), N.end(), PavardziuRusiavimas);
-		std::sort(G.begin(), G.end(), PavardziuRusiavimas);
-		break;
-	case 3:
-		std::sort(N.begin(), N.end(), MedianuRusiavimas);
-		std::sort(G.begin(), G.end(), MedianuRusiavimas);
-		break;
-	case 4:
-		std::sort(N.begin(), N.end(), VidurkiuRusiavimas);
-		std::sort(G.begin(), G.end(), VidurkiuRusiavimas);
-		break;
-	}
-	// Baigia skaiciuoti laika
-	auto RikiavimoPabaiga = std::chrono::high_resolution_clock::now();
-
-	//Apskaiciuoja laika
-	auto Rikiavimotrukme = std::chrono::duration_cast<std::chrono::duration<double>>(RikiavimoPabaiga - RikiavimoPradzia);
-
-	std::cout << "\nRusiavimas didejancia tvarka uztruko " << Rikiavimotrukme.count() << " sek." << std::endl;
-}
 
 ///////// IVEDIMAS //////////////////
 char TaipNePaz;
@@ -332,8 +257,124 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 	return S;
 }
 
-///////// REZULTATU APSKAICIAVIMAS IR SUSKIRSTYMAS I GRUOES //////////
-void Apskaiciuoti_Rezultatus(std::vector<studentas>& S, std::vector<studentas>& N, std::vector<studentas>& G)
+///////// REZULTATU APSKAICIAVIMAS //////////
+void Apskaiciuoti_Rezultatus(std::vector<studentas>& S)
+{
+
+	for (auto& student : S)
+	{
+		// pagal vidurki
+		double suma = std::accumulate(student.ND.begin(), student.ND.end(), 0.0);
+		student.GalutinisV = 0.4 * suma / student.ND.size() + 0.6 * student.EGZ;
+
+		// pagal mediana
+		if (student.ND.size() == 1)
+		{
+			student.GalutinisM = 0.4 * student.ND[0] + 0.6 * student.EGZ;
+		}
+
+		else if (student.ND.size() > 1)
+		{
+
+			std::sort(student.ND.begin(), student.ND.end());
+			size_t pazymiu_kiekis = student.ND.size();
+
+			if (pazymiu_kiekis % 2 == 0)
+			{
+				int mediana1 = student.ND[pazymiu_kiekis / 2 - 1];
+				int mediana2 = student.ND[pazymiu_kiekis / 2];
+				double mediana = (mediana1 + mediana2) * 0.5;
+				student.GalutinisM = 0.4 * mediana + 0.6 * student.EGZ;
+			}
+			else
+			{
+				int mediana = student.ND[pazymiu_kiekis / 2];
+				student.GalutinisM = 0.4 * mediana + 0.6 * student.EGZ;
+			}
+		}
+
+	}
+
+}
+
+///// DUOMENU RUSIAVIMAS////////
+bool VarduRikiavimas(const studentas& a, const studentas& b)
+{
+	return a.vardas < b.vardas;
+}
+
+bool PavardziuRikiavimas(const studentas& a, const studentas& b)
+{
+	return a.pavarde < b.pavarde;
+}
+
+bool MedianuRikiavimas(const studentas& a, const studentas& b)
+{
+	return a.GalutinisM < b.GalutinisM;
+}
+
+bool VidurkiuRikiavimas(const studentas& a, const studentas& b)
+{
+	return a.GalutinisV < b.GalutinisV;
+}
+
+void Rikiuoti_Duomenis(std::vector<studentas>& S)
+{
+	// Rusiavimo pasirinkimai
+	std::cout << std::endl << "Rikiuoti pagal:\n 1. Varda\n 2. Pavarde\n 3. Galutini bala, apskaiciuota su mediana\n 4. Galutini bala, apskaiciuota su vidurkiu\n Iveskite pasirinkimo numeri: ";
+	int Rusiavimo_Pasirinkimas;
+	while (true)
+	{
+		try
+		{
+			std::cin >> Rusiavimo_Pasirinkimas;
+
+			if (std::cin.fail() || std::cin.peek() != '\n' || Rusiavimo_Pasirinkimas < 1 || Rusiavimo_Pasirinkimas > 4)
+			{
+				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
+			}
+			break;
+		}
+		catch (const std::invalid_argument& rp)
+		{
+			Netinkamas_Ivestis(rp.what());
+
+
+		}
+
+	}
+	// Pradedamas skaiciuoti laikas
+	auto RikiavimoPradzia = std::chrono::high_resolution_clock::now();
+	switch (Rusiavimo_Pasirinkimas)
+	{
+	case 1:
+		std::sort(S.begin(), S.end(), VarduRikiavimas);
+
+		break;
+	case 2:
+		std::sort(S.begin(), S.end(), PavardziuRikiavimas);
+
+		break;
+	case 3:
+		std::sort(S.begin(), S.end(), MedianuRikiavimas);
+
+		break;
+	case 4:
+		std::sort(S.begin(), S.end(), VidurkiuRikiavimas);
+
+		break;
+	}
+	// Baigia skaiciuoti laika
+	auto RikiavimoPabaiga = std::chrono::high_resolution_clock::now();
+
+	//Apskaiciuoja laika
+	auto Rikiavimotrukme = std::chrono::duration_cast<std::chrono::duration<double>>(RikiavimoPabaiga - RikiavimoPradzia);
+
+	std::cout << "\nRikiavimas didejancia tvarka pagal pasirinkta kriteriju uztruko " << Rikiavimotrukme.count() << " sek." << std::endl;
+}
+
+//// STUDENTU SKIRSTYMAS I GRUPES 
+void Skirstyti_Studentus(std::vector<studentas>& S, std::vector<studentas>& N, std::vector<studentas>& G)
 {
 	std::cout << "\nAr norite studentus surusiuoti pagal mediana ar vidurki? M jei mediana, V jei vidurki: ";
 	char RusiavimoPasirinkimas;
@@ -356,63 +397,23 @@ void Apskaiciuoti_Rezultatus(std::vector<studentas>& S, std::vector<studentas>& 
 	// Pradedamas skaiciuti laikas
 	auto RusavimoPradzia = std::chrono::high_resolution_clock::now();
 
-	for (int i = 0; i < S.size(); i++)
+	for (auto& studentas : S)
 	{
-		//apskaiciuojama su vidurkiu
-		double suma = std::accumulate(S[i].ND.begin(), S[i].ND.end(), 0);
-
-		S[i].GalutinisV = 0.4 * suma / S[i].ND.size() + 0.6 * S[i].EGZ;
-
-		//apskaiciuojama su mediana
-		if (S[i].ND.size() == 1)
-		{
-			S[i].GalutinisM = 0.4 * S[i].ND[0] + 0.6 * S[i].EGZ;
-		}
-		if (S[i].ND.size() > 1)
-		{
-			std::sort(S[i].ND.begin(), S[i].ND.end());
-			int pazymiu_kiekis = S[i].ND.size();
-
-			if (pazymiu_kiekis % 2 == 0)
-			{
-				int mediana1 = S[i].ND[pazymiu_kiekis / 2 - 1];
-				int mediana2 = S[i].ND[pazymiu_kiekis / 2];
-				double mediana = (mediana1 + mediana2) * 1.0 / 2.0;
-				S[i].GalutinisM = 0.4 * mediana + 0.6 * S[i].EGZ;
-			}
-			if (pazymiu_kiekis % 2 != 0)
-			{
-				int mediana = S[i].ND[pazymiu_kiekis / 2];
-				S[i].GalutinisM = 0.4 * mediana + 0.6 * S[i].EGZ;
-			}
-		}
-
 
 		if (RusiavimoPasirinkimas == 'V')
 		{
-
-			if (S[i].GalutinisV < 5)
-			{
-				N.push_back(S[i]);
-			}
+			if (studentas.GalutinisV < 5)
+				N.push_back(studentas);
 			else
-			{
-				G.push_back(S[i]);
-			}
+				G.push_back(studentas);
 		}
-		if (RusiavimoPasirinkimas == 'M')
+		else if (RusiavimoPasirinkimas == 'M')
 		{
-
-			if (S[i].GalutinisM < 5)
-			{
-				N.push_back(S[i]);
-			}
+			if (studentas.GalutinisM < 5)
+				N.push_back(studentas);
 			else
-			{
-				G.push_back(S[i]);
-			}
+				G.push_back(studentas);
 		}
-
 	}
 
 	// Baigia skaiciuoti laika
@@ -465,4 +466,3 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 
 	std::cout << std::endl << "Rezultatai atspausdinti" << std::endl;
 }
-
