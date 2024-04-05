@@ -1,6 +1,6 @@
 # FirstProject
-Trys programos(vector, list, deque) su meniu skirtingos programos eigos pasirinkimui:
-1 - ranką,
+Trys programos(vector, list, deque, visos su 02 optimizacija) su meniu skirtingos programos eigos pasirinkimui:
+1 - ranka suvesti visą informaciją,
 2 - generuoti pažymius,
 3 - generuoti ir pažymius ir studentų vardus, pavardes,
 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 
@@ -15,103 +15,120 @@ Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedant informac
 
 Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo į dvi grupes trukmes. Naudojant trukmes atliekama programų analizė.
 
-VECTOR 
+1. VECTOR 
 
 1000
 
-![Screenshot 2024-03-22 161737](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/9d45f74d-b6b6-4d7b-bd74-53165046aec2)
+![Screenshot 2024-04-05 113934](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/de97974f-b575-419c-8c20-51d066ba5597)
 
-![Screenshot 2024-03-22 161731](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/d381b7b6-7b5e-4ec9-8993-7173255ea282)
+![Screenshot 2024-04-05 113930](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/7e5c8c00-0896-4308-93f9-f53b6e550316)
+
 
 10000 
 
-![Screenshot 2024-03-22 161855](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/9eb07c8c-2685-4d0d-8a05-01551a26cff1)
+![Screenshot 2024-04-05 114100](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/259a9743-fcaa-4f18-a59d-c7ca6c557cc7)
 
-![Screenshot 2024-03-22 161850](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/3286a51c-58a3-47db-942a-3409ec02d16d)
+![Screenshot 2024-04-05 114029](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/905058cb-f835-4b7d-a07b-34e0abf53ef3)
+
 
 100000
 
-![Screenshot 2024-03-22 161954](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ae822bee-154d-40e5-b8c6-4fd807b60f80)
+![Screenshot 2024-04-05 114216](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6e3a1322-fdad-44b4-abcd-fcfb7c4ffb26)
 
-![Screenshot 2024-03-22 161950](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/a0a13899-8b8d-440f-91af-0d8daac6b20f)
+![Screenshot 2024-04-05 114116](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/e0760376-594b-42aa-a00d-93f0997fdaec)
+
 
 1000000
 
-![Screenshot 2024-03-22 162056](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/46971dc5-c8a3-448f-b05e-ac2f1f06df0d)
+![Screenshot 2024-04-05 114314](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/a4238a2d-9379-48aa-8d5f-0e2db202f4a6)
 
-![Screenshot 2024-03-22 162052](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/fb1ef672-9888-4f69-a8a5-fe5e0181b722)
+![Screenshot 2024-04-05 114242](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/cc026316-e36e-4e0d-8c48-a2081c912c52)
+
 
 10000000
-![Screenshot 2024-03-22 162319](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6a118b19-6ba9-4e6f-8ee3-1a78c16c36d7)
 
-![Screenshot 2024-03-22 162311](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c7243d48-9dee-4724-8770-4b21fddde08f)
+![Screenshot 2024-04-05 114618](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ef92b589-8b2e-47ab-ab67-b413f76c0b56)
 
-LIST
+![Screenshot 2024-04-05 114540](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/01d1b49c-b687-4952-8e41-4ea12ad81be9)
+
+
+2. LIST
 
 1000
 
-![Screenshot 2024-03-22 162611](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5446ccab-bdce-4440-a932-a2ecbfc09a94)
+![Screenshot 2024-04-05 145113](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/d046bda3-31cc-459c-b8b0-efd57362508b)
 
-![Screenshot 2024-03-22 162604](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/1297151b-726f-4493-8e68-885626a47f93)
+![Screenshot 2024-04-05 145025](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/3093b6e5-a506-479a-971b-0990bdacc2f2)
+
 
 10000 
 
-![Screenshot 2024-03-22 162720](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ddd69148-8db3-43ae-a2fe-3d00e4c79c67)
+![Screenshot 2024-04-05 145158](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/9361ff64-c14f-4342-a1b7-33b9647a7a7a)
 
-![Screenshot 2024-03-22 162714](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/b8666491-85b0-489b-bdfa-384a0903556b)
+![Screenshot 2024-04-05 145152](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c09ec849-907c-43d2-8e3f-c0378070885d)
+
 
 100000
 
-![Screenshot 2024-03-22 162803](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/353bc54e-4b21-4cba-b4ca-f01a18c61831)
+![Screenshot 2024-04-05 145324](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/113391fb-c7d1-4c5a-a9dc-f7c947a17c96)
 
-![Screenshot 2024-03-22 162808](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/51eb2c7a-b214-4659-a252-f5ec3ba081b0)
+![Screenshot 2024-04-05 145319](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/7fa5c399-8ea1-4729-aafe-d3c5e703e14e)
+
 
 1000000
 
-![Screenshot 2024-03-22 162904](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/95439dbc-b067-4e36-85a3-d07d9000af53)
+![Screenshot 2024-04-05 145441](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/a0ab8a35-830b-4644-800c-c026f981c65e)
 
-![Screenshot 2024-03-22 162859](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/4ae7fc34-38a9-42b5-8354-2a9a2da7348a)
+![Screenshot 2024-04-05 145434](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/b827f687-40bc-439f-a355-02ff3a90291f)
+
 
 10000000
 
-![Screenshot 2024-03-22 163232](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/db67e91b-7169-49c1-bfbc-7c7918277290)
+![Screenshot 2024-04-05 150621](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/4949380c-101e-4e5a-bb37-2d911c1f94a6)
 
-![Screenshot 2024-03-22 163228](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ed815594-5a6d-47e2-bb23-c83ec7b049ca)
+![Screenshot 2024-04-05 150539](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5bca8593-83fb-47f5-8aa9-7cc85b8f2754)
 
-DEQUE
+
+3. DEQUE
 
 1000
 
-![Screenshot 2024-03-22 164121](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/eec03ca6-4b4e-4e64-95ec-f151acb35e1f)
+![Screenshot 2024-04-05 150912](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/33c99ddb-fa39-409e-9597-8aa5d4a11196)
 
-![Screenshot 2024-03-22 164116](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5c449eab-ce19-46fd-8583-67e686ba99fa)
+![Screenshot 2024-04-05 150908](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c002ae2e-00d9-4888-b81a-a937e5e94b3a)
+
 
 10000 
 
-![Screenshot 2024-03-22 164204](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/87671611-9397-458c-8d8a-1f71a883d2aa)
+![Screenshot 2024-04-05 151038](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/8f128ead-9253-4377-a453-d838a31b7be6)
 
-![Screenshot 2024-03-22 164159](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/638cfc68-5750-4390-a324-e2d2fdc8aabc)
+![Screenshot 2024-04-05 151031](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/71ab2c8c-36e6-4c64-8609-3aed00333775)
+
 
 100000
 
-![Screenshot 2024-03-22 164251](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/a950b8f3-5beb-44c4-bc95-37bc54db72de)
+![Screenshot 2024-04-05 151142](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ca1c4706-bdaf-4ed7-896b-5bd21292d6d6)
 
-![Screenshot 2024-03-22 164247](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/9a04e85c-8c21-4f3a-b037-81e352b63334)
+![Screenshot 2024-04-05 151136](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/0b8bdd1b-9b68-4a06-a08d-def0af0a0d29)
+
 
 1000000
 
-![Screenshot 2024-03-22 164425](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/d47363ff-1115-48c0-9512-43f67df7a814)
+![Screenshot 2024-04-05 151258](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/f91ef4a2-25f2-40eb-90f1-d6f721ccaffb)
 
-![Screenshot 2024-03-22 164420](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/8f0626f4-528c-48dc-a394-1afafc5dc08e)
+![Screenshot 2024-04-05 151253](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/272d2d8e-4b92-494d-9803-1f6f7af1ae30)
+
 
 10000000
 
-![Screenshot 2024-03-22 164654](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/f07f7a6a-d5ff-43d6-9064-be3744162ced)
+![Screenshot 2024-04-05 151751](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/71495f86-f636-4364-bbda-07bda8ba50b0)
 
-![Screenshot 2024-03-22 164649](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c5efae47-caac-4bf1-bc68-fef159d27e91)
+![Screenshot 2024-04-05 151732](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/58e4e6d1-be57-476b-b5b1-147fa94a7866)
+
 
 Lentelė su kelių laikų vidurkiais:
 
-![Screenshot 2024-03-22 171210](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6fea3b33-05e6-4acf-ab43-6114d5d61f02)
+![Screenshot 2024-04-05 153151](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/d3e818ab-a466-4e43-a1f5-f55a99f0e024)
 
-Iš pateiktų duomenų galima nuspręsti, jog greičiausiai programa veikia su vector, na o lėčiausiai su list.
+
+Iš pateiktų duomenų galima nuspręsti, jog greičiausiai programa veikia su vector, o lėčiausiai su list.
