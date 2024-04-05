@@ -31,5 +31,5 @@ void Rikiuoti_Duomenis(std::deque<studentas>& S);
 void Skirstyti_Studentus(std::deque<studentas>& S, std::deque<studentas>& N, std::deque<studentas>& G);
 
 //// SPAUSDINIMAS
-void Spausdinti_Rezultatus(const std::deque<studentas>& S, const std::deque<studentas>& N, const std::deque<studentas>& G);
+void Spausdinti_Rezultatus(const std::deque<studentas>& N, const std::deque<studentas>& G);
 #endif 
