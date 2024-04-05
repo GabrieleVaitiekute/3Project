@@ -413,7 +413,7 @@ void Skirstyti_Studentus(std::deque<studentas>& S, std::deque<studentas>& N, std
 }
 
 //// SPAUSDINIMAS
-void Spausdinti_Rezultatus(const std::deque<studentas>& S, const std::deque<studentas>& N, const std::deque<studentas>& G)
+void Spausdinti_Rezultatus(const std::deque<studentas>& N, const std::deque<studentas>& G)
 {
 	std::ofstream Galvociu_failas("Galvociai.txt");
 	if (!Galvociu_failas.is_open())
