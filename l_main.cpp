@@ -1,4 +1,4 @@
-﻿#include "l_studentai.h"
+#include "l_studentai.h"
 #include "l_funkcijos.h"
 
 char TaipNe;
@@ -78,8 +78,9 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 	}
 
@@ -135,8 +136,9 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 	}
 
@@ -200,8 +202,9 @@ int main()
 			S.push_back(naujas); // pridedamas studentas i vektoriu
 		}
 
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 	}
 
@@ -254,8 +257,9 @@ int main()
 			}
 			// Nuskaitymas duomenų iš pasirinkto failo
 			S = Nuskaityti_Is_Failo(Failo_Vieta, reserveDydis);
-			Apskaiciuoti_Rezultatus(S, N, G);
-			Rusiuoti_Duomenis(N, G);
+			Apskaiciuoti_Rezultatus(S);
+			Rikiuoti_Duomenis(S);
+			Skirstyti_Studentus(S, N, G);
 			Spausdinti_Rezultatus(N, G);
 			break; // Išeiti iš ciklo, kai buna pasirinktas tinkamas failas 
 		}
@@ -329,8 +333,9 @@ int main()
 			S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis);
 		}
 
-		Apskaiciuoti_Rezultatus(S, N, G);
-		Rusiuoti_Duomenis(N, G);
+		Apskaiciuoti_Rezultatus(S);
+		Rikiuoti_Duomenis(S);
+		Skirstyti_Studentus(S, N, G);
 		Spausdinti_Rezultatus(N, G);
 
 	}
