@@ -264,21 +264,17 @@ LENTELĖ SU VISOMIS STRATEGIJOMIS:
 ![Screenshot 2024-04-12 183342](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/e2f80b55-6d2b-4aad-882c-e911a95adaae)
 
 
-Palyginus 1 ir 2 strategijos laikus, buvo nuspręsta 3 strategijai naudoti 2 strategijos kodą. Iš lentelės galime pastebėti, jog nors ir 3 strategija, turėjo gautis geriausiai, taip neįvyko. 2 strategija jau turėjo geriausią įmanoma kodo versiją, kadangi joje jau buvo panaudoti kiti algoritmai. Deja, gavosi taip, jog 3 strategijos kodas pasirodė prasčiausiai.
+Palyginus 1 ir 2 strategijos laikus, buvo nuspręsta 3 strategijai naudoti 2 strategijos kodą. Iš lentelės galime pastebėti, jog nors ir 3 strategija geriausiai susitvarkė su mažesnio dydžio failais, o antra su didesniais.
+Pirma strategija geriausiai veikia su vector, o antra ir trečia su deque.
 
 DIEGIMO INSTRUKCIJA
-1. SUdėkite atitinkimus programų failus į atskirtus aplankalus (vector failai vienam aplankale, list failai kitam, deque dar kitam)
-2. Atsiverkite terminalą ir norimo projekto aplankalą
-3. Tuomet vykdikite komandas
-   - `mkdir build`
-   - `cd build`
-   - `cmake ..`
-   - `make`
-4. Paleiskite sukurtą vykdomąjį failą su pagrindiniu programos vardu:
-   - `./vector` (jei norite paleisti vector failą)
-   - `./list` (jei norite paleisti list failą)
-   - `./deque` (jei norite paleisti deque failą)
-     
+1. Atsisiųskite ir įdiekite „Visual Studio“ ir programos failus;
+2. Atidarykite „Visual Studio“, spauskite „Continue without code“;
+3. Eikite į „File“ > „Open“  > „CMake...“ ir raskite parsisiūstų failų aplankalą, jį atsidarę pasirinkite „CMakeLists.txt“;
+4. Atidarius projektą, „Visual Studio“ sugeneruos būtinus projekto failus pagal „CMakeLists.txt“;
+5. Sukompiliuokite projektą;
+6. Pasirinkite norimo konteinerio failą ir paleiskite programą.
+   
 NAUDOJIMOSI INSTRUKCIJA
 
 Pradiniame meniu suteikiami 6 pasirinkimai
