@@ -1,5 +1,5 @@
 # 2Project
-Trys programos(vector) su meniu skirtingos programos eigos pasirinkimui:
+Programa (vector) su meniu skirtingos programos eigos pasirinkimui:
 1 - ranka suvesti viską,
 2 - generuoti tik pažymius,
 3 - generuoti ir pažymius ir studentų vardus, pavardes,
