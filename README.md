@@ -127,139 +127,137 @@ VECTOR
 
 1000
 
-![Screenshot 2024-03-22 182806](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/e5d72569-ed58-45a1-94d4-00e742810208)
+![Screenshot 2024-04-05 183007](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ffcb96e1-8272-4272-bb7a-4cab0e06f3ad)
 
 10000
 
-![Screenshot 2024-03-22 182836](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/660f4331-1686-4758-836f-ac29fb59dd3d)
+![Screenshot 2024-04-05 183053](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/fcf8414e-feb9-45a1-99c8-618d7c98fb6c)
 
 100000
 
-![Screenshot 2024-03-22 182909](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ecd5c530-a86e-4df7-8f59-f6d4b6a5bb28)
+![Screenshot 2024-04-05 183217](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/48d7677f-0f41-412e-8654-aae50585aee5)
 
-1000000
+1000000 ir 10000000 per ilgai užtruko skirstymas, todėl nuotraukų nėra.
 
-![Screenshot 2024-03-22 183026](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/244d3282-4ca5-48a3-8251-30940d67c101)
-
-10000000
-
-![Screenshot 2024-03-22 183217](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/8b81232a-ad5e-4791-b04f-33362b0ced6f)
 
 LIST
 
 1000
 
-![Screenshot 2024-03-22 184518](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/808b570c-ba6d-4c97-ab93-c50c4fb88661)
+![Screenshot 2024-04-11 201537](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/cae51733-2fd9-4343-9378-9a5c113b18d6)
+
 
 10000
 
-![Screenshot 2024-03-22 184552](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/1e329ee8-c89f-4444-ac73-1da6a2c044d8)
+![Screenshot 2024-04-11 201558](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/8be583a0-c85e-44a3-a6a1-39ad23d74289)
+
 
 100000
 
-![Screenshot 2024-03-22 184620](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/f599f551-7568-46d7-9a26-fb6303bf72ee)
+![Screenshot 2024-04-11 201716](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/2caac92f-bf29-4107-942d-97f1e72f81a7)
+
 
 1000000
 
-![Screenshot 2024-03-22 184653](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/973c055c-3103-40e9-8eba-2fd0c01a5b1d)
+![Screenshot 2024-04-11 201809](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/47567595-944a-400b-827d-f4692bd427c7)
+
 
 10000000
 
-![Screenshot 2024-03-22 184902](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/b338ed34-0278-43ef-9235-fabb3896d9b7)
+![Screenshot 2024-04-11 202358](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/06fb558a-d96d-403f-9b6b-1831cb82229d)
+
 
 DEQUE
 
 1000
 
-![Screenshot 2024-03-22 185332](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/3151c882-ff44-4d16-a8a5-61245b2d7037)
+![Screenshot 2024-04-11 203210](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c6d2382c-dcdf-457f-86e8-6f08bc0ce3c0)
 
 10000
 
-![Screenshot 2024-03-22 185400](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/f0fa8052-2f12-4d2b-8d0a-7fc1f6fdb8f9)
+![Screenshot 2024-04-11 203258](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/2719735a-db5e-4f1b-bea7-5e281e828f2a)
 
 100000
 
-![Screenshot 2024-03-22 185432](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/cdfb664c-3c8e-4f16-8ed1-51f4815dfb98)
+![Screenshot 2024-04-11 203331](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5e248823-6dd9-4c3a-9b54-51b09dbc106c)
 
 1000000
 
-![Screenshot 2024-03-22 185521](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/b73ff755-c848-4ec8-8abd-9c7ac6f2d588)
+![Screenshot 2024-04-11 203506](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/d1111bb2-ce9f-43a6-ba9e-21f14ff6cec0)
 
 10000000
 
-![Screenshot 2024-03-22 185723](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/451724e4-2f0f-473f-8b6a-acb8bf13a240)
+![Screenshot 2024-04-11 203850](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c4b10074-926e-44aa-bd35-7d3d0ef0ffc7)
 
-3 STRATEGJA
-Panaudota std::partition (bandyti keli variantai, std::partition paskutinis bandymas tobulitni kodą)
+
+3 STRATEGJA (Panaudota std::remove_if )
+
 VECTOR
 
 1000
 
-![Screenshot 2024-03-22 212842](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/f1fb5202-05f6-48a7-bb00-943e9b0616f6)
+![Screenshot 2024-04-12 172800](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/8c24b027-3fd0-48d8-b19e-cf8dde424156)
 
 10000
 
-![Screenshot 2024-03-22 212956](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/70a1fd2e-4b54-41c5-ad48-752743e100a9)
+![Screenshot 2024-04-12 172920](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/a602ef85-3abf-42f1-b737-5e881f4e5b00)
 
 100000
 
-![Screenshot 2024-03-22 213106](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/91deecc3-84ba-4dcc-8911-96980653e7c1)
+![Screenshot 2024-04-12 172937](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c7257e53-20d2-4bc2-9656-269ba069889c)
 
 1000000
 
-![Screenshot 2024-03-22 213158](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/cecaa266-a4fa-454a-ab76-c6da461ae866)
+![Screenshot 2024-04-12 173124](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/aabbba2d-8add-46c6-859d-e2912c5a5cdb)
 
 10000000
 
-![Screenshot 2024-03-22 214509](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/fc1f4354-bb4d-469e-94c5-d5678cc383f0)
+![Screenshot 2024-04-12 173534](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5517f349-79e7-4c28-a305-783f72aaed42)
+
 
 LIST
 
 1000
 
-![Screenshot 2024-03-22 215515](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/9ccce5d4-e4e7-4fb4-a410-b5e9b1ad8ee2)
+
 
 10000
 
-![Screenshot 2024-03-22 215553](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/aeb0805d-b55c-4632-901d-bb2ba2bc8be0)
+
 
 100000
 
-![Screenshot 2024-03-22 215625](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/227b1212-3a89-4078-be4c-462d27fe0792)
+
 
 1000000
 
-![Screenshot 2024-03-22 215704](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/dfcb42d0-6818-4e51-9d8f-42ff19af56de)
+
 
 10000000
 
-![Screenshot 2024-03-22 220013](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/2643b827-0b48-4060-88a3-d00674ff3e73)
 
 DEQUE
 
 1000
 
-![Screenshot 2024-03-22 220430](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/408aa52e-ef27-425c-abb5-2abf40565267)
+
 
 10000
 
-![Screenshot 2024-03-22 220508](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/661bddae-5efb-4639-bc8b-ade1a5491131)
+
 
 100000
 
-![Screenshot 2024-03-22 220547](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/b7bdad1e-99ba-4c41-98c4-bba573204909)
+
 
 1000000
 
-![Screenshot 2024-03-22 220630](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6bf14e33-fc5a-4d69-8210-f260e8cf822f)
+
 
 10000000
 
-![Screenshot 2024-03-22 220908](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/fc0aa77e-70d5-41e0-838a-0fdad207dbdc)
-
 LENTELĖ SU VISOMIS STRATEGIJOMIS:
 
-![Screenshot 2024-03-22 221511](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6152e8cb-d95f-4cf8-8749-1b037d7fd681)
 
 Palyginus 1 ir 2 strategijos laikus, buvo nuspręsta 3 strategijai naudoti 2 strategijos kodą. Iš lentelės galime pastebėti, jog nors ir 3 strategija, turėjo gautis geriausiai, taip neįvyko. 2 strategija jau turėjo geriausią įmanoma kodo versiją, kadangi joje jau buvo panaudoti kiti algoritmai. Deja, gavosi taip, jog 3 strategijos kodas pasirodė prasčiausiai.
 
