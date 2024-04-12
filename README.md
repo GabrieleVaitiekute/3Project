@@ -219,22 +219,23 @@ LIST
 
 1000
 
-
+![Screenshot 2024-04-12 175458](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/39cca0b3-bf15-4caa-ae09-6cabca45bf5a)
 
 10000
 
-
+![Screenshot 2024-04-12 175649](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/fa0aae13-5c88-403d-9b7c-b62578e1b695)
 
 100000
 
-
+![Screenshot 2024-04-12 175737](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/37ed850c-90bd-463c-83a7-7c6ed7c58b90)
 
 1000000
 
-
+![Screenshot 2024-04-12 175858](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/c5814e60-fdc7-410f-bf61-2d37609098c4)
 
 10000000
 
+![Screenshot 2024-04-12 180945](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/1b2fb9f0-b208-423f-a6f2-a6b1af08d39b)
 
 DEQUE
 
