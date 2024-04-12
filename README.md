@@ -275,8 +275,9 @@ DIEGIMO INSTRUKCIJA
 5. Sukompiliuokite projektą;
 6. Pasirinkite norimo konteinerio failą ir paleiskite programą.
    
-   ![Screenshot 2024-04-12 193354](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6813cc4b-c079-4e65-b90d-083d84495151)
+   ![Screenshot 2024-04-12 194007](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/460537df-6576-4bc0-9b75-ea3dd8edd411)
 
+ 
 NAUDOJIMOSI INSTRUKCIJA
 
 Pradiniame meniu suteikiami 6 pasirinkimai
@@ -286,6 +287,8 @@ Pradiniame meniu suteikiami 6 pasirinkimai
 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 
 5 - sugeneruoti failus (5 dydžių pasirinkimai), 
 6 - baigti darbą.
+
+Vėliau leidžiama pasirinkti strategiją (1, 2, 3)
 
 Pasirinkus 1 būdą suteikiama galimybė įvesti studento vardą ir pavardę, vėliau pažymius. Po kiekvieno pažymio yra galimmybė pasirinkti, ar norima įvesti dar viena pažymį (įvesti T jei taip, N jei ne). Baigus įvesti pažymius galima įvesti egzamino balą. Tuomet duodama galimybė pasirinkti, ar norima įvesti dar vieną studentą  (įvesti T jei taip, N jei ne). Baigus studentų įvedimą duodamas pasirinkimas pasirinkti studentų grupavimą pagal galutinį balą, apskaičiuotą su pažymių mediana arba vidurkiu, vėliau leidžiama pasirinkti rikiavimą pagal vardą, pavardę, galutini balą, apskaičiuotą su mediana arba vidurkiu. Rezultatus galima rasti "Galvociai.txt" ir "Nepazangus.txt" failuose.
 
