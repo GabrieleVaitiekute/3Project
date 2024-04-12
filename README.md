@@ -241,29 +241,33 @@ DEQUE
 
 1000
 
-
+![Screenshot 2024-04-12 182103](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/eff4b9b3-0330-4a53-b311-0100770915e4)
 
 10000
 
-
+![Screenshot 2024-04-12 182259](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/ad90ec40-345f-463b-98d3-fc8f1cfac625)
 
 100000
 
-
+![Screenshot 2024-04-12 182356](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/4ee11bd6-7683-440b-935a-5dc8cd848dff)
 
 1000000
 
-
+![Screenshot 2024-04-12 182714](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/5c1fa68e-df33-4a07-bf65-f9b194bbbb97)
 
 10000000
 
+![Screenshot 2024-04-12 183129](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/fa575a5e-3fdb-41c4-8a34-2b1728ad0384)
+
 LENTELĖ SU VISOMIS STRATEGIJOMIS:
+
+![Screenshot 2024-04-12 183342](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/e2f80b55-6d2b-4aad-882c-e911a95adaae)
 
 
 Palyginus 1 ir 2 strategijos laikus, buvo nuspręsta 3 strategijai naudoti 2 strategijos kodą. Iš lentelės galime pastebėti, jog nors ir 3 strategija, turėjo gautis geriausiai, taip neįvyko. 2 strategija jau turėjo geriausią įmanoma kodo versiją, kadangi joje jau buvo panaudoti kiti algoritmai. Deja, gavosi taip, jog 3 strategijos kodas pasirodė prasčiausiai.
 
 DIEGIMO INSTRUKCIJA
-1. SUdėkite atitinkimus programų failus į atskirtus aplankalus (v2 failai vienam aplankale, l2 failai kitam, d2 dar kitam)
+1. SUdėkite atitinkimus programų failus į atskirtus aplankalus (vector failai vienam aplankale, list failai kitam, deque dar kitam)
 2. Atsiverkite terminalą ir norimo projekto aplankalą
 3. Tuomet vykdikite komandas
    - `mkdir build`
@@ -271,9 +275,9 @@ DIEGIMO INSTRUKCIJA
    - `cmake ..`
    - `make`
 4. Paleiskite sukurtą vykdomąjį failą su pagrindiniu programos vardu:
-   - `./Vector2` (jei norite paleisti vector failą)
-   - `./List2` (jei norite paleisti list failą)
-   - `./Deque2` (jei norite paleisti deque failą)
+   - `./vector` (jei norite paleisti vector failą)
+   - `./list` (jei norite paleisti list failą)
+   - `./deque` (jei norite paleisti deque failą)
      
 NAUDOJIMOSI INSTRUKCIJA
 
