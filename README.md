@@ -275,6 +275,8 @@ DIEGIMO INSTRUKCIJA
 5. Sukompiliuokite projektą;
 6. Pasirinkite norimo konteinerio failą ir paleiskite programą.
    
+   ![Screenshot 2024-04-12 193354](https://github.com/GabrieleVaitiekute/FirstProject/assets/147078486/6813cc4b-c079-4e65-b90d-083d84495151)
+
 NAUDOJIMOSI INSTRUKCIJA
 
 Pradiniame meniu suteikiami 6 pasirinkimai
