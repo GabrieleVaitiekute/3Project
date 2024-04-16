@@ -23,9 +23,25 @@ Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo �
 
 ![Screenshot 2024-04-16 174018](https://github.com/GabrieleVaitiekute/2Project/assets/147078486/65d9cf19-79e6-4b6c-9b68-42ff0ced86a1)
 
+Iš šių lentelių galima teigti, jog greičiausiai programa veikia naudojant class bei 03 optimizatprių.
+
+DIEGIMO INSTRUKCIJA
+
+1. Atsisiųskite ir įdiekite „Visual Studio“ ir „CMake“ bei šios programos failus;
+
+2. Atsivėrę terminalą su komanda cd nueikite į šios programos failų folderį;
+
+3. Į terminalą įveskite mkdir build;
+   
+5. Į terminalą įveskite  cd build;
+
+6. Į terminalą įveskite cmake -G "Visual Studio 17 2022" .. ( metai priklauso nuo jūsų VS versijos)
+
+7. Atsivėrus Visual Studio paleiskite programą.
+
 NAUDOJIMOSI INSTRUKCIJA
 
-Pradiniame meniu suteikiami 6 pasirinkimai 1 - ranka suvesti visus studentų duomenis, 2 - generuoti pažymius ir suvesti vardus bei pavardes, 3 - generuoti ir pažymius, ir studentų vardus, pavardes, 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 5 - sugeneruoti failus (5 dydžių pasirinkimai), 6 - baigti darbą.
+Paleidus programą pradiniame meniu suteikiami 6 pasirinkimai 1 - ranka suvesti visus studentų duomenis, 2 - generuoti pažymius ir suvesti vardus bei pavardes, 3 - generuoti ir pažymius, ir studentų vardus, pavardes, 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 5 - sugeneruoti failus (5 dydžių pasirinkimai), 6 - baigti darbą.
 
 Vėliau leidžiama pasirinkti strategiją (1, 2, 3)
 
