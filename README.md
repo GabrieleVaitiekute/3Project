@@ -37,7 +37,11 @@ DIEGIMO INSTRUKCIJA
 
 6. Į terminalą įveskite cmake -G "Visual Studio 17 2022" .. ( metai priklauso nuo jūsų VS versijos)
 
-7. Atsivėrus Visual Studio paleiskite programą.
+7. Į terminalą įveskite start V1.1.sln
+
+8. Atsivėrus Visual Studio atsidarykite "Solution explorer" langelį ir dešiniuoju klavišu paspauskite ant norimo (Class ar Structure) projekto ir paspauskite "Set as a Startup Project". (Tai reikės padaryti kiekvieną kartą norint pasirinkti kitą projektą);
+
+9. Paleiskite programą.
 
 NAUDOJIMOSI INSTRUKCIJA
 
