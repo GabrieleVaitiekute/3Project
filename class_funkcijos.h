@@ -1,6 +1,6 @@
-#ifndef VECTOR_FUNKCIJOS_H
-#define VECTOR_FUNKCIJOS_H
-#include "vector_studentai.h"
+#ifndef CLASS_FUNKCIJOS_H
+#define CLASS_FUNKCIJOS_H
+#include "class_studentai.h"
 
 
 ////////// NETINKAMA IVESTIS //////////////
@@ -17,9 +17,6 @@ void Ivesti_Varda(studentas& S);
 
 ////////// NUSKAITYMAS NUO FAILO /////////////////
 std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas, int reserveDydis);
-
-////////// REZULTATU SPAUSDINIMAS IR SKIRSTYMAS I GRUPES ////////////
-void Apskaiciuoti_Rezultatus(std::vector<studentas>& S);
 
 //////// DUOMENU RUSIAVIMAS ///////////
 bool VarduRikiavimas(const studentas& a, const studentas& b);
