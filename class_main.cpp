@@ -48,7 +48,7 @@ int main()
 		}
 	}
 
-	std::cout << std::endl << "VECTOR " << Strategija << " STRATEGIJA\n\n";
+	std::cout << std::endl << "CLASS VECTOR " << Strategija << " STRATEGIJA\n\n";
 
 	if (Pasirinkimas == 1)
 	{
