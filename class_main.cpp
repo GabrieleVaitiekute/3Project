@@ -1,4 +1,4 @@
-﻿#include "class_studentai.h"
+#include "class_studentai.h"
 #include "class_funkcijos.h"
 
 char TaipNe;
@@ -6,7 +6,7 @@ namespace fs = std::filesystem;
 int main()
 {
 
-	int Pasirinkimas;
+	int Pasirinkimas, Strategija;
 
 	std::vector<studentas> S;
 	std::vector<studentas> N;//nuskriaustieji
@@ -31,7 +31,6 @@ int main()
 	}
 
 	std::cout << "\nKuria strategija norite naudoti: 1, 2, 3: ";
-	int Strategija;
 	while (true)
 	{
 		try
@@ -48,6 +47,7 @@ int main()
 			Netinkamas_Ivestis(s.what());
 		}
 	}
+
 	std::cout << std::endl << "VECTOR " << Strategija << " STRATEGIJA\n\n";
 
 	if (Pasirinkimas == 1)
@@ -58,24 +58,6 @@ int main()
 			Ivesti_Varda(naujas);
 
 			Ivesti_Pazymius(naujas);
-
-			std::cout << std::endl << "Iveskite egzamino pazymi: ";
-			while (true)
-			{
-				try
-				{
-					std::cin >> naujas.EGZ;
-					if (std::cin.fail() || std::cin.peek() != '\n' || naujas.EGZ < 1 || naujas.EGZ > 10)
-					{
-						throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 10. ");
-					}
-					break;
-				}
-				catch (const std::invalid_argument& e)
-				{
-					Netinkamas_Ivestis(e.what());
-				}
-			}
 
 			S.push_back(naujas);// pridedamas studentas i vektoriu
 
@@ -99,7 +81,6 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Apskaiciuoti_Rezultatus(S);
 		Rikiuoti_Duomenis(S);
 		Skirstyti_Studentus(S, N, G, Strategija);
 
@@ -165,9 +146,9 @@ int main()
 
 		} while (TaipNe == 'T');
 
-		Apskaiciuoti_Rezultatus(S);
 		Rikiuoti_Duomenis(S);
 		Skirstyti_Studentus(S, N, G, Strategija);
+
 		if (Strategija == 1)
 			Spausdinti_Rezultatus(N, G);
 
@@ -226,7 +207,6 @@ int main()
 			}
 		}
 
-
 		for (int i = 0; i < Studentu_kiekis; ++i)
 		{
 
@@ -238,9 +218,10 @@ int main()
 			S.push_back(naujas); // pridedamas studentas i vektoriu
 		}
 
-		Apskaiciuoti_Rezultatus(S);
 		Rikiuoti_Duomenis(S);
+
 		Skirstyti_Studentus(S, N, G, Strategija);
+
 		if (Strategija == 1)
 			Spausdinti_Rezultatus(N, G);
 
@@ -261,7 +242,7 @@ int main()
 		while (true)
 		{
 			// Parinkimo meniu ir failo pasirinkimas
-			std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomeniis:\n 1. kursiokai.txt \n 2. StudentaiN10000.txt\n 3. StudentaiN100000.txt\n 4. StudentaiN1000000.txt\n Iveskite pasirinkimo numeri: ";
+			std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomenis:\n 1. kursiokai.txt \n 2. StudentaiN10000.txt\n 3. StudentaiN100000.txt\n 4. StudentaiN1000000.txt\n Iveskite pasirinkimo numeri: ";
 
 			std::cin >> Failo_Pasirinkimas;
 			// Tikrinimas ar įvestis yra tinkama
@@ -300,9 +281,9 @@ int main()
 			}
 			// Nuskaitymas duomenų iš pasirinkto failo
 			S = Nuskaityti_Is_Failo(Failo_Vieta, reserveDydis);
-			Apskaiciuoti_Rezultatus(S);
 			Rikiuoti_Duomenis(S);
 			Skirstyti_Studentus(S, N, G, Strategija);
+
 			if (Strategija == 1)
 				Spausdinti_Rezultatus(N, G);
 
@@ -313,6 +294,7 @@ int main()
 				Spausdinti_Rezultatus(N, S);
 			break; // Išeiti iš ciklo, kai buna pasirinktas tinkamas failas 
 		}
+	
 	}
 
 	if (Pasirinkimas == 5)
@@ -379,10 +361,9 @@ int main()
 			GeneruotiFailus(reserveDydis, G_Failo_Vieta);
 			S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis);
 		}
-
-		Apskaiciuoti_Rezultatus(S);
 		Rikiuoti_Duomenis(S);
 		Skirstyti_Studentus(S, N, G, Strategija);
+
 		if (Strategija == 1)
 			Spausdinti_Rezultatus(N, G);
 
@@ -392,6 +373,7 @@ int main()
 		if (Strategija == 3)
 			Spausdinti_Rezultatus(N, S);
 	}
+
 
 	if (Pasirinkimas == 6)
 		std::cout << "\n" << "Darbas baigtas";
