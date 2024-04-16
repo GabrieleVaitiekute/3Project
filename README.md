@@ -21,7 +21,7 @@ Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo �
 ![Screenshot 2024-04-16 190452](https://github.com/GabrieleVaitiekute/2Project/assets/147078486/4de65e33-aaa3-4185-9186-df777511df3f)
 
 
-Iš šių lentelių galima teigti, jog greičiausiai programa veikia naudojant class bei 03 optimizatprių.
+Iš šių lentelių galima teigti, jog greičiausiai programa veikia naudojant class bei 03 optimizatorių.
 
 DIEGIMO INSTRUKCIJA
 
