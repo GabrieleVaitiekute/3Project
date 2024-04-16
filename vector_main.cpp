@@ -48,7 +48,7 @@ int main()
 			Netinkamas_Ivestis(s.what());
 		}
 	}
-	std::cout << std::endl << "VECTOR " << Strategija << " STRATEGIJA\n\n";
+	std::cout << std::endl << "STRUCTURE VECTOR " << Strategija << " STRATEGIJA\n\n";
  
 	if (Pasirinkimas == 1)
 	{
