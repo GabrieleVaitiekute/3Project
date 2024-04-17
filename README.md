@@ -15,7 +15,7 @@ Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedant informac
 
 Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo į dvi grupes trukmes. Naudojant trukmes atliekama programų analizė. Atliktas structure ir class tyrimas su optimizavimo "flagais" (yra lentelė: greitis, exe failo dydis) 
 
-![Screenshot 2024-04-16 213852](https://github.com/GabrieleVaitiekute/2Project/assets/147078486/3f48942e-26ca-42f4-a200-45561fb1a750)
+![Screenshot 2024-04-17 211746](https://github.com/GabrieleVaitiekute/2Project/assets/147078486/1e059e59-1456-4e0b-b059-3e42cc99b621)
 
 ![Screenshot 2024-04-16 213858](https://github.com/GabrieleVaitiekute/2Project/assets/147078486/a84c7770-fb00-4ef1-a364-3d6539c1d8ae)
 
