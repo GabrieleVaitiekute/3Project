@@ -6,7 +6,7 @@ Programa (vector) su meniu skirtingos programos eigos pasirinkimui:
 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 
 5 - sugeneruoti failus (5 dydžių pasirinkimai), 
 6 - baigti darbą,
-7 - testavimas
+7 - testavimas.
 
 Studentai suskirstomi į galvočius ir nepažangius pagal medianą arba vidurkį (leidžiama pasirinkti).
 
