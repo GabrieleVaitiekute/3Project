@@ -5,22 +5,21 @@ char TaipNe;
 namespace fs = std::filesystem;
 int main()
 {
-
 	int Pasirinkimas, Strategija;
-
 	std::vector<studentas> S;
 	std::vector<studentas> N;//nuskriaustieji
 	std::vector<studentas> G;//galvociai
-	std::cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Nuskaityti studentu duomenis nuo failo\n 5. Generuoti failus\n 6. Baigti darba\n Iveskite pasirinkimo numeri: ";
+
+	std::cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Nuskaityti studentu duomenis nuo failo\n 5. Generuoti failus\n 6. Baigti darba\n 7. Testuoti \n Iveskite pasirinkimo numeri: ";
 
 	while (true)
 	{
 		try
 		{
 			std::cin >> Pasirinkimas;
-			if (std::cin.fail() || std::cin.peek() != '\n' || Pasirinkimas < 1 || Pasirinkimas > 6)
+			if (std::cin.fail() || std::cin.peek() != '\n' || Pasirinkimas < 1 || Pasirinkimas > 7)
 			{
-				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 6. ");
+				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 7. ");
 			}
 			break;
 		}
@@ -29,27 +28,30 @@ int main()
 			Netinkamas_Ivestis(p.what());
 		}
 	}
-
-	std::cout << "\nKuria strategija norite naudoti: 1, 2, 3: ";
-	while (true)
+	if (Pasirinkimas >= 1 && Pasirinkimas <= 5)
 	{
-		try
+	std::cout << "\nKuria strategija norite naudoti: 1, 2, 3: ";
+		while (true)
 		{
-			std::cin >> Strategija;
-			if (std::cin.fail() || std::cin.peek() != '\n' || Strategija < 1 || Strategija > 3)
+			try
 			{
-				throw std::invalid_argument("Netinkama ivestis. Iveskite skaiciu nuo 1 iki 3: ");
+				std::cin >> Strategija;
+				if (std::cin.fail() || std::cin.peek() != '\n' || Strategija < 1 || Strategija > 3)
+				{
+					throw std::invalid_argument("Netinkama ivestis. Iveskite skaiciu nuo 1 iki 3: ");
+				}
+				break;
 			}
-			break;
+			catch (const std::invalid_argument& s)
+			{
+				Netinkamas_Ivestis(s.what());
+			}
 		}
-		catch (const std::invalid_argument& s)
-		{
-			Netinkamas_Ivestis(s.what());
-		}
+
+		std::cout << std::endl << "VECTOR " << Strategija << " STRATEGIJA\n\n";
+
 	}
-
-	std::cout << std::endl << "CLASS VECTOR " << Strategija << " STRATEGIJA\n\n";
-
+	
 	if (Pasirinkimas == 1)
 	{
 		studentas naujas;
@@ -378,8 +380,9 @@ int main()
 	if (Pasirinkimas == 6)
 		std::cout << "\n" << "Darbas baigtas";
 
+	if (Pasirinkimas == 7)
+		Testavimas();
+
 	std::cout << "\n";
-
-
 	return 0;
 }
