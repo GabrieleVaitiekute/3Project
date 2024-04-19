@@ -127,19 +127,7 @@ public:
             grades.push_back(pazymys);
         }
 
-        // Patikrina, ar pasiekė failo pabaigą
-        if (is.eof()) {
-            is.clear();
-        }
-        // Jei įvedimo operacija nepavyko
-        else if (is.fail()) {
-   
-            is.clear();
-            std::string unused;
-            std::getline(is, unused); 
-            return is;
-        }
-
+       
         if (!grades.empty()) {
             s.EGZ = grades.back(); 
             grades.pop_back();
