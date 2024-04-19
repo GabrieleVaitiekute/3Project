@@ -1,5 +1,9 @@
 #include "class_studentai.h"
 #include "class_funkcijos.h"
+
+//////////////// Studentai klase
+
+
 //////////////// NETINKAMA IVESTIS ///////////////////////
 void Netinkamas_Ivestis(std::string Problema)
 {
@@ -7,6 +11,7 @@ void Netinkamas_Ivestis(std::string Problema)
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cerr << Problema;
 }
+
 //////////////// GENERAVIMAS ////////////////////////////
 
 std::random_device rd;
@@ -90,7 +95,6 @@ void GeneruotiFailus(int reserveDydis, std::string& G_Failo_Vieta)
 	GFailas.close();
 
 }
-
 
 ///////// IVEDIMAS //////////////////
 
@@ -225,6 +229,7 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 
 	std::ifstream file(Failo_Pavadinimas);
 	std::vector<studentas> studentai;
+	studentai.reserve(reserveDydis);  // Iš anksto rezervuojama atmintis
 
 	if (!file.is_open())
 	{
@@ -235,42 +240,20 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 	std::string header;
 	std::getline(file, header);
 
-	std::string eilute, vardas, pavarde;
-	int pazymys, egz;
+	std::string eilute;
 	while (std::getline(file, eilute))
 	{
 		std::istringstream iss(eilute);
 		studentas student;
-		if (!(iss >> pavarde >> vardas))
+		if (iss >> student)
 		{
-			std::cerr << "Klaida nuskaitant nuo failo" << std::endl;
-			break;
+			studentai.push_back(student);
 		}
-		studentas S;
-		S.setVardas(vardas);
-		S.setPavarde(pavarde);
-
-		std::vector<int> pazymiai;
-		while (iss >> pazymys)
+		else 
 		{
-			if (pazymys > 0 && pazymys <= 10) {
-				pazymiai.push_back(pazymys);
-			}
+			std::cerr << "Klaida nuskaitant duomenis iš eilutės: " << eilute << std::endl;
 		}
-
-		// Patikrina, ar paskutinis pazymys yra egzamino
-		if (!pazymiai.empty())
-		{
-			egz = pazymiai.back(); // paskutinis pažymys yra egzamino pažymys
-			pazymiai.pop_back();
-			S.setND(pazymiai);
-			S.setEGZ(egz);
-		}
-
-
-		studentai.push_back(S);// Pridedamas studentas 
 	}
-
 
 	// Baigia skaiciuoti laika
 	auto end = std::chrono::high_resolution_clock::now();
@@ -282,7 +265,6 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 	std::cout << "\nFailo nuskaitymas uztruko " << duration.count() << " sek." << std::endl;
 	return studentai;
 }
-
 
 ///// DUOMENU RUSIAVIMAS////////
 
@@ -475,14 +457,14 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		std::cerr << "Klaida atidarant rezultatu faila" << std::endl;
 		return;
 	}
-
-	for (int i = 0; i < G.size(); i++)
+	int i =  0;
+	for (auto& studentas : G)
 	{
 		if (i == 0)
 			Galvociu_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-		Galvociu_failas << std::setw(7) << i + 1 << std::setw(20) << G[i].getPavarde() << std::setw(20) << G[i].getVardas() << std::setw(20) << std::setprecision(3) << G[i].getGalutinisV() << std::setw(20) << std::setprecision(3) << G[i].getGalutinisM() << std::endl;
-
+		Galvociu_failas << std::setw(7) << i + 1 << std::setw(20) << studentas.getPavarde() << std::setw(20) << studentas.getVardas() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisV() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisM() << std::endl;
+		i++;
 
 	}
 	Galvociu_failas.close();
@@ -493,17 +475,24 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		std::cerr << "Klaida atidarant rezultatu faila" << std::endl;
 		return;
 	}
-
-	for (int i = 0; i < N.size(); i++)
+	i = 0;
+	for (auto& studentas : N)
 	{
 		if (i == 0)
 			Nepazangiuju_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-		Nepazangiuju_failas << std::setw(7) << i + 1 << std::setw(20) << N[i].getPavarde() << std::setw(20) << N[i].getVardas() << std::setw(20) << std::setprecision(3) << N[i].getGalutinisV() << std::setw(20) << std::setprecision(3) << N[i].getGalutinisM() << std::endl;
-
+		Nepazangiuju_failas << std::setw(7) << i + 1 << std::setw(20) << studentas.getPavarde() << std::setw(20) << studentas.getVardas() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisV() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisM() << std::endl;
+		i++;
 
 	}
 	Nepazangiuju_failas.close();
 
 	std::cout << std::endl << "Rezultatai atspausdinti" << std::endl;
 }
+
+void Testavimas()
+{
+	
+}
+
+
