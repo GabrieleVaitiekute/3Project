@@ -1,9 +1,6 @@
 #include "class_studentai.h"
 #include "class_funkcijos.h"
 
-//////////////// Studentai klase
-
-
 //////////////// NETINKAMA IVESTIS ///////////////////////
 void Netinkamas_Ivestis(std::string Problema)
 {
