@@ -14,8 +14,26 @@
 #include <numeric> 
 #include <random> 
 #include <cassert>
+class Zmogus {
+protected:
+    std::string vardas;
+    std::string pavarde;
+public:
+    // Constructor
+   Zmogus(const std::string& vardas, const std::string& pavarde)
+        : vardas(vardas), pavarde(pavarde) {}
 
-class studentas {
+    // Virtual destructor
+    virtual ~Zmogus() {}
+
+    // Virtual method for getting full name
+    virtual std::string getFullName() const {
+        return vardas + " " + pavarde;
+    }
+};
+
+// Derived class representing a student
+class Student : public Zmogus {
 private:
     std::string vardas;
     std::string pavarde;
@@ -48,9 +66,9 @@ private:
 public:
     studentas::studentas() = default;
 
-    studentas::studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
-        : vardas(vardas), pavarde(pavarde), ND(ND), EGZ(EGZ) {
-        ApskaiciuotiGalutinius(); // Calculate final scores after initialization
+  Student(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
+        : Zmogus(vardas, pavarde), ND(ND), EGZ(EGZ) {
+        ApskaiciuotiGalutinius(); 
     }
 
     // Destruktorius
