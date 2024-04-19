@@ -15,9 +15,3 @@ Programos eigoje suteikiama galimybė pasirinkti rikiavimą pagal vardą, pavard
 Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedant informaciją tikrinama, ar įvestas reikiamas ir taisyklingas skaičius, simbolis, žodis).
 
 Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo į dvi grupes trukmes. 
-
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/02397c0c-9a31-45b8-bf16-ed491f52adb7" width="500">
-
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/b0bcd996-de15-4e06-b440-994ead9683b6" width="500">
-
-
