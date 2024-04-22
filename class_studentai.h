@@ -67,7 +67,8 @@ public:
 		EGZ(other.EGZ), GalutinisV(other.GalutinisV), GalutinisM(other.GalutinisM) {}
 
 	// Copy priskyrimo operatorius
-	studentas& studentas::operator=(const studentas& other) {
+	studentas& studentas::operator=(const studentas& other) 
+	{
 		if (this != &other) {
 			vardas = other.vardas;
 			pavarde = other.pavarde;
@@ -80,8 +81,10 @@ public:
 	}
 
 	// Move priskyrimo operatorius
-	studentas& studentas::operator=(studentas&& other) noexcept {
-		if (this != &other) {
+	studentas& studentas::operator=(studentas&& other) noexcept
+	{
+		if (this != &other) 
+		{
 			vardas = std::move(other.vardas);
 			pavarde = std::move(other.pavarde);
 			ND = std::move(other.ND);
@@ -117,30 +120,20 @@ public:
 		s.EGZ = 0;
 
 
-		if (!(is >> s.vardas >> s.pavarde)) {
+		if (!(is >> s.vardas >> s.pavarde))
+		{
 			return is;
 		}
 
 		int pazymys;
 		std::vector<int> grades;
-		while (is >> pazymys) {
+		while (is >> pazymys) 
+		{
 			grades.push_back(pazymys);
 		}
 
-		// Patikrina, ar pasiekė failo pabaigą
-		if (is.eof()) {
-			is.clear();
-		}
-		// Jei įvedimo operacija nepavyko
-		else if (is.fail()) {
-
-			is.clear();
-			std::string unused;
-			std::getline(is, unused);
-			return is;
-		}
-
-		if (!grades.empty()) {
+		if (!grades.empty()) 
+		{
 			s.EGZ = grades.back();
 			grades.pop_back();
 			s.ND = grades;
@@ -153,7 +146,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const studentas& s)
 	{
-		os << std::setw(20) << s.pavarde << std::setw(20) << s.vardas << std::setw(20) << std::setprecision(3) << s.GalutinisV << std::setw(20) << std::setprecision(3) << s.GalutinisM << std::endl;
+		os << std::setw(20) << s.pavarde << std::setw(20) << s.vardas << std::setw(20) << std::setprecision(3) 	<< s.GalutinisV << std::setw(20) << std::setprecision(3) << s.GalutinisM << std::endl;
 
 		return os;
 	}
