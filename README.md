@@ -18,6 +18,7 @@ Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo �
 
 <img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/02397c0c-9a31-45b8-bf16-ed491f52adb7" width="500">
 
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/54c25e19-504c-4b32-9249-6b78db7e6807" width="500">
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/f3905478-684e-474c-9b1e-a5ad525a02da" width="500">
+
 
 
