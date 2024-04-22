@@ -32,4 +32,5 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 
 //////////////// Studentai klase testavimas
 void Testavimas();
+
 #endif
