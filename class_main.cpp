@@ -30,7 +30,7 @@ int main()
 	}
 	if (Pasirinkimas >= 1 && Pasirinkimas <= 5)
 	{
-	std::cout << "\nKuria strategija norite naudoti: 1, 2, 3: ";
+		std::cout << "\nKuria strategija norite naudoti: 1, 2, 3: ";
 		while (true)
 		{
 			try
@@ -51,7 +51,7 @@ int main()
 		std::cout << std::endl << "VECTOR " << Strategija << " STRATEGIJA\n\n";
 
 	}
-	
+
 	if (Pasirinkimas == 1)
 	{
 		studentas naujas;
@@ -296,7 +296,7 @@ int main()
 				Spausdinti_Rezultatus(N, S);
 			break; // Išeiti iš ciklo, kai buna pasirinktas tinkamas failas 
 		}
-	
+
 	}
 
 	if (Pasirinkimas == 5)
@@ -382,6 +382,8 @@ int main()
 
 	if (Pasirinkimas == 7)
 		Testavimas();
+
+
 
 	std::cout << "\n";
 	return 0;
