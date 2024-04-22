@@ -1,9 +1,6 @@
 #include "class_studentai.h"
 #include "class_funkcijos.h"
 
-//////////////// Studentai klase
-
-
 //////////////// NETINKAMA IVESTIS ///////////////////////
 void Netinkamas_Ivestis(std::string Problema)
 {
@@ -463,7 +460,7 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		if (i == 0)
 			Galvociu_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-		Galvociu_failas << std::setw(7) << i + 1 << std::setw(20) << studentas.getPavarde() << std::setw(20) << studentas.getVardas() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisV() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisM() << std::endl;
+		Galvociu_failas << std::setw(7) << i + 1 << studentas;
 		i++;
 
 	}
@@ -481,7 +478,7 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		if (i == 0)
 			Nepazangiuju_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-		Nepazangiuju_failas << std::setw(7) << i + 1 << std::setw(20) << studentas.getPavarde() << std::setw(20) << studentas.getVardas() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisV() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisM() << std::endl;
+		Nepazangiuju_failas << std::setw(7) << i + 1 << studentas;
 		i++;
 
 	}
@@ -492,7 +489,68 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 
 void Testavimas()
 {
-	
+
+	// Testuojamas numatytasis konstruktorius
+	{
+		studentas s;
+		assert(s.getVardas().empty() && s.getPavarde().empty() && s.getND().empty() && s.getEGZ() == 0);
+		std::cout << "Numatytasis konstruktorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas parametrizuotas konstruktorius ir getter'iai
+	{
+		std::string vardas = "Jonas";
+		std::string pavarde = "Jonaitis";
+		std::vector<int> nd = { 5, 7, 8 };
+		int egz = 9;
+		studentas s(vardas, pavarde, nd, egz);
+		assert(s.getVardas() == vardas && s.getPavarde() == pavarde && s.getND() == nd && s.getEGZ() == egz);
+		std::cout << "Parametrizuotas konstruktorius ir getter'iai veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas kopijavimo konstruktorius
+	{
+		std::vector<int> K { 10, 9, 8};//toki ND vector turi gauti
+		studentas s1("Petras", "Petraitis", { 10, 9, 8 }, 10);
+		studentas s2 = s1;
+		assert(s2.getVardas() == "Petras" && s2.getPavarde() == "Petraitis" && s2.getND() == K && s2.getEGZ() == 10);
+		std::cout << "Kopijavimo konstruktorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas move konstruktorius
+	{
+		studentas s1("Kazys", "Kazlauskas", { 6, 5, 7 }, 8);
+		studentas s2 = std::move(s1);
+		assert(s2.getVardas() == "Kazys" && s2.getPavarde() == "Kazlauskas" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
+		std::cout << "Move konstruktorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas kopijavimo priskyrimo operatorius
+	{
+		std::vector<int> V { 9, 8, 10 };//toki ND vector turi gauti
+		studentas s1("Antanas", "Antanaitis", V, 7);
+		studentas s2;
+		s2 = s1;
+		assert(s2.getVardas() == "Antanas" && s2.getPavarde() == "Antanaitis" && s2.getND() == V && s2.getEGZ() == 7);
+		std::cout << "Kopijavimo priskyrimo operatorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas move priskyrimo operatorius
+	{
+		studentas s1("Algis", "Algaitis", { 7, 8, 9 }, 10);
+		studentas s2;
+		s2 = std::move(s1);
+		assert(s2.getVardas() == "Algis" && s2.getPavarde() == "Algaitis" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
+		std::cout << "Move priskyrimo operatorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas įvedimo operatorius
+	{
+		std::vector<int> I { 5, 6, 7, 8 };//toki ND vector turi gauti
+		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
+		studentas s;
+		iss >> s;
+		assert(s.getVardas() == "Mindaugas" && s.getPavarde() == "Mindaugaitis" && s.getND() == I && s.getEGZ() == 9);
+		std::cout << "Ivedimo operatorius veikia teisingai." << std::endl;
+	}
 }
-
-
