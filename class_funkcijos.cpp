@@ -538,20 +538,36 @@ void Testavimas()
 
 	// Testuojamas move priskyrimo operatorius
 	{
-		studentas s1("Algis", "Algaitis", { 7, 8, 9 }, 10);
+		studentas s1("Aldona", "Aldoniene", { 7, 8, 9 }, 10);
 		studentas s2;
 		s2 = std::move(s1);
-		assert(s2.getVardas() == "Algis" && s2.getPavarde() == "Algaitis" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
+		assert(s2.getVardas() == "Aldona" && s2.getPavarde() == "Aldoniene" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
 		std::cout << "Move priskyrimo operatorius veikia teisingai." << std::endl;
 	}
 
 	// Testuojamas įvedimo operatorius
 	{
-		std::vector<int> I{ 5, 6, 7, 8 };//toki ND vector turi gauti
+		std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
 		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
 		studentas s;
 		iss >> s;
-		assert(s.getVardas() == "Mindaugas" && s.getPavarde() == "Mindaugaitis" && s.getND() == I && s.getEGZ() == 9);
+		assert(s.getVardas() == "Mindaugas");
+		assert(s.getPavarde() == "Mindaugaitis");
+		assert(s.getND() == I);
+		assert(s.getEGZ() == 9);
 		std::cout << "Ivedimo operatorius veikia teisingai." << std::endl;
+	}
+
+
+	// Testuojamas išvedimo operatorius
+	{
+		std::istringstream iss("Lina Linaityte 4 5 9 9");
+		studentas s;
+		iss >> s;
+		std::ostringstream oss;
+		oss << s;
+		std::string tikimasi = "           Linaityte                Lina                 7.8                 7.4\n";
+		assert(oss.str() == tikimasi);
+		std::cout << "Isvedimo operatorius veikia teisingai." << std::endl;
 	}
 }
