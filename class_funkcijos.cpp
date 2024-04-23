@@ -591,7 +591,8 @@ void Testavimas()
 	//realizuota abstrakti klasė zmogus, jos objektų kūrimas negalimas (pademonstruota).
 	{
 		//zmogus z;
-		
+		studentas s("Jonas", "Jonaitis", { 5, 10, 8 }, 9);
+		std::cout << s.getVardas() << " " << s.getPavarde() << std::endl;
 	}
 			
 }
