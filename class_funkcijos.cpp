@@ -588,5 +588,10 @@ void Testavimas()
 		assert(oss.str() == tikimasi);
 		std::cout << "Isvedimo operatorius veikia teisingai." << std::endl;
 	}
+	//realizuota abstrakti klasė zmogus, jos objektų kūrimas negalimas (pademonstruota).
+	{
+		//zmogus z;
+		
+	}
 			
 }
