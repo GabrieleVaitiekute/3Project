@@ -26,17 +26,13 @@ public:
 	zmogus(const std::string& vardas, const std::string& pavarde)
 		: vardas(vardas), pavarde(pavarde) {}
 
-	
 	zmogus::~zmogus() {}
-	// Pure virtual functions
-	virtual std::string getVardas() const = 0;  // Now purely virtual
-	virtual std::string getPavarde() const = 0; // Now purely virtual
 
-	// Setter'iai (not necessarily virtual if not being overridden)
+	virtual std::string getVardas() const = 0;  
+	virtual std::string getPavarde() const = 0; 
+
 	virtual void setVardas(const std::string& newName) { vardas = newName; }
 	virtual void setPavarde(const std::string& newSurname) { pavarde = newSurname; }
-
-
 };
 
 //STUDENTAS
