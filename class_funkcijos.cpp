@@ -1,6 +1,7 @@
 #include "class_studentai.h"
 #include "class_funkcijos.h"
 
+
 //////////////// NETINKAMA IVESTIS ///////////////////////
 void Netinkamas_Ivestis(std::string Problema)
 {
@@ -43,7 +44,7 @@ void GeneruotiVardus(studentas& S)
 	if (lytis == 0)
 	{
 		S.setVardas(vardaiV[dis(generuoti) % 10]);
-		S.setPavarde( pavardesV[dis(generuoti) % 10]);
+		S.setPavarde(pavardesV[dis(generuoti) % 10]);
 	}
 
 	else
@@ -246,7 +247,7 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 		{
 			studentai.push_back(student);
 		}
-		else 
+		else
 		{
 			std::cerr << "Klaida nuskaitant duomenis iš eilutės: " << eilute << std::endl;
 		}
@@ -296,16 +297,16 @@ void Rikiuoti_Duomenis(std::vector<studentas>& S)
 	switch (Rusiavimo_Pasirinkimas)
 	{
 	case 1:
-		std::sort(S.begin(), S.end(), [](const studentas& a, const studentas& b) 
+		std::sort(S.begin(), S.end(), [](const studentas& a, const studentas& b)
 			{
-			return a.getVardas() < b.getVardas(); // Rūšiuojama pagal vardą
+				return a.getVardas() < b.getVardas(); // Rūšiuojama pagal vardą
 			});
-	
+
 		break;
 	case 2:
-			std::sort(S.begin(), S.end(), [](const studentas& a, const studentas& b) 
+		std::sort(S.begin(), S.end(), [](const studentas& a, const studentas& b)
 			{
-			return a.getPavarde() < b.getPavarde(); // Rūšiuojama pagal pavarde
+				return a.getPavarde() < b.getPavarde(); // Rūšiuojama pagal pavarde
 			});
 		break;
 	case 3:
@@ -333,7 +334,7 @@ void Rikiuoti_Duomenis(std::vector<studentas>& S)
 //// STUDENTU SKIRSTYMAS I GRUPES 
 void Skirstyti_Studentus(std::vector<studentas>& S, std::vector<studentas>& N, std::vector<studentas>& G, int Strategija)
 {
-	
+
 	std::cout << "\nAr norite studentus surusiuoti pagal mediana ar vidurki? M jei mediana, V jei vidurki: ";
 	char RusiavimoPasirinkimas;
 	while (true)
@@ -352,89 +353,89 @@ void Skirstyti_Studentus(std::vector<studentas>& S, std::vector<studentas>& N, s
 			Netinkamas_Ivestis(rp.what());
 		}
 	}
-	
+
 	// Pradedamas skaiciuti laikas
 	auto RusavimoPradzia = std::chrono::high_resolution_clock::now();
-	
-	
-		if (Strategija == 1)
+
+
+	if (Strategija == 1)
+	{
+
+		for (auto& studentas : S)
 		{
-		
-			for (auto& studentas : S)
+			if (RusiavimoPasirinkimas == 'V')
 			{
+				if (studentas.getGalutinisV() < 5)
+					N.push_back(studentas);
+				else
+					G.push_back(studentas);
+			}
+			else if (RusiavimoPasirinkimas == 'M')
+			{
+				if (studentas.getGalutinisM() < 5)
+					N.push_back(studentas);
+				else
+					G.push_back(studentas);
+			}
+		}
+	}
+	if (Strategija == 2)
+	{
+
+		auto i = S.begin();
+		while (i != S.end())
+		{
+			if (RusiavimoPasirinkimas == 'V')
+			{
+				if (i->getGalutinisV() < 5)
+				{
+					N.push_back(*i);
+					i = S.erase(i);
+					continue;
+				}
+			}
+			else if (RusiavimoPasirinkimas == 'M')
+			{
+				if (i->getGalutinisM() < 5)
+				{
+					N.push_back(*i);
+					i = S.erase(i);
+					continue;
+				}
+			}
+			++i;
+		}
+	}
+
+	if (Strategija == 3)
+	{
+		auto i = std::remove_if(S.begin(), S.end(), [&](const auto& studentas)
+			{
+				bool istrinti = false;
 				if (RusiavimoPasirinkimas == 'V')
 				{
 					if (studentas.getGalutinisV() < 5)
-						N.push_back(studentas);
-					else
-						G.push_back(studentas);
+					{
+						istrinti = true;
+					}
 				}
 				else if (RusiavimoPasirinkimas == 'M')
 				{
 					if (studentas.getGalutinisM() < 5)
-						N.push_back(studentas);
-					else
-						G.push_back(studentas);
-				}
-			}
-		}
-		if (Strategija == 2)
-		{
-		
-			auto i = S.begin();
-			while (i != S.end())
-			{
-				if (RusiavimoPasirinkimas == 'V')
-				{
-					if (i->getGalutinisV() < 5)
-					{
-						N.push_back(*i);
-						i = S.erase(i);
-						continue;
-					}
-				}
-				else if (RusiavimoPasirinkimas == 'M')
-				{
-					if (i->getGalutinisM() < 5)
-					{
-						N.push_back(*i);
-						i = S.erase(i);
-						continue;
-					}
-				}
-				++i;
-			}
-		}
-
-		if (Strategija == 3)
-		{
-			auto i = std::remove_if(S.begin(), S.end(), [&](const auto& studentas)
-				{
-				bool istrinti = false;
-				if (RusiavimoPasirinkimas == 'V') 
-				{
-					if (studentas.getGalutinisV() < 5) 
 					{
 						istrinti = true;
 					}
 				}
-				else if (RusiavimoPasirinkimas == 'M')
+				if (istrinti)
 				{
-					if (studentas.getGalutinisM() < 5) 
-					{
-						istrinti = true;
-					}
-				}
-				if (istrinti) 
-				{
-					N.push_back(studentas); 
+					N.push_back(studentas);
 				}
 				return istrinti;
-				});
+			});
 
-			S.erase(i, S.end());
-		
-		}
+		S.erase(i, S.end());
+
+	}
 
 	// Baigia skaiciuoti laika
 	auto RusaivimoPabaiga = std::chrono::high_resolution_clock::now();
@@ -454,13 +455,13 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		std::cerr << "Klaida atidarant rezultatu faila" << std::endl;
 		return;
 	}
-	int i =  0;
+	int i = 0;
 	for (auto& studentas : G)
 	{
 		if (i == 0)
 			Galvociu_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-		Galvociu_failas << std::setw(7) << i + 1 << std::setw(20) << studentas.getPavarde() << std::setw(20) << studentas.getVardas() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisV() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisM() << std::endl;
+		Galvociu_failas << std::setw(7) << i + 1 << studentas;
 		i++;
 
 	}
@@ -478,7 +479,7 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 		if (i == 0)
 			Nepazangiuju_failas << std::setw(7) << "Nr." << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl << std::setfill('-') << std::setw(90) << "-" << std::setfill(' ') << std::endl;
 
-		Nepazangiuju_failas << std::setw(7) << i + 1 << std::setw(20) << studentas.getPavarde() << std::setw(20) << studentas.getVardas() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisV() << std::setw(20) << std::setprecision(3) << studentas.getGalutinisM() << std::endl;
+		Nepazangiuju_failas << std::setw(7) << i + 1 << studentas;
 		i++;
 
 	}
@@ -489,7 +490,103 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 
 void Testavimas()
 {
-	
+
+	// Testuojamas numatytasis konstruktorius
+	{
+		studentas s;
+		assert(s.getVardas().empty() && s.getPavarde().empty() && s.getND().empty() && s.getEGZ() == 0);
+		std::cout << "Numatytasis konstruktorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas parametrizuotas konstruktorius ir getter'iai
+	{
+		std::string vardas = "Jonas";
+		std::string pavarde = "Jonaitis";
+		std::vector<int> nd = { 5, 7, 8 };
+		int egz = 9;
+		studentas s(vardas, pavarde, nd, egz);
+		assert(s.getVardas() == vardas && s.getPavarde() == pavarde && s.getND() == nd && s.getEGZ() == egz);
+		std::cout << "Parametrizuotas konstruktorius ir getter'iai veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas kopijavimo konstruktorius
+	{
+		std::vector<int> K{ 10, 9, 8 };//toki ND vector turi gauti
+		studentas s1("Petras", "Petraitis", { 10, 9, 8 }, 10);
+		studentas s2 = s1;
+		assert(s2.getVardas() == "Petras" && s2.getPavarde() == "Petraitis" && s2.getND() == K && s2.getEGZ() == 10);
+		std::cout << "Kopijavimo konstruktorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas move konstruktorius
+	{
+		studentas s1("Kazys", "Kazlauskas", { 6, 5, 7 }, 8);
+		studentas s2 = std::move(s1);
+		assert(s2.getVardas() == "Kazys" && s2.getPavarde() == "Kazlauskas" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
+		std::cout << "Move konstruktorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas kopijavimo priskyrimo operatorius
+	{
+		std::vector<int> V{ 9, 8, 10 };//toki ND vector turi gauti
+		studentas s1("Antanas", "Antanaitis", V, 7);
+		studentas s2;
+		s2 = s1;
+		assert(s2.getVardas() == "Antanas" && s2.getPavarde() == "Antanaitis" && s2.getND() == V && s2.getEGZ() == 7);
+		std::cout << "Kopijavimo priskyrimo operatorius veikia teisingai." << std::endl;
+	}
+
+	// Testuojamas move priskyrimo operatorius
+	{
+		studentas s1("Aldona", "Aldoniene", { 7, 8, 9 }, 10);
+		studentas s2;
+		s2 = std::move(s1);
+		assert(s2.getVardas() == "Aldona" && s2.getPavarde() == "Aldoniene" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
+		std::cout << "Move priskyrimo operatorius veikia teisingai." << std::endl;
+	}
+	// Destruktoriaus patikrinimas
+	{
+		// Sukuriamas dynamic studentas 
+		studentas* s1 = new studentas();
+
+		// I ji pridedamepazymius
+		s1->setND({ 10, 9, 8 });
+
+		// Istriname 
+		delete s1;
+
+		// Sukuriam nauja
+		studentas s2;
+
+		// Patikrinam ar jame nebeliko s1 pazymiu
+		assert(s2.getND().empty());
+		std::cout << "Destruktorius veikia teisingai." << std::endl;
+		
+	}
+	// Testuojamas įvedimo operatorius
+	{
+		std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
+		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
+		studentas s;
+		iss >> s;
+		assert(s.getVardas() == "Mindaugas");
+		assert(s.getPavarde() == "Mindaugaitis");
+		assert(s.getND() == I);
+		assert(s.getEGZ() == 9);
+		std::cout << "Ivedimo operatorius veikia teisingai." << std::endl;
+	}
+
+
+	// Testuojamas išvedimo operatorius
+	{
+		std::istringstream iss("Lina Linaityte 4 5 9 9");
+		studentas s;
+		iss >> s;
+		std::ostringstream oss;
+		oss << s;
+		std::string tikimasi = "           Linaityte                Lina                 7.8                 7.4\n";
+		assert(oss.str() == tikimasi);
+		std::cout << "Isvedimo operatorius veikia teisingai." << std::endl;
+	}
+			
 }
-
-
