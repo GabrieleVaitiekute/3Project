@@ -15,3 +15,15 @@ Programos eigoje suteikiama galimybė pasirinkti rikiavimą pagal vardą, pavard
 Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedant informaciją tikrinama, ar įvestas reikiamas ir taisyklingas skaičius, simbolis, žodis).
 
 Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo į dvi grupes trukmes. 
+
+Base class zmogus
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/5a475593-fc66-4e2d-86e4-7f012f2a004e" width="500">
+
+Derived class studentas
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/29a0c597-7e7a-46c4-a904-0d165ce911e5" width="500">
+
+Irodymas, kad realizuota abstrakti klasė zmogus, jos objektų kūrimas negalimas
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/f2db05ba-fa76-456d-9ee4-de066b5c821c" width="500">
