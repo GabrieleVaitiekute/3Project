@@ -545,6 +545,25 @@ void Testavimas()
 		std::cout << "Move priskyrimo operatorius veikia teisingai." << std::endl;
 	}
 
+	// Destruktoriaus patikrinimas
+	{
+		// Sukuriamas dynamic studentas 
+		studentas* s1 = new studentas();
+
+		// I ji pridedamepazymius
+		s1->setND({ 10, 9, 8 });
+
+		// Istriname 
+		delete s1;
+
+		// Sukuriam nauja
+		studentas s2;
+
+		// Patikrinam ar jame nebeliko s1 pazymiu
+		assert(s2.getND().empty());
+		std::cout << "Destruktorius veikia teisingai." << std::endl;
+
+	}
 	// Testuojamas įvedimo operatorius
 	{
 		std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
