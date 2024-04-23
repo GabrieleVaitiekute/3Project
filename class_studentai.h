@@ -15,6 +15,7 @@
 #include <random> 
 #include <cassert>
 
+//ZMOGUS
 class zmogus {
 protected:
 	std::string vardas;
@@ -25,23 +26,20 @@ public:
 	zmogus(const std::string& vardas, const std::string& pavarde)
 		: vardas(vardas), pavarde(pavarde) {}
 
-	// Destruktorius
-	virtual ~zmogus() {}
+	
+	zmogus::~zmogus() {}
+	// Pure virtual functions
+	virtual std::string getVardas() const = 0;  // Now purely virtual
+	virtual std::string getPavarde() const = 0; // Now purely virtual
 
-	// Virtual method for getting full name
-	virtual std::string getFullName() const
-	{
-		return vardas + " " + pavarde;
-	}
+	// Setter'iai (not necessarily virtual if not being overridden)
+	virtual void setVardas(const std::string& newName) { vardas = newName; }
+	virtual void setPavarde(const std::string& newSurname) { pavarde = newSurname; }
 
-	// Virtual method for getting age (to make the class abstract)
-	virtual int getAge() const = 0;
-	// Get'eriai
 
-	std::string getVardas() const { return vardas; }
-	std::string getPavarde() const { return pavarde; }
 };
 
+//STUDENTAS
 class  studentas: public zmogus{
 private:
 
@@ -77,6 +75,15 @@ public:
 	studentas::studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
 		: zmogus(vardas, pavarde), ND(ND), EGZ(EGZ) {
 		ApskaiciuotiGalutinius(); // Calculate final scores after initialization
+	}
+
+	// Implementuojame abstrakčius metodus
+	virtual std::string getVardas() const override {
+		return vardas;
+	}
+
+	virtual std::string getPavarde() const override {
+		return pavarde;
 	}
 
 	// Destruktorius
@@ -122,8 +129,6 @@ public:
 	}
 
 	// Getter'iai
-	std::string studentas::getVardas() const { return vardas; }
-	std::string studentas::getPavarde() const { return pavarde; }
 	std::vector<int> studentas::getND() const { return ND; }
 	int studentas::getEGZ() const { return EGZ; }
 	double studentas::getGalutinisV() const { return GalutinisV; }
@@ -176,11 +181,7 @@ public:
 
 		return os;
 	}
-	// Virtual method for getting age (required to implement since zmogus is abstract)
-	virtual int getAge() const override {
-		// Implement this method to return the age of the person if needed
-		return 0; // Returning 0 as a placeholder, implement actual logic as needed
-	}
+	
 };
 
 #endif
