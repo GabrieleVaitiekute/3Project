@@ -46,8 +46,8 @@ private:
 	}
 
 public:
-	studentas() : EGZ(0), GalutinisV(0), GalutinisM(0) {
-		std::cout << "Suveike default konstruktorius\n";
+	studentas() :vardas("Bevardis"), pavarde("Bepavardis"), ND({0}), EGZ(0), GalutinisV(0), GalutinisM(0) {
+	std::cout << "Suveike default konstruktorius\n";
 	}
 
 	studentas::studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
