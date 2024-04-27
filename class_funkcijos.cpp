@@ -559,9 +559,9 @@ void Testavimas()
 		std::cout << std::endl;
 
 	}
-	// Testuojamas įvedimo operatorius
+	// Testuojamas ivesties operatorius
 	{
-		std::cout << "\n8. Testuojamas ivedimo operatorius\n\n";
+		std::cout << "\n8. Testuojamas ivesties operatorius\n\n";
 		std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
 		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
 		studentas s;
