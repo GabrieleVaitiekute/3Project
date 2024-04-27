@@ -174,8 +174,8 @@ public:
 		}
 
 		s.ApskaiciuotiGalutinius();
-		return is;
 		std::cout << "Suveike ivesties operatorius\n";
+		return is;
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const studentas& s)
