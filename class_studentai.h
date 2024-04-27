@@ -47,8 +47,8 @@ private:
 
 public:
 	studentas() :vardas("Bevardis"), pavarde("Bepavardis"), EGZ(0), ND(), GalutinisV(0), GalutinisM(0) {
-	std::cout << "Suveike default konstruktorius\n";
-}
+		std::cout << "Suveike default konstruktorius\n";
+	}
 
 	studentas::studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
 		: vardas(vardas), pavarde(pavarde), ND(ND), EGZ(EGZ) {
@@ -81,7 +81,6 @@ public:
 		GalutinisM = std::move(other.GalutinisM);
 		other.clearEverything();
 		std::cout << "Suveike move konstruktorius\n";
-
 	}
 	// Copy priskyrimo operatorius
 	studentas& studentas::operator=(const studentas& other)
@@ -97,10 +96,8 @@ public:
 			GalutinisM = other.GalutinisM;
 			std::cout << "Suveike copy priskyrimo operatorius\n";
 		}
-
 		return *this;
 	}
-
 	// Move priskyrimo operatorius
 	studentas& studentas::operator=(studentas&& other) noexcept
 	{
@@ -116,9 +113,6 @@ public:
 			other.clearEverything();
 			std::cout << "Suveike move priskyrimo operatorius\n";
 		}
-
-
-
 		return *this;
 	}
 
@@ -159,6 +153,19 @@ public:
 			NDpazymiai.push_back(pazymys);
 		}
 
+		// Patikrina, ar pasiekė failo pabaigą
+		if (is.eof()) {
+			is.clear();
+		}
+		// Jei įvedimo operacija nepavyko
+		else if (is.fail()) {
+
+			is.clear();
+			std::string unused;
+			std::getline(is, unused);
+			return is;
+		}
+
 		if (!NDpazymiai.empty())
 		{
 			s.EGZ = NDpazymiai.back();
@@ -167,15 +174,16 @@ public:
 		}
 
 		s.ApskaiciuotiGalutinius();
+		return is;
 		std::cout << "Suveike ivesties operatorius\n";
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const studentas& s)
 	{
 		os << std::setw(20) << s.pavarde << std::setw(20) << s.vardas << std::setw(20) << std::setprecision(3) << s.GalutinisV << std::setw(20) << std::setprecision(3) << s.GalutinisM << std::endl;
-
+	std::cout << "Suveike isvesties operatorius\n";
 		return os;
-		std::cout << "Suveike isvesties operatorius\n";
+	
 	}
 
 
