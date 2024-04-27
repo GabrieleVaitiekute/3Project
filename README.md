@@ -18,11 +18,11 @@ Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo �
 
 Base class zmogus
 
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/5a475593-fc66-4e2d-86e4-7f012f2a004e" width="500">
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/2cb8aa58-f6cc-4b89-b5e9-98decab34b71" width="500">
 
 Derived class studentas
 
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/29a0c597-7e7a-46c4-a904-0d165ce911e5" width="500">
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/b76d04cf-27a4-4f39-a061-24da1601ab55" width="500">
 
 Irodymas, kad realizuota abstrakti klasė zmogus, jos objektų kūrimas negalimas
 
