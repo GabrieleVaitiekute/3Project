@@ -20,10 +20,10 @@ private:
 	std::string vardas;
 	std::string pavarde;
 	std::vector<int> ND;
-	int EGZ = 0;
-	double GalutinisV = 0;
-	double GalutinisM = 0;
-	void studentas::ApskaiciuotiGalutinius()
+	int EGZ;
+	double GalutinisV;
+	double GalutinisM;
+	void ApskaiciuotiGalutinius()
 	{
 		if (!ND.empty())
 		{
@@ -46,52 +46,79 @@ private:
 	}
 
 public:
-	studentas::studentas() = default;
+	studentas() : EGZ(0), GalutinisV(0), GalutinisM(0) {
+		std::cout << "Suveike default konstruktorius\n";
+	}
 
 	studentas::studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
 		: vardas(vardas), pavarde(pavarde), ND(ND), EGZ(EGZ) {
-		ApskaiciuotiGalutinius(); // Calculate final scores after initialization
+		ApskaiciuotiGalutinius();
+		std::cout << "Suveike parametrizuotas konstruktorius\n";
 	}
 
 	// Destruktorius
-	studentas::~studentas() = default;
+	~studentas() { ND.clear();  std::cout << "Suveike destruktorius\n"; }
 
 	// Copy konstruktorius
 	studentas::studentas(const studentas& other)
-		: vardas(other.vardas), pavarde(other.pavarde), ND(other.ND), EGZ(other.EGZ),
-		GalutinisV(other.GalutinisV), GalutinisM(other.GalutinisM) {}
-
+	{
+		vardas = other.vardas;
+		pavarde = other.pavarde;
+		ND = other.ND;
+		EGZ = other.EGZ;
+		GalutinisV = other.GalutinisV;
+		GalutinisM = other.GalutinisM;
+		std::cout << "Suveike copy konstruktorius\n";
+	}
 	// Move konstruktorius
 	studentas::studentas(studentas&& other) noexcept
-		: vardas(std::move(other.vardas)), pavarde(std::move(other.pavarde)), ND(std::move(other.ND)),
-		EGZ(other.EGZ), GalutinisV(other.GalutinisV), GalutinisM(other.GalutinisM) {}
-
-	// Copy priskyrimo operatorius
-	studentas& studentas::operator=(const studentas& other) 
 	{
-		if (this != &other) {
+		vardas = std::move(other.vardas);
+		pavarde = std::move(other.pavarde);
+		ND = std::move(other.ND);
+		EGZ = std::move(other.EGZ);
+		GalutinisV = std::move(other.GalutinisV);
+		GalutinisM = std::move(other.GalutinisM);
+		other.clearEverything();
+		std::cout << "Suveike move konstruktorius\n";
+
+	}
+	// Copy priskyrimo operatorius
+	studentas& studentas::operator=(const studentas& other)
+	{
+
+		if (this != &other)
+		{
 			vardas = other.vardas;
 			pavarde = other.pavarde;
 			ND = other.ND;
 			EGZ = other.EGZ;
 			GalutinisV = other.GalutinisV;
 			GalutinisM = other.GalutinisM;
+			std::cout << "Suveike copy priskyrimo operatorius\n";
 		}
+
 		return *this;
 	}
 
 	// Move priskyrimo operatorius
 	studentas& studentas::operator=(studentas&& other) noexcept
 	{
-		if (this != &other) 
+
+		if (this != &other)
 		{
 			vardas = std::move(other.vardas);
 			pavarde = std::move(other.pavarde);
 			ND = std::move(other.ND);
-			EGZ = other.EGZ;
-			GalutinisV = other.GalutinisV;
-			GalutinisM = other.GalutinisM;
+			EGZ = std::move(other.EGZ);
+			GalutinisV = std::move(other.GalutinisV);
+			GalutinisM = std::move(other.GalutinisM);
+			other.clearEverything();
+			std::cout << "Suveike move priskyrimo operatorius\n";
 		}
+
+
+
 		return *this;
 	}
 
@@ -126,31 +153,42 @@ public:
 		}
 
 		int pazymys;
-		std::vector<int> grades;
-		while (is >> pazymys) 
+		std::vector<int> NDpazymiai;
+		while (is >> pazymys)
 		{
-			grades.push_back(pazymys);
+			NDpazymiai.push_back(pazymys);
 		}
 
-		if (!grades.empty()) 
+		if (!NDpazymiai.empty())
 		{
-			s.EGZ = grades.back();
-			grades.pop_back();
-			s.ND = grades;
+			s.EGZ = NDpazymiai.back();
+			NDpazymiai.pop_back();
+			s.ND = NDpazymiai;
 		}
 
 		s.ApskaiciuotiGalutinius();
-
-		return is;
+		std::cout << "Suveike ivesties operatorius\n";
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const studentas& s)
 	{
-		os << std::setw(20) << s.pavarde << std::setw(20) << s.vardas << std::setw(20) << std::setprecision(3) 	<< s.GalutinisV << std::setw(20) << std::setprecision(3) << s.GalutinisM << std::endl;
+		os << std::setw(20) << s.pavarde << std::setw(20) << s.vardas << std::setw(20) << std::setprecision(3) << s.GalutinisV << std::setw(20) << std::setprecision(3) << s.GalutinisM << std::endl;
 
 		return os;
+		std::cout << "Suveike isvesties operatorius\n";
 	}
 
+
+	void clearEverything()
+	{
+		this->vardas.clear();
+		this->pavarde.clear();
+		this->ND.clear();
+		this->EGZ = 0;
+		this->GalutinisV = 0;
+		this->GalutinisM = 0;
+
+	}
 };
 
 #endif
