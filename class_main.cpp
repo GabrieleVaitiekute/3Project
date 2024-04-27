@@ -236,45 +236,49 @@ int main()
 
 	if (Pasirinkimas == 4)
 	{
-
-
 		int Failo_Pasirinkimas;
-		std::string Failo_Vieta;
+		std::string Failas;
 
 		while (true)
 		{
 			// Parinkimo meniu ir failo pasirinkimas
-			std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomenis:\n 1. kursiokai.txt \n 2. StudentaiN10000.txt\n 3. StudentaiN100000.txt\n 4. StudentaiN1000000.txt\n Iveskite pasirinkimo numeri: ";
+			std::cout << "\nPasirinkite, is kurio failo norite nuskaityti duomenis:\n 1. 1 000\n 2. 10 000\n 3. 100 000\n 4. 1 000 000\n 5. 10 000 000 \n Iveskite pasirinkimo numeri: ";
 
 			std::cin >> Failo_Pasirinkimas;
 			// Tikrinimas ar įvestis yra tinkama
-			if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 4)
+			if (std::cin.fail() || std::cin.peek() != '\n' || Failo_Pasirinkimas < 1 || Failo_Pasirinkimas > 5)
 			{
-				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 4. ");
+				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 5. ");
 			}
 			int reserveDydis = 0;
 			// Nuskaitomas pasirinkto failo kelias
 			switch (Failo_Pasirinkimas)
 			{
 			case 1:
-				Failo_Vieta = "kursiokai.txt";
+				Failas = "Studentai1000.txt";
 				reserveDydis = 1000;
 				break;
 			case 2:
-				Failo_Vieta = "StudentaiN10000.txt";
+				Failas = "Studentai10000.txt";
 				reserveDydis = 10000;
 				break;
 			case 3:
-				Failo_Vieta = "StudentaiN100000.txt";
+				Failas = "Studentai100000.txt";
 				reserveDydis = 100000;
 				break;
 			case 4:
-				Failo_Vieta = "StudentaiN1000000.txt";
+				Failas = "Studentai1000000.txt";
 				reserveDydis = 1000000;
 				break;
+
+			case 5:
+				Failas = "Studentai10000000.txt";
+				reserveDydis = 10000000;
+				break;
+
 			}
 			// Tikrinimas ar pasirinktas failas egzistuoja
-			if (!fs::exists(Failo_Vieta))
+			if (!fs::exists(Failas))
 			{
 				Netinkamas_Ivestis("Pasirinktas failas neegzistuoja. Pasirinkite kita faila. ");
 				std::cout << "\n";
@@ -282,7 +286,7 @@ int main()
 
 			}
 			// Nuskaitymas duomenų iš pasirinkto failo
-			S = Nuskaityti_Is_Failo(Failo_Vieta, reserveDydis);
+			S = Nuskaityti_Is_Failo(Failas, reserveDydis);
 			Rikiuoti_Duomenis(S);
 			Skirstyti_Studentus(S, N, G, Strategija);
 
@@ -303,10 +307,9 @@ int main()
 	{
 		std::cout << "Pasirinkite kiek studentu norite sugeneruoti:\n 1. 1 000\n 2. 10 000\n 3. 100 000\n 4. 1 000 000\n 5. 10 000 000 \n Iveskite pasirinkimo numeri: ";
 
-		std::string G_Failo_Vieta;
+		std::string G_Failas;
 		int G_Failo_Pasirinkimas;
 		int reserveDydis = 0;
-		std::string failoPav;
 		while (true)
 		{
 			try
@@ -328,40 +331,40 @@ int main()
 		switch (G_Failo_Pasirinkimas)
 		{
 		case 1:
-			G_Failo_Vieta = "Studentai1000.txt";
+			G_Failas = "Studentai1000.txt";
 			reserveDydis = 1000;
 			break;
 		case 2:
-			G_Failo_Vieta = "Studentai10000.txt";
+			G_Failas = "Studentai10000.txt";
 			reserveDydis = 10000;
 			break;
 		case 3:
-			G_Failo_Vieta = "Studentai100000.txt";
+			G_Failas = "Studentai100000.txt";
 			reserveDydis = 100000;
 			break;
 		case 4:
-			G_Failo_Vieta = "Studentai1000000.txt";
+			G_Failas = "Studentai1000000.txt";
 			reserveDydis = 1000000;
 			break;
 
 		case 5:
-			G_Failo_Vieta = "Studentai10000000.txt";
+			G_Failas = "Studentai10000000.txt";
 			reserveDydis = 10000000;
 			break;
 
 		}
 
 		//jei failas jau egzistuoja, tiesiog nuskaitoma nuo jo
-		if (fs::exists(G_Failo_Vieta))
+		if (fs::exists(G_Failas))
 		{
 			std::cout << "Pasirinktas failas jau egzistuoja, dabar nuo jo bus nuskaitoma";
-			S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis);
+			S = Nuskaityti_Is_Failo(G_Failas, reserveDydis);
 		}
 		else //jei failas neegzistuoja, tai ji sugeneruoja ir tada nuskaito
 		{
 			std::cout << "Pasirinktas failas neegzistuoja, jis generuojamas";
-			GeneruotiFailus(reserveDydis, G_Failo_Vieta);
-			S = Nuskaityti_Is_Failo(G_Failo_Vieta, reserveDydis);
+			GeneruotiFailus(reserveDydis, G_Failas);
+			S = Nuskaityti_Is_Failo(G_Failas, reserveDydis);
 		}
 		Rikiuoti_Duomenis(S);
 		Skirstyti_Studentus(S, N, G, Strategija);
