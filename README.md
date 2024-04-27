@@ -16,9 +16,9 @@ Kur buvo reikalinga panaudotas išimčių valdymas (vartotojui įvedant informac
 
 Programa apskaičiuoja nuskaitymo, rūšiavimo didėjimo tvarka ir rūšiavimo į dvi grupes trukmes. 
 
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/51dea811-c9ff-45e8-90ed-d5f4b53124c5" width="500">
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/6903f764-cc78-4ea2-818b-f0f7801b1e1f" width="500">
 
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/f3905478-684e-474c-9b1e-a5ad525a02da" width="500">
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/bee4d26a-875f-484e-aa9d-b07379c2c9a0" width="500">
 
 Įvesties operatorius yra panaudojamas nuskaitymo nuo failo metu, o išvesties naudojamas išvedant rezultatus į failus.
 
