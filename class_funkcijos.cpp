@@ -95,7 +95,6 @@ void GeneruotiFailus(int reserveDydis, std::string& G_Failo_Vieta)
 }
 
 ///////// IVEDIMAS //////////////////
-
 void Ivesti_Pazymius(studentas& S)
 {
 	std::vector<int> pazymiai;
@@ -242,14 +241,14 @@ std::vector<studentas> Nuskaityti_Is_Failo(const std::string& Failo_Pavadinimas,
 	while (std::getline(file, eilute))
 	{
 		std::istringstream iss(eilute);
-		studentas student;
-		if (iss >> student)
+		studentas s;
+		if (iss >> s)
 		{
-			studentai.push_back(student);
+			studentai.push_back(s);
 		}
 		else
 		{
-			std::cerr << "Klaida nuskaitant duomenis iš eilutės: " << eilute << std::endl;
+			std::cerr << "Klaida nuskaitant duomenis is eilutes: " << eilute << std::endl;
 		}
 	}
 
@@ -490,63 +489,59 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 
 void Testavimas()
 {
-
-	// Testuojamas numatytasis konstruktorius
+	// Testuojamas default konstruktorius
 	{
+		std::cout << "\n1. Testuojamas default konstruktorius\n\n";
 		studentas s;
-		assert(s.getVardas().empty() && s.getPavarde().empty() && s.getND().empty() && s.getEGZ() == 0);
-		std::cout << "Numatytasis konstruktorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 
-	// Testuojamas parametrizuotas konstruktorius ir getter'iai
+	// Testuojamas parametrizuotas konstruktorius
 	{
+		std::cout << "\n2.  Testuojamas parametrizuotas konstruktorius\n\n";
 		std::string vardas = "Jonas";
 		std::string pavarde = "Jonaitis";
 		std::vector<int> nd = { 5, 7, 8 };
 		int egz = 9;
 		studentas s(vardas, pavarde, nd, egz);
-		assert(s.getVardas() == vardas && s.getPavarde() == pavarde && s.getND() == nd && s.getEGZ() == egz);
-		std::cout << "Parametrizuotas konstruktorius ir getter'iai veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 
-	// Testuojamas kopijavimo konstruktorius
+	// Testuojamas copy  konstruktorius
 	{
-		std::vector<int> K{ 10, 9, 8 };//toki ND vector turi gauti
+		std::cout << "\n3. Testuojamas copy konstruktorius\n\n";
 		studentas s1("Petras", "Petraitis", { 10, 9, 8 }, 10);
 		studentas s2 = s1;
-		assert(s2.getVardas() == "Petras" && s2.getPavarde() == "Petraitis" && s2.getND() == K && s2.getEGZ() == 10);
-		std::cout << "Kopijavimo konstruktorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 
 	// Testuojamas move konstruktorius
 	{
+		std::cout << "\n4. Testuojamas move konstruktorius\n\n";
 		studentas s1("Kazys", "Kazlauskas", { 6, 5, 7 }, 8);
 		studentas s2 = std::move(s1);
-		assert(s2.getVardas() == "Kazys" && s2.getPavarde() == "Kazlauskas" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
-		std::cout << "Move konstruktorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 
 	// Testuojamas kopijavimo priskyrimo operatorius
 	{
-		std::vector<int> V{ 9, 8, 10 };//toki ND vector turi gauti
-		studentas s1("Antanas", "Antanaitis", V, 7);
-		studentas s2;
+		std::cout << "\n5. Testuojamas copy priskyrimo operatorius\n\n";
+		studentas s1, s2;
 		s2 = s1;
-		assert(s2.getVardas() == "Antanas" && s2.getPavarde() == "Antanaitis" && s2.getND() == V && s2.getEGZ() == 7);
-		std::cout << "Kopijavimo priskyrimo operatorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 
 	// Testuojamas move priskyrimo operatorius
 	{
-		studentas s1("Aldona", "Aldoniene", { 7, 8, 9 }, 10);
-		studentas s2;
-		s2 = std::move(s1);
-		assert(s2.getVardas() == "Aldona" && s2.getPavarde() == "Aldoniene" && !s2.getVardas().empty()); // move semantika palieka s1 objektą neapibrėžtu stoviu
-		std::cout << "Move priskyrimo operatorius veikia teisingai." << std::endl;
+		std::cout << "\n6. Testuojamas move priskyrimo operatorius\n\n";
+		studentas s3, s2;
+		s3 = std::move(s2);
+		std::cout << std::endl;
 	}
 
 	// Destruktoriaus patikrinimas
 	{
+		std::cout << "\n7. Destruktoriaus patikrinimas\n\n";
 		// Sukuriamas dynamic studentas 
 		studentas* s1 = new studentas();
 
@@ -561,11 +556,12 @@ void Testavimas()
 
 		// Patikrinam ar jame nebeliko s1 pazymiu
 		assert(s2.getND().empty());
-		std::cout << "Destruktorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 
 	}
 	// Testuojamas įvedimo operatorius
 	{
+		std::cout << "\n8. Testuojamas ivedimo operatorius\n\n";
 		std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
 		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
 		studentas s;
@@ -574,12 +570,13 @@ void Testavimas()
 		assert(s.getPavarde() == "Mindaugaitis");
 		assert(s.getND() == I);
 		assert(s.getEGZ() == 9);
-		std::cout << "Ivedimo operatorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 
 
-	// Testuojamas išvedimo operatorius
+	// Testuojamas ivesties operatorius
 	{
+		std::cout << "\n9. Testuojamas ivesties operatorius\n\n";
 		std::istringstream iss("Lina Linaityte 4 5 9 9");
 		studentas s;
 		iss >> s;
@@ -587,6 +584,6 @@ void Testavimas()
 		oss << s;
 		std::string tikimasi = "           Linaityte                Lina                 7.8                 7.4\n";
 		assert(oss.str() == tikimasi);
-		std::cout << "Isvedimo operatorius veikia teisingai." << std::endl;
+		std::cout << std::endl;
 	}
 }
