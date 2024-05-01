@@ -83,7 +83,6 @@ Praplėsta v1.5 versija. Sukurta dokumentacija panaudojant Doxygen. Realizuoti U
 4.Paleiskite programą.
 
 ## NAUDOJIMOSI INSTRUKCIJA
-------
 
 Paleidus programą pradiniame meniu suteikiami 6 pasirinkimai 1 - ranka suvesti visus studentų duomenis, 2 - generuoti pažymius ir suvesti vardus bei pavardes, 3 - generuoti ir pažymius, ir studentų vardus, pavardes, 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 5 - sugeneruoti failus (5 dydžių pasirinkimai), 6 - baigti darbą.
 
