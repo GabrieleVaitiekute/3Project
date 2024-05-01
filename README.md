@@ -1,7 +1,6 @@
 # 2Project
 
 ## VISŲ RELEASE APRAŠYMAI
-------------------------------------------------------------------------------------
 
 ### v.pradine
 Programą nuskaito vartotojų įvedamus studento duomenis. Baigus duomenų įvedimą, suskaičiuoja galutinį balą pasirinktu būdu ( su vidurkiu arba mediana ) ir jį pateikia į ekraną.
@@ -62,11 +61,10 @@ Pataisyta v1.5 versija.
 Praplėsta v1.5 versija. Sukurta dokumentacija panaudojant Doxygen. Realizuoti Unit Testai naudodojant........ README.md faile aprašyti visi releasai, pateiktos diegimo ir naudojimo instrukcijos.
 
 ## Testavimo aprašymas
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ## DIEGIMO INSTRUKCIJA
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 1.Atsisiųskite ir įdiekite „Visual Studio“ ir „CMake“ bei šios programos failus;
 
