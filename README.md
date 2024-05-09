@@ -57,7 +57,7 @@ Praplėsta v1.2 versija. Vietoje vienos klasės "studentas" sukurtos dvi: bazin�
 ### v1.5.2 ir v1.5.3
 Pataisyta v1.5 versija.
 
-### v2.0
+## v2.0
 Praplėsta v1.5 versija. Sukurta dokumentacija panaudojant Doxygen. Realizuoti Unit Testai naudodojant........ README.md faile aprašyti visi releasai, pateiktos diegimo ir naudojimo instrukcijos.
 
 ## Testavimo aprašymas
