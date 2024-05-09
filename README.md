@@ -64,8 +64,6 @@ Praplėsta v1.5 versija. Sukurta dokumentacija panaudojant Doxygen. Realizuoti U
 
 Testavimą atlikau su Catch2. Testavimo pavyzdžiai:
 
-<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/0cb9f86e-a913-4c7a-8a94-5dac19a0c253" width="600">
-
 <img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/79c0ca15-8e20-490d-b50f-c9af3604fac5" width="600">
 
 <img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/2416c350-a519-4de2-a08d-3d67346b3196" width="600">
@@ -81,6 +79,8 @@ Testavimą atlikau su Catch2. Testavimo pavyzdžiai:
 <img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/d91c7e71-85a5-4cae-9753-cdf221c14f05" width="600">
 
 <img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/69e3a684-689c-464d-a6e8-e80a4051fd48" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/0cb9f86e-a913-4c7a-8a94-5dac19a0c253" width="600">
 
 ## DIEGIMO INSTRUKCIJA
 
