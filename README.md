@@ -88,13 +88,13 @@ Testavimą atlikau su Catch2. Testavimo pavyzdžiai:
 
 2.Atsivėrę terminalą su komanda cd nueikite į šios programos failų folderį. Tuomet į terminalą įveskite;
 
-⋅⋅* mkdir build;
+* mkdir build;
 
-⋅⋅* cd build;
+* cd build;
 
-⋅⋅* cmake ..
+* cmake ..
 
-⋅⋅* cmake --build .
+* cmake --build .
 
 ## NAUDOJIMOSI INSTRUKCIJA
 
