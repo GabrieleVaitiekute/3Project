@@ -22,11 +22,11 @@ protected:
 	std::string pavarde;
 public:
 	//Konstruktorius
-	zmogus() : vardas("Bevardis"), pavarde("Bepavardis") { std::cout << "Suveike zmogus default konstruktorius\n"; }
+	zmogus() : vardas("Bevardis"), pavarde("Bepavardis") { /* std::cout << "Suveike zmogus default konstruktorius\n"; */ }
 	zmogus(const std::string& vardas, const std::string& pavarde)
 		: vardas(vardas), pavarde(pavarde) {}
 
-	zmogus::~zmogus() {}
+	~zmogus() {}
 
 	virtual std::string getVardas() const = 0;
 	virtual std::string getPavarde() const = 0;
@@ -69,13 +69,13 @@ private:
 
 public:
 	studentas() : EGZ(0), ND(), GalutinisV(0), GalutinisM(0) {
-		std::cout << "Suveike studentas default konstruktorius\n";
+		//std::cout << "Suveike studentas default konstruktorius\n";
 	}
 
-	studentas::studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
+	studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
 		: zmogus(vardas, pavarde), ND(ND), EGZ(EGZ) {
 		ApskaiciuotiGalutinius();
-		std::cout << "Suveike parametrizuotas konstruktorius\n";
+		//std::cout << "Suveike parametrizuotas konstruktorius\n";
 	}
 
 
@@ -88,10 +88,10 @@ public:
 		return pavarde;
 	}
 	// Destruktorius
-	~studentas() { ND.clear();  std::cout << "Suveike destruktorius\n"; }
+	~studentas() { ND.clear();  /*std::cout << "Suveike destruktorius\n";*/ }
 
 	// Copy konstruktorius
-	studentas::studentas(const studentas& other)
+	studentas(const studentas& other)
 	{
 		vardas = other.vardas;
 		pavarde = other.pavarde;
@@ -99,10 +99,10 @@ public:
 		EGZ = other.EGZ;
 		GalutinisV = other.GalutinisV;
 		GalutinisM = other.GalutinisM;
-		std::cout << "Suveike copy konstruktorius\n";
+		//std::cout << "Suveike copy konstruktorius\n";
 	}
 	// Move konstruktorius
-	studentas::studentas(studentas&& other) noexcept
+	studentas(studentas&& other) noexcept
 	{
 		vardas = std::move(other.vardas);
 		pavarde = std::move(other.pavarde);
@@ -111,10 +111,10 @@ public:
 		GalutinisV = std::move(other.GalutinisV);
 		GalutinisM = std::move(other.GalutinisM);
 		other.clearEverything();
-		std::cout << "Suveike move konstruktorius\n";
+		//std::cout << "Suveike move konstruktorius\n";
 	}
 	// Copy priskyrimo operatorius
-	studentas& studentas::operator=(const studentas& other)
+	studentas& operator=(const studentas& other)
 	{
 
 		if (this != &other)
@@ -125,12 +125,12 @@ public:
 			EGZ = other.EGZ;
 			GalutinisV = other.GalutinisV;
 			GalutinisM = other.GalutinisM;
-			std::cout << "Suveike copy priskyrimo operatorius\n";
+			//std::cout << "Suveike copy priskyrimo operatorius\n";
 		}
 		return *this;
 	}
 	// Move priskyrimo operatorius
-	studentas& studentas::operator=(studentas&& other) noexcept
+	studentas& operator=(studentas&& other) noexcept
 	{
 
 		if (this != &other)
@@ -142,23 +142,23 @@ public:
 			GalutinisV = std::move(other.GalutinisV);
 			GalutinisM = std::move(other.GalutinisM);
 			other.clearEverything();
-			std::cout << "Suveike move priskyrimo operatorius\n";
+			//std::cout << "Suveike move priskyrimo operatorius\n";
 		}
 		return *this;
 	}
 
 
 	// Getter'iai
-	std::vector<int> studentas::getND() const { return ND; }
-	int studentas::getEGZ() const { return EGZ; }
-	double studentas::getGalutinisV() const { return GalutinisV; }
-	double studentas::getGalutinisM() const { return GalutinisM; }
+	std::vector<int> getND() const { return ND; }
+	int getEGZ() const { return EGZ; }
+	double getGalutinisV() const { return GalutinisV; }
+	double getGalutinisM() const { return GalutinisM; }
 
 	// Setter'iai
-	void studentas::setVardas(const std::string& newName) { vardas = newName; }
-	void studentas::setPavarde(const std::string& newSurname) { pavarde = newSurname; }
-	void studentas::setND(const std::vector<int>& newND) { ND = newND; ApskaiciuotiGalutinius(); }
-	void studentas::setEGZ(int newEGZ) {
+	void setVardas(const std::string& newName) { vardas = newName; }
+	void setPavarde(const std::string& newSurname) { pavarde = newSurname; }
+	void setND(const std::vector<int>& newND) { ND = newND; ApskaiciuotiGalutinius(); }
+	void setEGZ(int newEGZ) {
 		EGZ = newEGZ;
 		ApskaiciuotiGalutinius();
 	}
@@ -205,14 +205,14 @@ public:
 		}
 
 		s.ApskaiciuotiGalutinius();
-		std::cout << "Suveike ivesties operatorius\n";
+		//std::cout << "Suveike ivesties operatorius\n";
 		return is;
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const studentas& s)
 	{
 		os << std::setw(20) << s.pavarde << std::setw(20) << s.vardas << std::setw(20) << std::setprecision(3) << s.GalutinisV << std::setw(20) << std::setprecision(3) << s.GalutinisM << std::endl;
-		std::cout << "Suveike isvesties operatorius\n";
+		//std::cout << "Suveike isvesties operatorius\n";
 		return os;
 
 	}
