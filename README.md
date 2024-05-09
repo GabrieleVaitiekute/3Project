@@ -36,7 +36,7 @@ Patobulintos v1.0pradinis. Optimizuotas studentų rūšiavimo (dalijimo) į dv
   3 strategija: Bendro studentų konteinerio (vector, list ir deque) skaidymas (rūšiavimas) panaudojant 2 strategiją įtraukiant į ją "efektyvius" darbo su konteineriais metodus.
 ReadMe faile pateikta diegimo ir naudojimo instrukcijos.
 
-### v1.0.2subrelease ir v1.0.3finalinis
+### v1.0.2subrelease ir v1.0.3finalinis ir v1.0.4
 Pataisytas v1.0subrelease realizas.
 
 ### v1.1 
@@ -62,9 +62,27 @@ Praplėsta v1.5 versija. Sukurta dokumentacija panaudojant Doxygen. Realizuoti U
 
 ## Testavimo aprašymas
 
+Testavimą atlikau su Catch2. Testavimo pavyzdžiai:
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/0cb9f86e-a913-4c7a-8a94-5dac19a0c253" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/79c0ca15-8e20-490d-b50f-c9af3604fac5" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/2416c350-a519-4de2-a08d-3d67346b3196" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/23fb6294-ed4f-40da-8e6e-8a187bc982df" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/9c4c6fb0-040e-4286-8942-b1b8333ac2ab" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/48545e03-51cc-4341-b899-4fbdacbd0cc6" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/3eae89a2-2f0f-48d4-b269-def378bb898f" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/d91c7e71-85a5-4cae-9753-cdf221c14f05" width="600">
+
+<img src="https://github.com/GabrieleVaitiekute/2Project/assets/147078486/69e3a684-689c-464d-a6e8-e80a4051fd48" width="600">
 
 ## DIEGIMO INSTRUKCIJA
-
 
 1.Atsisiųskite ir įdiekite „Visual Studio“ ir „CMake“ bei šios programos failus;
 
@@ -74,13 +92,9 @@ Praplėsta v1.5 versija. Sukurta dokumentacija panaudojant Doxygen. Realizuoti U
 
 ⋅⋅* cd build;
 
-⋅⋅* cmake -G "Visual Studio 17 2022" .. ( metai priklauso nuo jūsų VS versijos)
+⋅⋅* cmake ..
 
-⋅⋅* start V2.sln
-
-3.Atsivėrus Visual Studio atsidarykite "Solution explorer" langelį ir dešiniuoju klavišu paspauskite V2 projekto ir paspauskite "Set as a Startup Project".
-
-4.Paleiskite programą.
+⋅⋅* cmake --build .
 
 ## NAUDOJIMOSI INSTRUKCIJA
 
@@ -100,4 +114,4 @@ Pasirinkus 5 būda prašoma pasirinkti kūrį failą norite sugeneruoti, jei fai
 
 Pasirinkus 6 būda darbas baigiamas.
 
-Pasirinkus 7 būdą atliekamas class Studentas testavimas.
+Pasirinkus 7 būdą atliekamas class Studentas testavimas(ne su Catch2).
