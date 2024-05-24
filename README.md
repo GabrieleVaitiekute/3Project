@@ -1,8 +1,17 @@
 # 3Project
 
-## Testavimo aprašymas
+## 1 TESTAVIMO APRAŠYMAS
 
 Testavimą atlikau su Catch2. Testai: Default konstruktorius, Parametrizuotas konstruktorius, Copy konstruktorius, Move konstruktorius, Copy priskyrimo operatorius, Move priskyrimo operatorius, Ivesties operatorius, Isvesties operatorius, Push back, size, Capacity, Modifiers, Relational Operators.
+
+## 2 EFEKTYVUMO/SPARTOS ANALIZĖ NAUDOJANT PUSH_BACK()
+
+
+## 3 ATMINTIES PERSKIRTYMAI
+
+
+## 4 VECTOR VEIKLOS PALYGINIMAS SU STD::VECTOR
+
 
 ## DIEGIMO INSTRUKCIJA
 
@@ -17,7 +26,6 @@ Testavimą atlikau su Catch2. Testai: Default konstruktorius, Parametrizuotas ko
 * cmake ..
 
 * cmake --build .
-
 ## NAUDOJIMOSI INSTRUKCIJA
 
 Paleidus programą pradiniame meniu suteikiami 6 pasirinkimai 1 - ranka suvesti visus studentų duomenis, 2 - generuoti pažymius ir suvesti vardus bei pavardes, 3 - generuoti ir pažymius, ir studentų vardus, pavardes, 4 - nuskaityti duomenis iš failo (galima pasirinkti iš 4 skirtingų failų, programa apskaičiuoja ir pateikia, kiek laiko užtruko nuskaityti failą), 5 - sugeneruoti failus (5 dydžių pasirinkimai), 6 - baigti darbą.
