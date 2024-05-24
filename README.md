@@ -11,7 +11,10 @@ Testavimą atlikau su Catch2. Testai: Default konstruktorius, Parametrizuotas ko
 
 
 ## 4 VECTOR VEIKLOS PALYGINIMAS SU STD::VECTOR
-
+  1. Spartos analizė
+  2. Catch testai
+  3. Doxygen
+  4. Setup.exe 
 
 ## DIEGIMO INSTRUKCIJA
 
