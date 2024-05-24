@@ -1,5 +1,5 @@
-#include "class_studentai.h"
-#include "class_funkcijos.h"
+#include "studentai.h"
+#include "funkcijos.h"
 
 char TaipNe;
 namespace fs = std::filesystem;
@@ -10,16 +10,16 @@ int main()
 	std::vector<studentas> N;//nuskriaustieji
 	std::vector<studentas> G;//galvociai
 
-	std::cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Nuskaityti studentu duomenis nuo failo\n 5. Generuoti failus\n 6. Baigti darba\n 7. Testuoti \n Iveskite pasirinkimo numeri: ";
+	std::cout << "Pasirinkite veiksma:\n 1. Suvesti visus studentu duomenis\n 2. Sugeneruoti tik studentu pazymius\n 3. Sugeneruoti studentu vardus ir pazymius\n 4. Nuskaityti studentu duomenis nuo failo\n 5. Generuoti failus\n 6. Baigti darba \n Iveskite pasirinkimo numeri: ";
 
 	while (true)
 	{
 		try
 		{
 			std::cin >> Pasirinkimas;
-			if (std::cin.fail() || std::cin.peek() != '\n' || Pasirinkimas < 1 || Pasirinkimas > 7)
+			if (std::cin.fail() || std::cin.peek() != '\n' || Pasirinkimas < 1 || Pasirinkimas > 6)
 			{
-				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 7. ");
+				throw std::invalid_argument("Netinkama ivestis. Iveskite sveikaji skaiciu nuo 1 iki 6. ");
 			}
 			break;
 		}
@@ -381,10 +381,6 @@ int main()
 
 	if (Pasirinkimas == 6)
 		std::cout << "\n" << "Darbas baigtas";
-
-	if (Pasirinkimas == 7)
-		Testavimas();
-
 
 
 	std::cout << "\n";
