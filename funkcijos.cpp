@@ -1,6 +1,4 @@
-#include "class_studentai.h"
-#include "class_funkcijos.h"
-
+#include "studentai.h"
 
 //////////////// NETINKAMA IVESTIS ///////////////////////
 void Netinkamas_Ivestis(std::string Problema)
@@ -28,7 +26,7 @@ int lytis = dis_lytis(generuoti);
 ////////// PAZYMIU GENERAVIMAS ////////////
 void GeneruotiNDPazymius(studentas& S, int ND_kiekis)
 {
-	std::vector<int> pazymiai;
+	Vector<int> pazymiai;
 	for (int i = 0; i < ND_kiekis; ++i) {
 		pazymiai.push_back(dis(generuoti));
 	}
@@ -98,7 +96,7 @@ void GeneruotiFailus(int reserveDydis, std::string& G_Failo_Vieta)
 
 void Ivesti_Pazymius(studentas& S)
 {
-	std::vector<int> pazymiai;
+	Vector<int> pazymiai;
 	char TaipNePaz;
 	std::cout << "\nIveskite namu darbu pazymi: ";
 	int pazymys;
@@ -486,109 +484,4 @@ void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<st
 	Nepazangiuju_failas.close();
 
 	std::cout << std::endl << "Rezultatai atspausdinti" << std::endl;
-}
-
-void Testavimas()
-{
-	// Testuojamas default konstruktorius
-	{
-		std::cout << "\n1. Testuojamas default konstruktorius\n\n";
-		studentas s;
-		std::cout << std::endl;
-	}
-
-	// Testuojamas parametrizuotas konstruktorius
-	{
-		std::cout << "\n2.  Testuojamas parametrizuotas konstruktorius\n\n";
-		std::string vardas = "Jonas";
-		std::string pavarde = "Jonaitis";
-		std::vector<int> nd = { 5, 7, 8 };
-		int egz = 9;
-		studentas s(vardas, pavarde, nd, egz);
-		std::cout << std::endl;
-	}
-
-	// Testuojamas copy  konstruktorius
-	{
-		std::cout << "\n3. Testuojamas copy konstruktorius\n\n";
-		studentas s1("Petras", "Petraitis", { 10, 9, 8 }, 10);
-		studentas s2 = s1;
-		std::cout << std::endl;
-	}
-
-	// Testuojamas move konstruktorius
-	{
-		std::cout << "\n4. Testuojamas move konstruktorius\n\n";
-		studentas s1("Kazys", "Kazlauskas", { 6, 5, 7 }, 8);
-		studentas s2 = std::move(s1);
-		std::cout << std::endl;
-	}
-
-	// Testuojamas kopijavimo priskyrimo operatorius
-	{
-		std::cout << "\n5. Testuojamas copy priskyrimo operatorius\n\n";
-		studentas s1, s2;
-		s2 = s1;
-		std::cout << std::endl;
-	}
-
-	// Testuojamas move priskyrimo operatorius
-	{
-		std::cout << "\n6. Testuojamas move priskyrimo operatorius\n\n";
-		studentas s3, s2;
-		s3 = std::move(s2);
-		std::cout << std::endl;
-	}
-
-	// Destruktoriaus patikrinimas
-	{
-		std::cout << "\n7. Destruktoriaus patikrinimas\n\n";
-		// Sukuriamas dynamic studentas 
-		studentas* s1 = new studentas();
-
-		// I ji pridedamepazymius
-		s1->setND({ 10, 9, 8 });
-
-		// Istriname 
-		delete s1;
-
-		// Sukuriam nauja
-		studentas s2;
-
-		// Patikrinam ar jame nebeliko s1 pazymiu
-		assert(s2.getND().empty());
-		std::cout << std::endl;
-
-	}
-	// Testuojamas ivesties operatorius
-	{
-		std::cout << "\n8. Testuojamas ivesties operatorius\n\n";
-		std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
-		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
-		studentas s;
-		iss >> s;
-		assert(s.getVardas() == "Mindaugas");
-		assert(s.getPavarde() == "Mindaugaitis");
-		assert(s.getND() == I);
-		assert(s.getEGZ() == 9);
-		std::cout << std::endl;
-	}
-	// Testuojamas ivesties operatorius
-	{
-		std::cout << "\n9. Testuojamas ivesties operatorius\n\n";
-		std::istringstream iss("Lina Linaityte 4 5 9 9");
-		studentas s;
-		iss >> s;
-		std::ostringstream oss;
-		oss << s;
-		std::string tikimasi = "           Linaityte                Lina                 7.8                 7.4\n";
-		assert(oss.str() == tikimasi);
-		std::cout << std::endl;
-	}
-
-	//realizuota abstrakti klasė zmogus, jos objektų kūrimas negalimas (pademonstruota).
-	{
-		//zmogus z;
-		
-	}
 }
