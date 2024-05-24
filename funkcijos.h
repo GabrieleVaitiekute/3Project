@@ -1,6 +1,6 @@
-#ifndef CLASS_FUNKCIJOS_H
-#define CLASS_FUNKCIJOS_H
-#include "class_studentai.h"
+#ifndef FUNKCIJOS_H
+#define FUNKCIJOS_H
+#include "studentai.h"
 
 ////////// NETINKAMA IVESTIS //////////////
 void Netinkamas_Ivestis(std::string Problema);
@@ -30,6 +30,4 @@ void Skirstyti_Studentus(std::vector<studentas>& S, std::vector<studentas>& N, s
 ///////// REZULTATU SPAUSDINIMAS ///////////////////////////
 void Spausdinti_Rezultatus(const std::vector<studentas>& N, const std::vector<studentas>& G);
 
-//////////////// Studentai klase testavimas
-void Testavimas();
 #endif
