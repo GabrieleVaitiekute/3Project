@@ -7,7 +7,6 @@ TEST_CASE("Vector", "[Vector]")
 {
 	SECTION("Default konstruktorius")
 	{
-		WARN("REQUIRE stops at [Default konstruktorius] failure: ");
 		studentas s;
 		REQUIRE(s.getVardas() == "Bevardis");
 		REQUIRE(s.getPavarde() == "Bepavardis");
@@ -19,7 +18,6 @@ TEST_CASE("Vector", "[Vector]")
 
 	SECTION("Parametrizuotas konstruktorius")
 	{
-		WARN("REQUIRE stops at [Parametrizuotas konstruktorius] failure: ");
 		std::string vardas = "Jonas";
 		std::string pavarde = "Jonaitis";
 		Vector<int> nd = { 5, 7, 6, 9 };
@@ -35,7 +33,6 @@ TEST_CASE("Vector", "[Vector]")
 
 	SECTION("Copy konstruktorius")
 	{
-		WARN("REQUIRE stops at [Copy konstruktorius] failure: ");
 		studentas s1("Petras", "Petraitis", { 10, 9, 8 }, 10);
 		studentas s2(s1);
 		REQUIRE(s1.getVardas() == s2.getVardas());
@@ -47,7 +44,6 @@ TEST_CASE("Vector", "[Vector]")
 	}
 	SECTION("Move konstruktorius")
 	{
-		WARN("REQUIRE stops at [Move konstruktorius] failure: ");
 		std::string vardas = "Kazys";
 		std::string pavarde = "Kazlauskas";
 		Vector<int> nd = { 5, 7, 6, 9 };
@@ -73,7 +69,6 @@ TEST_CASE("Vector", "[Vector]")
 
 	SECTION("Copy priskyrimo operatorius")
 	{
-		WARN("REQUIRE stops at [Copy priskyrimo operatorius] failure: ");
 		studentas s1, s2;
 		s2 = s1;
 		REQUIRE(s1.getVardas() == s2.getVardas());
@@ -85,7 +80,6 @@ TEST_CASE("Vector", "[Vector]")
 	}
 	SECTION("Move priskyrimo operatorius")
 	{
-		WARN("REQUIRE stops at [Move priskyrimo operatorius] failure: ");
 		std::string vardas = "Kazys";
 		std::string pavarde = "Kazlauskas";
 		Vector<int>  nd = { 5, 7, 6, 9 };
@@ -112,7 +106,6 @@ TEST_CASE("Vector", "[Vector]")
 
 	SECTION("Ivesties operatorius")
 	{
-		WARN("REQUIRE stops at [Ivesties operatorius] failure: ");
 		Vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
 		std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
 		studentas s;
@@ -127,7 +120,6 @@ TEST_CASE("Vector", "[Vector]")
 
 	SECTION("Isvesties operatorius")
 	{
-		WARN("REQUIRE stops at [Isvesties operatorius] failure: ");
 		std::istringstream iss("Lina Linaityte 4 5 9 9");
 		studentas s;
 		iss >> s;
