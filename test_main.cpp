@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch2/catch.hpp"
-#include "class_studentai.h"
+#include "studentai.h"
  
 
 TEST_CASE("Default konstruktorius", "[Default konstruktorius]")
@@ -21,14 +21,14 @@ TEST_CASE("Parametrizuotas konstruktorius", "[Parametrizuotas konstruktorius]")
 	WARN("REQUIRE stops at [Parametrizuotas konstruktorius] failure: ");
 	std::string vardas = "Jonas";
 	std::string pavarde = "Jonaitis";
-	std::vector<int> nd = { 5, 7, 6, 9 };
+	Vector<int> nd = { 5, 7, 6, 9 };
 	int egz = 9;
 	studentas s(vardas, pavarde, nd, egz);
 	REQUIRE(s.getVardas() == vardas);
 	REQUIRE(s.getPavarde() == pavarde);
 	REQUIRE(s.getEGZ() == egz);
 	REQUIRE(s.getND() == nd);
-	REQUIRE(s.getGalutinisV() == 8);
+	REQUIRE(s.getGalutinisV() == 8.1);
 	REQUIRE(s.getGalutinisM() == 8);
 }
 
@@ -51,7 +51,7 @@ TEST_CASE("Move konstruktorius", "[Move konstruktorius]")
 	WARN("REQUIRE stops at [Move konstruktorius] failure: ");
 	std::string vardas = "Kazys";
 	std::string pavarde = "Kazlauskas";
-	std::vector<int> nd = { 5, 7, 6, 9 };
+	Vector<int> nd = { 5, 7, 6, 9 };
 	int egz = 9;
 	studentas s1(vardas, pavarde, nd, egz);
 	studentas s2(std::move(s1));
@@ -92,7 +92,7 @@ TEST_CASE("Move priskyrimo operatorius", "[Move priskyrimo operatorius]")
 	WARN("REQUIRE stops at [Move priskyrimo operatorius] failure: ");
 	std::string vardas = "Kazys";
 	std::string pavarde = "Kazlauskas";
-	std::vector<int> nd = { 5, 7, 6, 9 };
+	Vector<int>  nd = { 5, 7, 6, 9 };
 	int egz = 9;
 	studentas s1(vardas, pavarde, nd, egz);
 	studentas s2;
@@ -118,12 +118,13 @@ TEST_CASE("Move priskyrimo operatorius", "[Move priskyrimo operatorius]")
 TEST_CASE("Destruktorius", "[Destruktorius]")
 {
 	WARN("REQUIRE stops at [Destruktorius] failure: ");
-	
+
 	// Sukuriamas dynamic studentas 
 	studentas* s1 = new studentas();
+	Vector<int> I = { 10, 9, 8 };
 
-	// I ji pridedamepazymius
-	s1->setND({ 10, 9, 8 });
+	// I ji pridedame pazymius
+	s1->setND(I);
 
 	// Istriname 
 	delete s1;
@@ -139,7 +140,7 @@ TEST_CASE("Destruktorius", "[Destruktorius]")
 TEST_CASE("Ivesties operatorius", "[Ivesties operatorius]")
 {
 	WARN("REQUIRE stops at [Ivesties operatorius] failure: ");
-	std::vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
+	Vector<int> I = { 5, 6, 7, 8 };//toki ND vector turi gauti
 	std::istringstream iss("Mindaugas Mindaugaitis 5 6 7 8 9");
 	studentas s;
 	iss >> s;
