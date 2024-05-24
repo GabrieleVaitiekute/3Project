@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(V1.5)
+project(V3)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Add executable for Class project
-add_executable(Class class_main.cpp class_funkcijos.cpp class_funkcijos.h class_studentai.h)
+# Add executable for V3 project
+add_executable(V3 main.cpp funkcijos.cpp funkcijos.h studentai.h)
