@@ -1,7 +1,7 @@
-#ifndef CLASS_STUDENTAI_H
-#define CLASS_STUDENTAI_H
+#ifndef STUDENTAI_H
+#define STUDENTAI_H
 
-#include <chrono> 
+#include <chrono>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -11,9 +11,10 @@
 #include <limits>
 #include <filesystem>
 #include <algorithm>
-#include <numeric> 
-#include <random> 
+#include <numeric>
+#include <random>
 #include <cassert>
+#include "vector.h"
 
 //ZMOGUS
 class zmogus {
@@ -31,7 +32,7 @@ public:
 	virtual std::string getVardas() const = 0;
 	virtual std::string getPavarde() const = 0;
 
-	// Setter'iai 
+	// Setter'iai
 	virtual void setVardas(const std::string& newName) { vardas = newName; }
 	virtual void setPavarde(const std::string& newSurname) { pavarde = newSurname; }
 
@@ -41,7 +42,7 @@ public:
 class  studentas : public zmogus {
 private:
 
-	std::vector<int> ND;
+	Vector<int>ND;
 	int EGZ;
 	double GalutinisV;
 	double GalutinisM;
@@ -52,7 +53,7 @@ private:
 			GalutinisV = 0.4 * std::accumulate(ND.begin(), ND.end(), 0.0) / ND.size() + 0.6 * EGZ;
 			if (ND.size() > 1)
 			{
-				std::vector<int> sortedND = ND;
+				Vector<int> sortedND = ND;
 				std::sort(sortedND.begin(), sortedND.end());
 				size_t mid = sortedND.size() / 2;
 				GalutinisM = 0.4 * (sortedND.size() % 2 == 0 ? (sortedND[mid - 1] + sortedND[mid]) / 2.0 : sortedND[mid]) + 0.6 * EGZ;
@@ -72,12 +73,11 @@ public:
 		//std::cout << "Suveike studentas default konstruktorius\n";
 	}
 
-	studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& ND, int EGZ)
+	studentas(const std::string& vardas, const std::string& pavarde, Vector<int>& ND, int EGZ)
 		: zmogus(vardas, pavarde), ND(ND), EGZ(EGZ) {
 		ApskaiciuotiGalutinius();
 		//std::cout << "Suveike parametrizuotas konstruktorius\n";
 	}
-
 
 	// Implementuojame abstrakčius metodus
 	virtual std::string getVardas() const override {
@@ -147,9 +147,8 @@ public:
 		return *this;
 	}
 
-
 	// Getter'iai
-	std::vector<int> getND() const { return ND; }
+	Vector<int> getND() const { return ND; }
 	int getEGZ() const { return EGZ; }
 	double getGalutinisV() const { return GalutinisV; }
 	double getGalutinisM() const { return GalutinisM; }
@@ -157,12 +156,11 @@ public:
 	// Setter'iai
 	void setVardas(const std::string& newName) { vardas = newName; }
 	void setPavarde(const std::string& newSurname) { pavarde = newSurname; }
-	void setND(const std::vector<int>& newND) { ND = newND; ApskaiciuotiGalutinius(); }
+	void setND(Vector<int>& newND) { ND = newND; ApskaiciuotiGalutinius(); }
 	void setEGZ(int newEGZ) {
 		EGZ = newEGZ;
 		ApskaiciuotiGalutinius();
 	}
-
 
 	friend std::istream& operator>>(std::istream& is, studentas& s)
 	{
@@ -178,7 +176,7 @@ public:
 		}
 
 		int pazymys;
-		std::vector<int> NDpazymiai;
+		Vector<int> NDpazymiai;
 		while (is >> pazymys)
 		{
 			NDpazymiai.push_back(pazymys);
@@ -217,7 +215,6 @@ public:
 
 	}
 
-
 	void clearEverything()
 	{
 		this->vardas.clear();
@@ -226,8 +223,6 @@ public:
 		this->EGZ = 0;
 		this->GalutinisV = 0;
 		this->GalutinisM = 0;
-
 	}
 };
-
 #endif
