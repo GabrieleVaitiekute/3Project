@@ -189,9 +189,42 @@
 
 ## 2 EFEKTYVUMO/SPARTOS ANALIZĖ NAUDOJANT PUSH_BACK()
 
+Std::vector tipo ir mano Vector tipo tuščius vektorius užpildyti: 10000, 100000, 1000000, 10000000 ir 100000000 int elementų naudojant push_back() funkciją vidutiniškai laiko užtrunka
+
+|    | 10 000 | 100 000 | 1 000 000 | 10 000 000 | 100 000 000 |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| std::vector   | 0.0000701 | 0.0007939 | 0.00459453  | 0.050031 | 0.568934 |
+| Vector  | 0.0000472 | 0.000519767 | 0.0027145 |  0.0324630667 | 0.34435633 |
+
 
 ## 3 ATMINTIES PERSKIRTYMAI
 
+
+		unsigned int sz = 100000000;  
+		int std_vector1 = 0;
+		std::vector<int> v1;
+		for (int i = 1; i <= sz; ++i) {
+			v1.push_back(i);
+			if (v1.capacity() == v1.size()) {
+				std_vector1++;
+			}
+		}
+		
+		int Vector2 = 0;
+		Vector<int> v2;
+		for (int i = 1; i <= sz; ++i) {
+			v2.push_back(i);
+			if (v2.capacity() == v2.size()) {
+				Vector2++;
+			}
+		}
+
+'''
+
+std::vector atmintis perskirstyta: 46 kartus
+Vector atmintis perskirstyta: 27 kartus
+
+'''
 
 ## 4 VECTOR VEIKLOS PALYGINIMAS SU STD::VECTOR
   1. Spartos analizė
