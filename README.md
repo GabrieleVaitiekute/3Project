@@ -4,7 +4,7 @@
 
  Išplėčiau  Vector klases funkcionalumą taip, kad ji būtų pilnavertė alternatyvą std::vector konteineriui. Patikrinimui funkcionalumą (Member types, Member functions, Non-member functions) naudojausi https://en.cppreference.com/w/cpp/container/vector. Apačioje pateikti kodų pavyzdžiai bei nuotraukos su tikėtinais (baltame fone) ir gautais (juodame fone) outputais.
 
-   1.1 Operator= 
+####   1.1 Operator= 
    
         void print(auto const comment, auto const& container)
       {
@@ -44,7 +44,7 @@
 <img src="https://github.com/GabrieleVaitiekute/3Project/assets/147078486/bb710f31-9804-4bf7-935b-9aa9ef331cb6" width="500">
 
 
-  1.2 Capacity
+####   1.2 Capacity
 
         std::vector<int> v;
         std::cout << "Default-constructed capacity is " << v.capacity() << '\n';
@@ -69,7 +69,7 @@
 <img src="https://github.com/GabrieleVaitiekute/3Project/assets/147078486/e354587b-8f47-41e5-b46e-48adf4743b25" width="500">
 
 
-  1.3 Insert
+####   1.3 Insert
 
       void print(int id, const std::vector<int>& container)
       {
@@ -109,7 +109,7 @@
 <img src="https://github.com/GabrieleVaitiekute/3Project/assets/147078486/90355d88-107f-4f62-bae4-eeb0dd5f3e7b" width="500">
 
 
-  1.4 Erase
+####   1.4 Erase
 
         void print_container(const std::vector<int>& c)
       {
@@ -143,7 +143,7 @@
 <img src="https://github.com/GabrieleVaitiekute/3Project/assets/147078486/310aa22f-9c9f-4cdf-843a-7157e98de926" width="500">
 
 
-  1.5 Push_back
+####   1.5 Push_back
 
        std::vector<std::string> letters;
     
@@ -160,7 +160,7 @@
 <img src="https://github.com/GabrieleVaitiekute/3Project/assets/147078486/a5f62e14-af86-4f27-a1c7-1e7e500b2cc0" width="500">
 
 
-  1.6 Resize
+####   1.6 Resize
 
         void print(auto rem, const std::vector<int>& c)
     {
@@ -256,8 +256,13 @@ Vector atmintis perskirstyta: 27 kartus
 
 
 ### 	2. Catch testai
-     Testavimą atlikau su Catch2. Testai: Default konstruktorius, Parametrizuotas konstruktorius, Copy konstruktorius, Move konstruktorius, Copy priskyrimo operatorius, Move priskyrimo operatorius, Ivesties operatorius, Isvesties operatorius, Push back, size, Capacity, Modifiers, Relational Operators.
+
+Testavimą atlikau su Catch2. Testai: Default konstruktorius, Parametrizuotas konstruktorius, Copy konstruktorius, Move konstruktorius, Copy priskyrimo operatorius, Move priskyrimo operatorius, Ivesties operatorius, Isvesties operatorius, Push back, size, Capacity, Modifiers, Relational Operators.
 
 ###  	3. Doxygen
+
+Su Doxygen buvo sukurta dokumentacija, taip pat panaudotas Overleaf pdf failui.
+
+
 ### 	4. Setup.exe 
 
