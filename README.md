@@ -8,6 +8,8 @@
 
    
 '''
+
+
         void print(auto const comment, auto const& container)
       {
         auto size = std::size(container);
@@ -42,6 +44,8 @@
         print("w = ", w);
         print("z = ", z);
       }
+
+      
 '''
 
   
@@ -51,6 +55,8 @@
 
   
 '''
+
+
         std::vector<int> v;
         std::cout << "Default-constructed capacity is " << v.capacity() << '\n';
         v.resize(100);
@@ -68,6 +74,8 @@
         std::cout << "Capacity after adding 300 elements is " << v.capacity() << '\n';
         v.shrink_to_fit();
         std::cout << "Capacity after shrink_to_fit() is " << v.capacity() << '\n';
+
+        
 '''
 
 
