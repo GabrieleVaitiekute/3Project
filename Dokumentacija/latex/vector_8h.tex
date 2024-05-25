@@ -1,0 +1,97 @@
+\doxysection{vector.\+h File Reference}
+\hypertarget{vector_8h}{}\label{vector_8h}\index{vector.h@{vector.h}}
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+Include dependency graph for vector.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vector_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{vector_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_vector}{Vector$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{vector_8h_a4a042dd1c2e48b3e3e4f9a48c3e00a33}{operator==}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{vector_8h_af33b362313e0a866431e3d419769e45c}{operator!=}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{vector_8h_adaadc8683f897352d0d46dd4de21e352}{operator$<$}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{vector_8h_aad6c20067a180bfb0ca7e9b482200da3}{operator$<$=}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{vector_8h_a9716d9dbcc8f9ada1d56199f985f6671}{operator$>$}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{vector_8h_a5cbee65335748f507a4b9b9760077d07}{operator$>$=}} (const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{vector_8h_a3b597588a215a71ac78ba65437556992}{swap}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&lhs, \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&rhs) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{vector_8h_af33b362313e0a866431e3d419769e45c}\label{vector_8h_af33b362313e0a866431e3d419769e45c} 
+\index{vector.h@{vector.h}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\Hypertarget{vector_8h_adaadc8683f897352d0d46dd4de21e352}\label{vector_8h_adaadc8683f897352d0d46dd4de21e352} 
+\index{vector.h@{vector.h}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\Hypertarget{vector_8h_aad6c20067a180bfb0ca7e9b482200da3}\label{vector_8h_aad6c20067a180bfb0ca7e9b482200da3} 
+\index{vector.h@{vector.h}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\Hypertarget{vector_8h_a4a042dd1c2e48b3e3e4f9a48c3e00a33}\label{vector_8h_a4a042dd1c2e48b3e3e4f9a48c3e00a33} 
+\index{vector.h@{vector.h}!operator==@{operator==}}
+\index{operator==@{operator==}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\Hypertarget{vector_8h_a9716d9dbcc8f9ada1d56199f985f6671}\label{vector_8h_a9716d9dbcc8f9ada1d56199f985f6671} 
+\index{vector.h@{vector.h}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\Hypertarget{vector_8h_a5cbee65335748f507a4b9b9760077d07}\label{vector_8h_a5cbee65335748f507a4b9b9760077d07} 
+\index{vector.h@{vector.h}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\Hypertarget{vector_8h_a3b597588a215a71ac78ba65437556992}\label{vector_8h_a3b597588a215a71ac78ba65437556992} 
+\index{vector.h@{vector.h}!swap@{swap}}
+\index{swap@{swap}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{lhs,  }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
