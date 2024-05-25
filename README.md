@@ -5,6 +5,8 @@
  Išplėsčiau  Vector klases funkcionalumą taip, kad ji būtų pilnavertė alternatyvą std::vector konteineriui. Patikrinimui funkcionalumą (Member types, Member functions, Non-member functions) naudojausi https://en.cppreference.com/w/cpp/container/vector
 
    1.1 Operator= 
+
+   
 '''
         void print(auto const comment, auto const& container)
       {
@@ -42,11 +44,12 @@
       }
 '''
 
-  Output:
   
   ![image](https://github.com/GabrieleVaitiekute/3Project/assets/147078486/bb710f31-9804-4bf7-935b-9aa9ef331cb6)
 
   1.2 Capacity
+
+  
 '''
         std::vector<int> v;
         std::cout << "Default-constructed capacity is " << v.capacity() << '\n';
@@ -66,11 +69,13 @@
         v.shrink_to_fit();
         std::cout << "Capacity after shrink_to_fit() is " << v.capacity() << '\n';
 '''
-  Output:
-  
+
+
   ![image](https://github.com/GabrieleVaitiekute/3Project/assets/147078486/e354587b-8f47-41e5-b46e-48adf4743b25)
 
   1.3 Insert
+
+  
 '''
       void print(int id, const std::vector<int>& container)
       {
@@ -108,11 +113,12 @@
         }
 '''
 
-  Output: 
   
   ![image](https://github.com/GabrieleVaitiekute/3Project/assets/147078486/90355d88-107f-4f62-bae4-eeb0dd5f3e7b)
 
   1.4 Erase
+
+  
 '''
         void print_container(const std::vector<int>& c)
       {
@@ -144,11 +150,11 @@
       }
 '''
 
-  Output:
-  
+
   ![image](https://github.com/GabrieleVaitiekute/3Project/assets/147078486/310aa22f-9c9f-4cdf-843a-7157e98de926)
 
   1.5 Push_back
+
 
 '''
        std::vector<std::string> letters;
@@ -165,13 +171,13 @@
     
 '''
 
-  Output:
 
   ![image](https://github.com/GabrieleVaitiekute/3Project/assets/147078486/a5f62e14-af86-4f27-a1c7-1e7e500b2cc0)
 
   1.6 Resize
 
-  '''
+
+'''
         void print(auto rem, const std::vector<int>& c)
     {
         for (std::cout << rem; const int el : c)
@@ -193,11 +199,10 @@
         c.resize(6, 4);
         print("After resize up to 6 (initializer = 4): ", c);
     }
-  '''
-
-  Output:
+'''
 
   ![image](https://github.com/GabrieleVaitiekute/3Project/assets/147078486/30935edb-c4fd-4510-b1c9-513e41cc90d2)
+
 
 ## 2 EFEKTYVUMO/SPARTOS ANALIZĖ NAUDOJANT PUSH_BACK()
 
