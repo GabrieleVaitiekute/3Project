@@ -228,10 +228,36 @@ Vector atmintis perskirstyta: 27 kartus
 ```
 
 ## 4 VECTOR VEIKLOS PALYGINIMAS SU STD::VECTOR
-  1. Spartos analizė
-  2. Catch testai
+### 	1. Spartos analizė
+
+#### 100 000
+
+|    | std::vector | Vector | 
+| ------------- | ------------- | ------------- | 
+|  Failo nuskaitymas | 0.504155667 | 0.439682667 | 
+|  Rikiavimas didėjančia tvarka |0.0216011667 | 0.0256478 | 
+|  Rušiavimas i galvočius ir nepažangius | 0.017417633 | 0.0206415 | 
+
+#### 1 000 000
+
+|    | std::vector | Vector | 
+| ------------- | ------------- | ------------- | 
+|  Failo nuskaitymas | 4.9414733 | 4.0857066 | 
+|  Rikiavimas didėjančia tvarka | 0.175986 | 0.2445133 | 
+|  Rušiavimas i galvočius ir nepažangius | 0.198755 | 0.233863667 | 
+
+#### 10 000 000
+
+|    | std::vector | Vector | 
+| ------------- | ------------- | ------------- | 
+|  Failo nuskaitymas | 63.3613 | 50.9485667 | 
+|  Rikiavimas didėjančia tvarka |2.9697767 | 2.4380833 | 
+|  Rušiavimas i galvočius ir nepažangius | 3.10939667 | 2.57415  | 
+
+
+### 	2. Catch testai
      Testavimą atlikau su Catch2. Testai: Default konstruktorius, Parametrizuotas konstruktorius, Copy konstruktorius, Move konstruktorius, Copy priskyrimo operatorius, Move priskyrimo operatorius, Ivesties operatorius, Isvesties operatorius, Push back, size, Capacity, Modifiers, Relational Operators.
 
-  4. Doxygen
-  5. Setup.exe 
+###  	3. Doxygen
+### 	4. Setup.exe 
 
