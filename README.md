@@ -219,12 +219,13 @@ Std::vector tipo ir mano Vector tipo tuščius vektorius užpildyti: 10000, 1000
 			}
 		}
 
-'''
+```
 
 std::vector atmintis perskirstyta: 46 kartus
+
 Vector atmintis perskirstyta: 27 kartus
 
-'''
+```
 
 ## 4 VECTOR VEIKLOS PALYGINIMAS SU STD::VECTOR
   1. Spartos analizė
