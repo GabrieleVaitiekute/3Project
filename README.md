@@ -266,3 +266,9 @@ Su Doxygen buvo sukurta dokumentacija, taip pat panaudotas Overleaf pdf failui.
 
 ### 	4. Setup.exe 
 
+Setup sukūriau naudodama Inno Setup compiler. Naudojimosi instrukcijos:
+	1. Raskite ir paspauskite ant mysetup.exe
+ 	2. Leiskite programai atlikti pakeitimus
+  	3. Įsitikinkite, kad bus sukūriamas desktop shortcut tuomet spauskite Next
+   	4. Pasirinkite Install
+    	5. Paspauskite Launch ir toliau pasirinkite norimą programos funckiją
